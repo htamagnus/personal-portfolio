@@ -2,15 +2,16 @@
 
 import { Section } from "@/components/ui/Section";
 import { Marquee } from "@/components/ui/Marquee";
-import { portfolioData } from "@/data/portfolio";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Skills() {
+  const { t } = useLanguage();
   const allSkills = [
-    ...portfolioData.skills.languages,
-    ...portfolioData.skills.frontend,
-    ...portfolioData.skills.backend,
-    ...portfolioData.skills.database,
-    ...portfolioData.skills.devops,
+    ...t.portfolio.skills.languages,
+    ...t.portfolio.skills.frontend,
+    ...t.portfolio.skills.backend,
+    ...t.portfolio.skills.database,
+    ...t.portfolio.skills.devops,
   ];
 
   return (
@@ -18,9 +19,9 @@ export function Skills() {
       <Section id="skills" className="bg-transparent py-0 md:py-0">
         <div className="mb-12 text-center">
           <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-black mb-4">
-            My Arsenal
+            {t.skills.title}
           </h2>
-          <p className="text-black font-mono font-bold text-xl">Technologies & Tools</p>
+          <p className="text-black font-mono font-bold text-xl">{t.skills.subtitle}</p>
         </div>
       </Section>
 
@@ -44,7 +45,7 @@ export function Skills() {
       
       <Section className="bg-transparent py-0 md:py-0 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(portfolioData.skills).map(([category, skills]) => (
+          {Object.entries(t.portfolio.skills).map(([category, skills]) => (
              <div key={category} className="bg-white border-3 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                <h3 className="text-xl font-bold uppercase mb-4 border-b-2 border-black pb-2">{category}</h3>
                <div className="flex flex-wrap gap-2">

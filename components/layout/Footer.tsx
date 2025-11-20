@@ -1,5 +1,7 @@
-import { portfolioData } from "@/data/portfolio";
+"use client";
+
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const getIcon = (name: string) => {
   switch (name.toLowerCase()) {
@@ -11,6 +13,8 @@ const getIcon = (name: string) => {
 };
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t-3 border-black dark:border-white bg-neon-yellow py-12 text-black">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -19,7 +23,7 @@ export function Footer() {
           <p className="font-mono text-sm mt-2">© {new Date().getFullYear()} All rights reserved.</p>
         </div>
         <div className="flex gap-6">
-          {Object.entries(portfolioData.socials).map(([key, url]) => (
+          {Object.entries(t.portfolio.socials).map(([key, url]) => (
             <a
               key={key}
               href={url}

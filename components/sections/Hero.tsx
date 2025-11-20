@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
-import { portfolioData } from "@/data/portfolio";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const MaskedReveal = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
   return (
@@ -22,6 +22,8 @@ const MaskedReveal = ({ text, className, delay = 0 }: { text: string; className?
 };
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <div className="relative w-full bg-grid-pattern">
       <Section className="min-h-screen flex flex-col justify-center items-start pt-32 relative">
@@ -32,7 +34,7 @@ export function Hero() {
           className="w-full"
         >
           <h2 className="text-xl md:text-2xl font-mono mb-4 text-black-200">
-            <strong>Hello</strong>, I am
+            <strong>{t.hero.greeting}</strong>
           </h2>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tighter leading-none mb-6">
             <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
@@ -46,9 +48,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="max-w-2xl text-lg md:text-xl font-mono mb-8 border-l-4 border-neon-pink pl-4"
           >
-            <strong>{portfolioData.role} </strong><br />
+            <strong>{t.portfolio.role} </strong><br />
             <span className="text-gray-600 dark:text-gray-700">
-              Building digital experiences since {portfolioData.since}
+              {t.hero.since_prefix} {t.portfolio.since}
             </span>
           </motion.p>
 
@@ -59,10 +61,10 @@ export function Hero() {
             className="flex flex-wrap gap-4"
           >
             <Button className="bg-neon-green" size="lg" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
-              View Projects
+              {t.hero.view_projects}
             </Button>
             <Button variant="outline" size="lg" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
-              Contact Me
+              {t.hero.contact_me}
             </Button>
           </motion.div>
         </motion.div>

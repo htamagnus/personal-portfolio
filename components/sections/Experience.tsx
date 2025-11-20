@@ -2,21 +2,23 @@
 
 import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
-import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Experience() {
+  const { t } = useLanguage();
+
   return (
     <div className="w-full bg-grid-pattern">
       <Section id="experience" className="bg-transparent">
         <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-center mb-16">
-          XP <span className="text-neon-pink">&</span> Projects
+          {t.experience.title} <span className="text-neon-pink">{t.experience.subtitle}</span>
         </h2>
 
         <div className="space-y-12 relative">
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-black -translate-x-1/2 hidden md:block"></div>
 
-          {portfolioData.experience.map((exp, index) => (
+          {t.portfolio.experience.map((exp, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
