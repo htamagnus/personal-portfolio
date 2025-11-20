@@ -15,8 +15,8 @@ export function Skills() {
   ];
 
   return (
-    <div className="w-full bg-neon-pink border-y-4 border-black py-24 overflow-hidden">
-      <Section id="skills" className="bg-transparent py-0 md:py-0">
+    <div id="skills" className="w-full bg-neon-pink border-y-4 border-black py-24 overflow-hidden scroll-mt-20">
+      <Section className="bg-transparent py-0 md:py-0">
         <div className="mb-12 text-center">
           <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-black mb-4">
             {t.skills.title}

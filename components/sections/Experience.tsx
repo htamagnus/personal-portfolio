@@ -10,7 +10,7 @@ export function Experience() {
 
   return (
     <div className="w-full bg-grid-pattern">
-      <Section id="experience" className="bg-transparent">
+      <Section id="experience" className="bg-transparent scroll-mt-20">
         <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-center mb-16">
           {t.experience.title} <span className="text-neon-pink">{t.experience.subtitle}</span>
         </h2>

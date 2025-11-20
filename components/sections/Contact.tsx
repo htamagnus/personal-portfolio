@@ -13,7 +13,7 @@ export function Contact() {
   if (state.succeeded) {
     return (
       <div className="w-full bg-neon-blue border-t-4 border-black">
-        <Section id="contact" className="bg-transparent">
+        <Section id="contact" className="bg-transparent scroll-mt-20">
           <div className="max-w-4xl mx-auto text-center">
              <h2 className="text-4xl md:text-7xl font-display font-black uppercase text-black mb-8">
               {t.contact.success_title}
