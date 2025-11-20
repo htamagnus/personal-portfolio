@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const MaskedReveal = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
   return (
-    <div className="overflow-hidden inline-block align-bottom">
+    <div className="overflow-hidden inline-block align-bottom px-2 -mx-2 pb-2 -mb-2">
       <motion.span
         initial={{ y: "100%" }}
         animate={{ y: 0 }}
