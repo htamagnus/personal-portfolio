@@ -34,9 +34,11 @@ export function Experience() {
               <div className="flex-1 w-full">
                 <Card className="hover:bg-neon-yellow transition-colors duration-300 group">
                   <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-2xl font-display font-bold uppercase">{exp.company}</h3>
-                      <p className="font-mono text-sm font-bold text-gray-600 dark:text-gray-400 group-hover:text-black">
+                    <div className="flex flex-col items-start">
+                      <h3 className="text-2xl font-display font-bold uppercase border-b-4 border-neon-pink inline-block mb-2">
+                        {exp.company}
+                      </h3>
+                      <p className="font-mono text-sm font-bold text-gray-600 dark:text-gray-600 group-hover:text-black">
                         {exp.role}
                       </p>
                     </div>
