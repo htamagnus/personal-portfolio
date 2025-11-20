@@ -3,6 +3,7 @@
 import { Section } from "@/components/ui/Section";
 import { Marquee } from "@/components/ui/Marquee";
 import { useLanguage } from "@/context/LanguageContext";
+import { BrutalistIcon } from "@/components/ui/BrutalistIcon";
 
 export function Skills() {
   const { t } = useLanguage();
@@ -26,18 +27,18 @@ export function Skills() {
       </Section>
 
       <div className="w-full">
-        <Marquee className="bg-black text-white py-6 border-y-4 border-white rotate-1 mb-8 w-full" speed="slow">
+        <Marquee className="bg-black text-white py-3 md:py-6 border-y-2 md:border-y-4 border-white rotate-1 mb-4 md:mb-8 w-[110%] -ml-[5%]" speed="slow">
           {allSkills.map((skill, index) => (
-            <span key={index} className="mx-8 text-2xl md:text-4xl font-display font-bold uppercase">
-              {skill} <span className="text-neon-green mx-4">•</span>
+            <span key={index} className="mx-4 md:mx-8 text-lg md:text-4xl font-display font-bold uppercase">
+              {skill} <span className="text-neon-green mx-2 md:mx-4">•</span>
             </span>
           ))}
         </Marquee>
 
-        <Marquee className="bg-white text-black py-6 border-y-4 border-black -rotate-1 w-full" direction="right" speed="slow">
+        <Marquee className="bg-white text-black py-3 md:py-6 border-y-2 md:border-y-4 border-black -rotate-1 w-[110%] -ml-[5%]" direction="right" speed="slow">
           {allSkills.reverse().map((skill, index) => (
-            <span key={index} className="mx-8 text-2xl md:text-4xl font-display font-bold uppercase">
-              {skill} <span className="text-neon-pink mx-4">•</span>
+            <span key={index} className="mx-4 md:mx-8 text-lg md:text-4xl font-display font-bold uppercase">
+              {skill} <span className="text-neon-pink mx-2 md:mx-4">•</span>
             </span>
           ))}
         </Marquee>
@@ -59,8 +60,17 @@ export function Skills() {
           ))}
         </div>
 
-        <div className="max-w-4xl mx-auto mt-8 md:mt-0">
-          <div className="bg-neon-blue border-3 border-black p-6 pt-10 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative">
+        <div className="max-w-4xl mx-auto mt-8 md:mt-0 relative">
+          <div className="absolute -top-12 -right-12 hidden md:block z-0 pointer-events-none">
+            <BrutalistIcon 
+               icon="shield" 
+               className="w-40 h-40 text-white" 
+               customFill="black"
+               customStroke="black"
+               customStrokeWidth={4}
+            />
+          </div>
+          <div className="bg-neon-blue border-3 border-black p-6 pt-10 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
              <div className="absolute -top-5 left-1/2 -translate-x-1/2 md:left-auto md:-left-6 md:translate-x-0 md:-top-6 bg-black text-white px-3 py-2 md:px-4 md:py-2 font-display font-bold uppercase text-sm md:text-xl border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform -rotate-2 w-max max-w-[90%] text-center whitespace-normal">
                 {t.skills.what_means_title}
              </div>

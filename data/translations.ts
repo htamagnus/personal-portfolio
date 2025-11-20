@@ -127,6 +127,10 @@ export const translations = {
           period: "2025",
           description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. Integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
           stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
+          links: [
+            { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
+            { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
+          ]
         },
         {
           company: "RPG Project (Voluntário)",
