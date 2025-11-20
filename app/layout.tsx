@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: portfolioData.name,
     images: [
       {
-        url: "/picture-agathamagnus-3.jpg",
+        url: "/picture-agathamagnus.jpg",
         width: 1200,
         height: 630,
         alt: portfolioData.name,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${portfolioData.name} | ${portfolioData.role}`,
     description: portfolioData.description,
-    images: ["/picture-agathamagnus-3.jpg"],
+    images: ["/picture-agathamagnus.jpg"],
     creator: "@agathamagnus", 
   },
   icons: {
@@ -97,7 +97,7 @@ export default function RootLayout({
     "@type": "Person",
     name: portfolioData.name,
     url: baseUrl,
-    image: `${baseUrl}/picture-agathamagnus-3.jpg`,
+    image: `${baseUrl}/picture-agathamagnus.jpg`,
     sameAs: [
       portfolioData.socials.github,
       portfolioData.socials.linkedin,

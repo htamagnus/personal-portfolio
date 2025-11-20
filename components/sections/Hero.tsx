@@ -74,7 +74,7 @@ export function Hero() {
             <div className="absolute inset-0 rounded-full border-4 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
             <div className="absolute inset-4 rounded-full border-4 border-black overflow-hidden bg-white">
               <Image 
-                src="/picture-agathamagnus-3.jpg" 
+                src="/picture-agathamagnus.jpg" 
                 width={600}
                 height={600}
                 alt="Agatha Magnus" 
