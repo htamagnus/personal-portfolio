@@ -60,7 +60,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="flex flex-wrap gap-4"
           >
-            <Button className="bg-neon-green w-full sm:w-auto" size="lg" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
+            <Button className="bg-neon-green w-full sm:w-auto" size="lg" onClick={() => document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" })}>
               {t.hero.view_projects}
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
