@@ -115,14 +115,21 @@ export const translations = {
           role: "Desenvolvedora Full Stack",
           period: "2023 - Atual",
           description: "Desenvolvendo novas funcionalidades para uma plataforma líder em marketing de influência. Focada em estabilidade do sistema, correções de bugs e otimização de performance.",
-          stack: ["React", "NodeJS", "TypeScript"],
+          stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress"],
+        },
+        {
+          company: "Velox (Projeto Pessoal)",
+          role: "Desenvolvedora Full Stack",
+          period: "2024",
+          description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. Integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
+          stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps"],
         },
         {
           company: "RPG Project (Voluntário)",
           role: "Líder de Equipe",
           period: "Anterior",
           description: "Liderei uma equipe para construir uma plataforma conectando jogadores de RPG. Gerenciei backlog, refinei tarefas e garanti a qualidade do código.",
-          stack: ["React", "NodeJS"],
+          stack: ["React", "NodeJS", "Docker", "Prisma"],
         },
       ],
       education: {
