@@ -15,10 +15,10 @@ export function Contact() {
       <div className="w-full bg-neon-blue border-t-4 border-black">
         <Section id="contact" className="bg-transparent">
           <div className="max-w-4xl mx-auto text-center">
-             <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-black mb-8">
+             <h2 className="text-4xl md:text-7xl font-display font-black uppercase text-black mb-8">
               {t.contact.success_title}
             </h2>
-            <p className="text-xl font-mono font-bold mb-12 text-black">
+            <p className="text-lg md:text-xl font-mono font-bold mb-12 text-black">
               {t.contact.success_msg}
             </p>
             <Button onClick={() => window.location.reload()} size="lg">
@@ -34,10 +34,10 @@ export function Contact() {
     <div className="w-full bg-neon-blue border-t-4 border-black">
       <Section id="contact" className="bg-transparent">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-black mb-8">
+          <h2 className="text-4xl md:text-7xl font-display font-black uppercase text-black mb-8">
             {t.contact.title}
           </h2>
-          <p className="text-xl font-mono font-bold mb-12 text-black">
+          <p className="text-lg md:text-xl font-mono font-bold mb-12 text-black">
             {t.contact.subtitle}
           </p>
 

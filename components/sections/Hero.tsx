@@ -26,17 +26,17 @@ export function Hero() {
 
   return (
     <div className="relative w-full bg-grid-pattern">
-      <Section className="min-h-screen flex flex-col justify-center items-start pt-32 relative">
+      <Section className="min-h-screen flex flex-col justify-center items-start pt-24 md:pt-32 relative">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-full"
+          className="w-full z-10 relative"
         >
-          <h2 className="text-xl md:text-2xl font-mono mb-4 text-black-200">
+          <h2 className="text-lg md:text-2xl font-mono mb-4 text-black-200">
             <strong>{t.hero.greeting}</strong>
           </h2>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tighter leading-none mb-6">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tighter leading-none mb-6">
             <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
             <br />
             <MaskedReveal text="Magnus" className="text-stroke animate-highlight px-2 -mx-2" delay={0.2} />
@@ -46,7 +46,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="max-w-2xl text-lg md:text-xl font-mono mb-8 border-l-4 border-neon-pink pl-4"
+            className="max-w-xl md:max-w-2xl text-base md:text-xl font-mono mb-8 border-l-4 border-neon-pink pl-4"
           >
             <strong>{t.portfolio.role} </strong><br />
             <span className="text-gray-600 dark:text-gray-700">
@@ -60,16 +60,16 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="flex flex-wrap gap-4"
           >
-            <Button className="bg-neon-green" size="lg" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
+            <Button className="bg-neon-green w-full sm:w-auto" size="lg" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
               {t.hero.view_projects}
             </Button>
-            <Button variant="outline" size="lg" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
               {t.hero.contact_me}
             </Button>
           </motion.div>
         </motion.div>
 
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block pointer-events-none">
           <div className="relative w-[500px] h-[500px]">
             <div className="absolute inset-0 rounded-full border-4 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
             <div className="absolute inset-4 rounded-full border-4 border-black overflow-hidden bg-white">
