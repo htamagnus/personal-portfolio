@@ -51,7 +51,7 @@ export function Experience() {
                     {exp.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs font-bold uppercase border border-black px-2 py-1 bg-white text-black"
+                        className="text-xs font-bold uppercase border border-black px-2 py-1 bg-neon-yellow text-black group-hover:bg-white transition-colors"
                       >
                         {tech}
                       </span>

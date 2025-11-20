@@ -32,7 +32,7 @@ export const portfolioData = {
       role: "Full Stack Developer",
       period: "2025",
       description: "Built a personalized bike route planner deployed on AWS Free Tier. Features Strava integration for realistic time estimates, real-time weather/traffic data, and elevation profiles.",
-      stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
+      stack: ["Next.js", "NestJS", "AWS", "Google Maps API", "Strava API"],
       links: [
         { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
         { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
