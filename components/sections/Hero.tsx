@@ -39,7 +39,7 @@ export function Hero() {
           <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tighter leading-none mb-6">
             <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
             <br />
-            <MaskedReveal text="Magnus" className="text-stroke animate-highlight px-2 -mx-2" delay={0.2} />
+            <MaskedReveal text="Magnus" className="text-stroke animate-highlight px-8 -mx-8 py-2 -my-2" delay={0.2} />
           </h1>
           
           <motion.p 
