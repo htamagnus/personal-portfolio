@@ -36,11 +36,43 @@ export function Hero() {
           <h2 className="text-lg md:text-2xl font-mono mb-4 text-black-200">
             <strong>{t.hero.greeting}</strong>
           </h2>
-          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tighter leading-none mb-6">
-            <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
-            <br />
-            <MaskedReveal text="Magnus" className="text-stroke animate-highlight px-8 -mx-8 py-2 -my-2" delay={0.2} />
-          </h1>
+          <div className="flex items-center justify-between lg:block mb-6">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tighter leading-none">
+              <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
+              <br />
+              <MaskedReveal text="Magnus" className="text-stroke animate-highlight px-8 -mx-8 py-2 -my-2" delay={0.2} />
+            </h1>
+            
+            {/* Mobile Image */}
+            <div className="lg:hidden relative w-28 h-28 shrink-0 mr-6">
+              <div className="absolute inset-0 rounded-full border-2 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
+              <div className="absolute inset-2 rounded-full border-2 border-black overflow-hidden bg-white">
+                <Image 
+                  src="/picture-agathamagnus.jpg" 
+                  width={200}
+                  height={200}
+                  alt="Agatha Magnus" 
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
+              
+              {/* Mobile Spinning Icon */}
+              <motion.svg
+                viewBox="0 0 412 412"
+                className="absolute -bottom-2 -right-2 w-10 h-10 z-10"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              >
+                <path 
+                  d="M206 136.3L291.3 0L255.3 156.7L412 120.7L275.7 206L412 291.3L255.3 255.3L291.3 412L206 275.7L120.7 412L156.7 255.3L0 291.3L136.3 206L0 120.7L156.7 156.7L120.7 0L206 136.3Z" 
+                  fill="var(--color-neon-yellow)"
+                  stroke="black"
+                  strokeWidth="8"
+                />
+              </motion.svg>
+            </div>
+          </div>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
