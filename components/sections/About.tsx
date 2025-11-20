@@ -46,9 +46,10 @@ export function About() {
           <h3 className="text-2xl font-display font-bold uppercase border-b-4 border-neon-pink inline-block">
             {t.about.journey_title}
           </h3>
-          <p className="text-base md:text-lg text-gray-700 dark:text-gray-900">
-            {t.about.journey_p1}
-          </p>
+          <p 
+            className="text-base md:text-lg text-gray-700 dark:text-gray-900"
+            dangerouslySetInnerHTML={{ __html: t.about.journey_p1 }}
+          ></p>
           <p 
             className="text-base md:text-lg text-gray-700 dark:text-gray-800"
             dangerouslySetInnerHTML={{ __html: t.about.journey_p2 }}

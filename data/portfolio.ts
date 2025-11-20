@@ -25,14 +25,14 @@ export const portfolioData = {
       role: "Full Stack Developer",
       period: "2023 - Present",
       description: "Developing new features for a leading influencer marketing platform. Focused on system stability, bug fixes, and performance optimization.",
-      stack: ["React", "NodeJS", "TypeScript"],
+      stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress", "Angular", "NestJS", "Microservices", "Redis", "Firebase", "MySQL"],
     },
     {
       company: "Velox (Personal Project)",
       role: "Full Stack Developer",
       period: "2025",
       description: "Built a personalized bike route planner deployed on AWS Free Tier. Features Strava integration for realistic time estimates, real-time weather/traffic data, and elevation profiles.",
-      stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps"],
+      stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
     },
     {
       company: "RPG Project (Volunteer)",

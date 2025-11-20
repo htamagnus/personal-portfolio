@@ -25,14 +25,14 @@ export const translations = {
       education: "Education",
       since: "Since",
       journey_title: "My Journey",
-      journey_p1: "I started my journey in 2021 and have been passionate about FullStack development ever since. With a strong foundation in Systems Analysis and Development, I've led teams and contributed to major platforms.",
-      journey_p2: "Currently at <strong>Wake Creators</strong>, I focus on building scalable solutions for the creator economy."
+      journey_p1: "I started my journey in 2021 as a <strong>Full Stack Javascript Developer</strong>, building complete web applications across both front end and back end. since then, i've been deepening my skills and staying aligned with the latest trends in modern web development.",
+      journey_p2: "Currently at <strong>Wake Creators (Squid)</strong>, i focus on creating scalable solutions for the creator economy. My background in Systems Analysis combined with practices like microservices and ci/cd helps me deliver stable, modern products with a strong focus on user experience."
     },
     skills: {
       title: "My Arsenal",
       subtitle: "Technologies & Tools",
       what_means_title: "Okay, but what does this mean?",
-      what_means_text: "It means I don't just write code: I build <strong>complete solutions</strong>. From <strong>scalable APIs</strong> that handle thousands of users to <strong>fluid interfaces</strong> that engage them. I turn technical complexity into simple, powerful products."
+      what_means_text: "It means i <em>don’t just write code</em>. I build complete solutions, from <strong>scalable APIs</strong> that handle thousands of users to <strong>fast and intuitive interfaces</strong> that keep them engaged. I take technical complexity and turn it into simple, efficient and <strong>growth-ready products</strong>."
     },
     experience: {
       title: "XP",
@@ -79,14 +79,14 @@ export const translations = {
       education: "Educação",
       since: "Desde",
       journey_title: "Minha Jornada",
-      journey_p1: "Comecei minha jornada em 2021 e sou apaixonada por desenvolvimento FullStack desde então. Com uma base sólida em Análise e Desenvolvimento de Sistemas, liderei equipes e contribuí para grandes plataformas.",
-      journey_p2: "Atualmente na <strong>Wake Creators</strong>, foco em construir soluções escaláveis para a economia de criadores."
+      journey_p1: "Comecei minha jornada em 2021 como <strong>Desenvolvedora Full Stack JavaScript</strong>, criando aplicações completas no front-end e no back-end. Desde então, venho aprofundando minhas habilidades e acompanhando as inovações do ecossistema web.",
+      journey_p2: "Atualmente na <strong>Wake Creators (Squid)</strong>, trabalho na construção de soluções escaláveis para o mercado de influência. A combinação da minha formação em Análise e Desenvolvimento de Sistemas com práticas como microsserviços e CI/CD me ajuda a entregar produtos estáveis, modernos e focados em uma boa experiência para quem usa nossa plataforma."
     },
     skills: {
       title: "Meu Arsenal",
       subtitle: "Tecnologias & Ferramentas",
       what_means_title: "Ok, mas o que isso significa?",
-      what_means_text: "Significa que eu não apenas escrevo código: eu construo <strong>soluções completas</strong>. Desde <strong>APIs escaláveis</strong> que suportam milhares de usuários até <strong>interfaces fluidas</strong> que os engajam. Eu transformo complexidade técnica em produtos simples e poderosos."
+      what_means_text: "Significa que além de escrever código, eu crio <strong>soluções completas</strong>: desde <strong>APIs escaláveis</strong> que atendem milhares de usuários até <strong>interfaces rápidas</strong> e intuitivas que engajam de verdade. Eu pego complexidade técnica e transformo em produtos simples, eficientes e <strong>prontos para crescer</strong>."
     },
     experience: {
       title: "XP",
@@ -119,14 +119,14 @@ export const translations = {
           role: "Desenvolvedora Full Stack",
           period: "2023 - Atual",
           description: "Desenvolvendo novas funcionalidades para uma plataforma líder em marketing de influência. Focada em estabilidade do sistema, correções de bugs e otimização de performance.",
-          stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress"],
+          stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress", "Angular", "NestJS", "Microservices", "Redis", "Firebase", "MySQL"],
         },
         {
           company: "Velox (Projeto Pessoal)",
           role: "Desenvolvedora Full Stack",
           period: "2025",
           description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. Integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
-          stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps"],
+          stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
         },
         {
           company: "RPG Project (Voluntário)",
