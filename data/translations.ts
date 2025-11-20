@@ -30,7 +30,9 @@ export const translations = {
     },
     skills: {
       title: "My Arsenal",
-      subtitle: "Technologies & Tools"
+      subtitle: "Technologies & Tools",
+      what_means_title: "Okay, but what does this mean?",
+      what_means_text: "It means I don't just write code: I build <strong>complete solutions</strong>. From <strong>scalable APIs</strong> that handle thousands of users to <strong>fluid interfaces</strong> that engage them. I turn technical complexity into simple, powerful products."
     },
     experience: {
       title: "XP",
@@ -82,7 +84,9 @@ export const translations = {
     },
     skills: {
       title: "Meu Arsenal",
-      subtitle: "Tecnologias & Ferramentas"
+      subtitle: "Tecnologias & Ferramentas",
+      what_means_title: "Ok, mas o que isso significa?",
+      what_means_text: "Significa que eu não apenas escrevo código: eu construo <strong>soluções completas</strong>. Desde <strong>APIs escaláveis</strong> que suportam milhares de usuários até <strong>interfaces fluidas</strong> que os engajam. Eu transformo complexidade técnica em produtos simples e poderosos."
     },
     experience: {
       title: "XP",
@@ -120,7 +124,7 @@ export const translations = {
         {
           company: "Velox (Projeto Pessoal)",
           role: "Desenvolvedora Full Stack",
-          period: "2024",
+          period: "2025",
           description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. Integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
           stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps"],
         },

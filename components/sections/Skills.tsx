@@ -44,7 +44,7 @@ export function Skills() {
       </div>
       
       <Section className="bg-transparent py-0 md:py-0 mt-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {Object.entries(t.portfolio.skills).map(([category, skills]) => (
              <div key={category} className="bg-white border-3 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                <h3 className="text-xl font-bold uppercase mb-4 border-b-2 border-black pb-2">{category}</h3>
@@ -57,6 +57,18 @@ export function Skills() {
                </div>
              </div>
           ))}
+        </div>
+
+        <div className="max-w-4xl mx-auto mt-8 md:mt-0">
+          <div className="bg-neon-blue border-3 border-black p-6 pt-10 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative">
+             <div className="absolute -top-5 left-1/2 -translate-x-1/2 md:left-auto md:-left-6 md:translate-x-0 md:-top-6 bg-black text-white px-3 py-2 md:px-4 md:py-2 font-display font-bold uppercase text-sm md:text-xl border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform -rotate-2 w-max max-w-[90%] text-center whitespace-normal">
+                {t.skills.what_means_title}
+             </div>
+             <p 
+              className="font-mono text-base md:text-xl leading-relaxed mt-2 md:mt-4 text-justify md:text-left"
+              dangerouslySetInnerHTML={{ __html: t.skills.what_means_text }}
+             ></p>
+          </div>
         </div>
       </Section>
     </div>
