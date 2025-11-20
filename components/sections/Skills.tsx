@@ -61,7 +61,7 @@ export function Skills() {
         </div>
 
         <div className="max-w-4xl mx-auto mt-8 md:mt-0 relative">
-          <div className="absolute -top-12 -right-12 hidden md:block z-0 pointer-events-none">
+          {/* <div className="absolute -top-12 -right-12 hidden md:block z-0 pointer-events-none">
             <BrutalistIcon 
                icon="shield" 
                className="w-40 h-40 text-white" 
@@ -69,7 +69,7 @@ export function Skills() {
                customStroke="black"
                customStrokeWidth={4}
             />
-          </div>
+          </div> */}
           <div className="bg-neon-blue border-3 border-black p-6 pt-10 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
              <div className="absolute -top-5 left-1/2 -translate-x-1/2 md:left-auto md:-left-6 md:translate-x-0 md:-top-6 bg-black text-white px-3 py-2 md:px-4 md:py-2 font-display font-bold uppercase text-sm md:text-xl border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform -rotate-2 w-max max-w-[90%] text-center whitespace-normal">
                 {t.skills.what_means_title}
