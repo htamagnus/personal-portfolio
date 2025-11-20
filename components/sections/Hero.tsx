@@ -75,16 +75,19 @@ export function Hero() {
             <div className="absolute inset-4 rounded-full border-4 border-black overflow-hidden bg-white">
               <Image 
                 src="/picture-agathamagnus-3.jpg" 
-                width={500}
-                height={500}
+                width={600}
+                height={600}
                 alt="Agatha Magnus" 
                 className="w-full h-full object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 500px"
+                quality={90}
               />
             </div>
             
             <motion.svg
               viewBox="0 0 412 412"
-              className="absolute -bottom-12 -right-12 w-40 h-40 z-10"
+              className="absolute -bottom-12 -right-12 w-50 h-50 z-10"
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             >

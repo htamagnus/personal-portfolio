@@ -26,7 +26,7 @@ export function Marquee({
     <div className={cn("overflow-hidden flex whitespace-nowrap", className)}>
       <div
         className={cn(
-          "flex min-w-full shrink-0 gap-4 py-4 animate-scroll",
+          "flex min-w-full shrink-0 gap-4 py-4 animate-scroll will-change-transform",
           direction === "right" && "animate-scroll-reverse"
         )}
         style={{ animationDuration: speeds[speed] }}
@@ -37,7 +37,7 @@ export function Marquee({
       <div
         aria-hidden="true"
         className={cn(
-          "flex min-w-full shrink-0 gap-4 py-4 animate-scroll",
+          "flex min-w-full shrink-0 gap-4 py-4 animate-scroll will-change-transform",
           direction === "right" && "animate-scroll-reverse"
         )}
         style={{ animationDuration: speeds[speed] }}
