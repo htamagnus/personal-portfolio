@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { portfolioData } from "@/data/portfolio";
+import Image from "next/image";
 
 const MaskedReveal = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
   return (
@@ -70,8 +71,10 @@ export function Hero() {
           <div className="relative w-[500px] h-[500px]">
             <div className="absolute inset-0 rounded-full border-4 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
             <div className="absolute inset-4 rounded-full border-4 border-black overflow-hidden bg-white">
-              <img 
+              <Image 
                 src="/picture-agathamagnus-3.jpg" 
+                width={500}
+                height={500}
                 alt="Agatha Magnus" 
                 className="w-full h-full object-cover"
               />
