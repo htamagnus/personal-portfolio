@@ -33,6 +33,7 @@ export function Footer() {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${key} profile`}
               className="flex items-center gap-2 text-sm md:text-base font-bold uppercase hover:underline decoration-black decoration-2 underline-offset-4 group"
             >
               {getIcon(key)}

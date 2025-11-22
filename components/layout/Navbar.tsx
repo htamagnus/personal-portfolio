@@ -25,12 +25,12 @@ export function Navbar() {
   // Prevent scrolling when menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add('overflow-hidden');
     } else {
-      document.body.style.overflow = "unset";
+      document.body.classList.remove('overflow-hidden');
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.classList.remove('overflow-hidden');
     };
   }, [isOpen]);
 

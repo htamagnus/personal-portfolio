@@ -54,6 +54,7 @@ export function Hero() {
                   alt="Agatha Magnus" 
                   className="w-full h-full object-cover"
                   priority
+                  sizes="(max-width: 1023px) 120px, 1px"
                 />
               </div>
               
@@ -112,7 +113,7 @@ export function Hero() {
                 alt="Agatha Magnus" 
                 className="w-full h-full object-cover"
                 priority
-                sizes="(max-width: 768px) 100vw, 500px"
+                sizes="(max-width: 1023px) 1px, 500px"
                 quality={90}
               />
             </div>
