@@ -8,6 +8,7 @@ export const translations = {
       about: "About",
       skills: "Skills",
       experience: "Experience",
+      projects: "Projects",
       contact: "Contact",
       menu: "MENU",
       github_text: "htamagnus on github"
@@ -39,6 +40,11 @@ export const translations = {
       subtitle: "& Projects",
       description: "Explore my professional journey and the projects that define my growth."
     },
+    projects: {
+      title: "Selected",
+      subtitle: "Projects",
+      description: "A collection of personal projects and freelance work that showcase my creativity and technical skills."
+    },
     contact: {
       success_title: "Message Sent!",
       success_msg: "Thanks for reaching out. I'll get back to you soon!",
@@ -63,6 +69,7 @@ export const translations = {
       about: "Sobre",
       skills: "Skills",
       experience: "Experiência",
+      projects: "Projetos",
       contact: "Contato",
       menu: "MENU",
       github_text: "htamagnus no github"
@@ -94,6 +101,11 @@ export const translations = {
       subtitle: "& Projetos",
       description: "Explore minha jornada profissional e os projetos que definem meu crescimento."
     },
+    projects: {
+      title: "Projetos",
+      subtitle: "Selecionados",
+      description: "Uma coleção de projetos pessoais e trabalhos freelance que demonstram minha criatividade e habilidades técnicas."
+    },
     contact: {
       success_title: "Mensagem Enviada!",
       success_msg: "Obrigada pelo contato. Retornarei em breve!",
@@ -124,23 +136,38 @@ export const translations = {
           stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress", "Angular", "NestJS", "Microservices", "Redis", "Firebase", "MySQL"],
         },
         {
-          company: "Velox (Projeto Pessoal)",
-          role: "Desenvolvedora Full Stack",
-          period: "2025",
-          description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. Integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
-          stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
-          links: [
-            { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
-            { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
-          ]
-        },
-        {
           company: "RPG Project (Voluntário)",
           role: "Líder de Equipe",
           period: "Anterior",
           description: "Liderei uma equipe para construir uma plataforma conectando jogadores de RPG. Gerenciei backlog, refinei tarefas e garanti a qualidade do código.",
           stack: ["React", "NodeJS", "Docker", "Prisma"],
         },
+      ],
+      projects: [
+        {
+          title: "Velox",
+          role: "Desenvolvimento Full Stack",
+          period: "2025",
+          description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. Integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
+          stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
+          links: [
+            { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
+            { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
+          ],
+          thumbnail: "/projects/velox-thumb.png"
+        },
+        {
+          title: "Portfolio | Aquatic Ambience",
+          role: "Desenvolvimento Frontend",
+          period: "2025",
+          description: "Um portfólio pessoal inspirado na estética calmante de ambientes aquáticos e computação retrô. Apresenta paisagens sonoras imersivas e animações fluidas.",
+          stack: ["Next.js", "TailwindCSS", "Framer Motion"],
+          links: [
+            { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
+            { label: "GitHub", url: "#", type: "github" },
+          ],
+          thumbnail: "/projects/aquatic-thumb-2.png"
+        }
       ],
       education: {
         degree: "Análise e Desenvolvimento de Sistemas",

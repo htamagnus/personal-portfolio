@@ -28,23 +28,38 @@ export const portfolioData = {
       stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress", "Angular", "NestJS", "Microservices", "Redis", "Firebase", "MySQL"],
     },
     {
-      company: "Velox (Personal Project)",
-      role: "Full Stack Developer",
-      period: "2025",
-      description: "Built a personalized bike route planner deployed on AWS Free Tier. Features Strava integration for realistic time estimates, real-time weather/traffic data, and elevation profiles.",
-      stack: ["Next.js", "NestJS", "AWS", "Google Maps API", "Strava API"],
-      links: [
-        { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
-        { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
-      ]
-    },
-    {
       company: "RPG Project (Volunteer)",
       role: "Team Lead",
       period: "Previous",
       description: "Led a team to build a platform connecting RPG players. Managed backlog, refined tasks, and ensured code quality.",
       stack: ["React", "NodeJS", "Docker", "Prisma"],
     },
+  ],
+  projects: [
+    {
+      title: "Velox | WEB APP",
+      role: "Full Stack Development",
+      period: "2025",
+      description: "Built a personalized bike route planner deployed on AWS Free Tier. Features Strava integration for realistic time estimates, real-time weather/traffic data, and elevation profiles.",
+      stack: ["Next.js", "NestJS", "AWS", "Google Maps API", "Strava API"],
+      links: [
+        { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
+        { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
+      ],
+      thumbnail: "/projects/velox-thumb.png"
+    },
+    {
+      title: "Portfolio | Aquatic Ambience",
+      role: "Frontend Development",
+      period: "2025",
+      description: "A personal portfolio website inspired by the calming aesthetics of aquatic environments and retro computing. Features immersive soundscapes and fluid animations.",
+      stack: ["Next.js", "TailwindCSS", "Framer Motion", "Typescript"],
+      links: [
+        { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
+        { label: "GitHub", url: "#", type: "github" },
+      ],
+      thumbnail: "/projects/aquatic-thumb-2.png"
+    }
   ],
   education: {
     degree: "Systems Analysis and Development",

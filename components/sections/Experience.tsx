@@ -64,26 +64,7 @@ export function Experience() {
                     ))}
                   </div>
 
-                  {exp.links && (
-                    <div className="flex flex-wrap gap-3 mt-6">
-                      {exp.links.map((link, i) => (
-                        <Link
-                          key={i}
-                          href={link.url}
-                          target="_blank"
-                          className="flex items-center gap-2 text-xs font-bold uppercase border-2 border-black px-3 py-2 bg-white text-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
-                        >
-                          {link.type === "github" ? (
-                            <Github className="w-4 h-4" />
-                          ) : (
-                            <Globe className="w-4 h-4" />
-                          )}
-                          {link.label}
-                          <ArrowUpRight className="w-3 h-3 ml-1" />
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+
                 </Card>
               </div>
               <div className="w-8 h-8 bg-neon-green border-4 border-black dark:border-white rounded-full z-10 hidden md:block"></div>
