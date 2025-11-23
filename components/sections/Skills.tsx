@@ -3,7 +3,7 @@
 import { Section } from "@/components/ui/Section";
 import { Marquee } from "@/components/ui/Marquee";
 import { useLanguage } from "@/context/LanguageContext";
-import { BrutalistIcon } from "@/components/ui/BrutalistIcon";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function Skills() {
   const { t } = useLanguage();
@@ -18,12 +18,11 @@ export function Skills() {
   return (
     <div id="skills" className="w-full bg-neon-pink border-y-4 border-black py-14 overflow-hidden scroll-mt-20">
       <Section className="bg-transparent py-0 md:py-0">
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-black uppercase text-black mb-4">
-            {t.skills.title}
-          </h2>
-          <p className="text-black font-mono font-bold text-xl">{t.skills.subtitle}</p>
-        </div>
+        <SectionHeader 
+          title={t.skills.title}
+          subtitle={t.skills.subtitle}
+          titleClassName="text-black"
+        />
       </Section>
 
       <div className="w-full">

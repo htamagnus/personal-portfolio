@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { useForm, ValidationError } from "@formspree/react";
 import { useLanguage } from "@/context/LanguageContext";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function Contact() {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID || '');
@@ -34,12 +35,12 @@ export function Contact() {
     <div className="w-full bg-neon-blue border-t-4 border-black">
       <Section id="contact" className="bg-transparent">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-black uppercase text-black mb-4">
-            {t.contact.title}
-          </h2>
-          <p className="text-lg md:text-xl font-mono font-bold mb-12 text-black">
-            {t.contact.subtitle}
-          </p>
+          <SectionHeader 
+            title={t.contact.title}
+            subtitle={t.contact.subtitle}
+            titleClassName="text-black"
+            subtitleClassName="text-lg md:text-xl"
+          />
 
           <Card className="bg-white text-left max-w-2xl mx-auto">
             <form onSubmit={handleSubmit} className="space-y-6">
