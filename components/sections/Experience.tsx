@@ -13,9 +13,14 @@ export function Experience() {
   return (
     <div className="w-full bg-grid-pattern">
       <Section id="experience" className="bg-transparent scroll-mt-20">
-        <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-center mb-16">
-          {t.experience.title} <span className="text-neon-pink">{t.experience.subtitle}</span>
-        </h2>
+        <div className="text-center mb-8">
+          <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-4">
+            {t.experience.title} <span className="text-neon-pink">{t.experience.subtitle}</span>
+          </h2>
+          <p className="text-md md:text-xl font-mono text-black max-w-2xl mx-auto font-bold">
+            {t.experience.description}
+          </p>
+        </div>
 
         <div className="space-y-12 relative">
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-black -translate-x-1/2 hidden md:block"></div>

@@ -37,7 +37,7 @@ export function Hero() {
             <strong>{t.hero.greeting}</strong>
           </h2>
           <div className="flex items-center justify-between lg:block mb-6">
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-black uppercase tracking-tighter leading-none">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-8xl font-display font-black uppercase tracking-tighter leading-none">
               <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
               <br />
               <MaskedReveal text="Magnus" className="text-stroke animate-highlight px-8 -mx-8 py-2 -my-2" delay={0.2} />
@@ -103,7 +103,7 @@ export function Hero() {
         </motion.div>
 
         <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block pointer-events-none">
-          <div className="relative w-[500px] h-[500px]">
+          <div className="relative w-[400px] h-[400px]">
             <div className="absolute inset-0 rounded-full border-4 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
             <div className="absolute inset-4 rounded-full border-4 border-black overflow-hidden bg-white">
               <Image 
@@ -120,7 +120,7 @@ export function Hero() {
             
             <motion.svg
               viewBox="0 0 412 412"
-              className="absolute -bottom-12 -right-12 w-50 h-50 z-10"
+              className="absolute -bottom-12 -right-12 w-40 h-40 z-10"
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             >

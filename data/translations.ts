@@ -36,7 +36,8 @@ export const translations = {
     },
     experience: {
       title: "XP",
-      subtitle: "& Projects"
+      subtitle: "& Projects",
+      description: "Explore my professional journey and the projects that define my growth."
     },
     contact: {
       success_title: "Message Sent!",
@@ -90,7 +91,8 @@ export const translations = {
     },
     experience: {
       title: "XP",
-      subtitle: "& Projetos"
+      subtitle: "& Projetos",
+      description: "Explore minha jornada profissional e os projetos que definem meu crescimento."
     },
     contact: {
       success_title: "Mensagem Enviada!",

@@ -16,10 +16,10 @@ export function Skills() {
   ];
 
   return (
-    <div id="skills" className="w-full bg-neon-pink border-y-4 border-black py-24 overflow-hidden scroll-mt-20">
+    <div id="skills" className="w-full bg-neon-pink border-y-4 border-black py-14 overflow-hidden scroll-mt-20">
       <Section className="bg-transparent py-0 md:py-0">
         <div className="mb-12 text-center">
-          <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-black mb-4">
+          <h2 className="text-4xl md:text-6xl font-display font-black uppercase text-black mb-4">
             {t.skills.title}
           </h2>
           <p className="text-black font-mono font-bold text-xl">{t.skills.subtitle}</p>
@@ -27,7 +27,7 @@ export function Skills() {
       </Section>
 
       <div className="w-full">
-        <Marquee className="bg-black text-white py-3 md:py-6 border-y-2 md:border-y-4 border-white rotate-1 mb-4 md:mb-8 w-[110%] -ml-[5%]" speed="slow">
+        <Marquee className="bg-black text-white py-0.5 md:py-2 border-y-2 md:border-y-4 border-white rotate-1 mb-4 md:mb-8 w-[110%] -ml-[5%]" speed="slow">
           {allSkills.map((skill, index) => (
             <span key={index} className="mx-4 md:mx-8 text-lg md:text-4xl font-display font-bold uppercase">
               {skill} <span className="text-neon-green mx-2 md:mx-4">•</span>
@@ -35,7 +35,7 @@ export function Skills() {
           ))}
         </Marquee>
 
-        <Marquee className="bg-white text-black py-3 md:py-6 border-y-2 md:border-y-4 border-black -rotate-1 w-[110%] -ml-[5%]" direction="right" speed="slow">
+        <Marquee className="bg-white text-black py-0.5 md:py-2 border-y-2 md:border-y-4 border-black -rotate-1 w-[110%] -ml-[5%]" direction="right" speed="slow">
           {allSkills.reverse().map((skill, index) => (
             <span key={index} className="mx-4 md:mx-8 text-lg md:text-4xl font-display font-bold uppercase">
               {skill} <span className="text-neon-pink mx-2 md:mx-4">•</span>
