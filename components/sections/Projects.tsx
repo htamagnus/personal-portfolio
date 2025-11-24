@@ -21,6 +21,7 @@ interface Project {
   title: string;
   role: string;
   period: string;
+  description: string;
   infoProject: string;
   stack: string[];
   links: ProjectLink[];

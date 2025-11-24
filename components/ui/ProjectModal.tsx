@@ -66,7 +66,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="fixed inset-0 z-[80] flex items-center justify-center p-4 pointer-events-none"
           >
-            <div className="bg-[#FCEEE3] w-full max-w-7xl max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden">
+            <div className="bg-[#FCEEE3] w-full lg:max-w-[1550px] max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden">
               
               <div className="bg-neon-blue border-b-4 border-black p-2 flex justify-between items-center select-none">
                 <div className="flex items-center gap-2 px-2">
@@ -138,15 +138,16 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                           <span className="w-2 h-2 bg-black"></span>
                           About Project
                         </h3>
-                        <p className="font-mono text-lg leading-relaxed">
-                          <div dangerouslySetInnerHTML={{ __html: project.infoProject }} />
-                        </p>
+                        <div 
+                          className="font-mono text-lg leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: project.infoProject }} 
+                        />
                       </div>
                     </div>
 
                     <div className="md:col-span-1">
-                      <div className="bg-white border-2 border-black p-4 sticky top-0">
-                        <h3 className="font-display font-bold text-xl uppercase mb-4 border-b-2 border-black pb-2">
+                      <div className="bg-white border-2 border-black p-4 sticky top-0 mt-10">
+                        <h3 className="font-display font-bold text-xl uppercase mb-4 border-b-2 border-black pb-2 ">
                           Tech Stack
                         </h3>
                         <div className="flex flex-wrap gap-2">
