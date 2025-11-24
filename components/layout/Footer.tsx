@@ -16,17 +16,17 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t-3 border-black dark:border-white bg-neon-yellow py-6 text-black">
-      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer className="border-t-3 border-black dark:border-white bg-neon-yellow py-4 md:py-6 text-black">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
         <div className="text-center md:text-left">
-          <h2 className="text-xl md:text-2xl font-display font-bold uppercase flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+          <h2 className="text-lg md:text-2xl font-display font-bold uppercase flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3">
             <span>Agatha Magnus</span>
             <span className="hidden md:inline text-lg opacity-50">|</span>
-            <span className="text-base md:text-lg font-mono">{t.portfolio.role}</span>
+            <span className="text-sm md:text-lg font-mono">{t.portfolio.role}</span>
           </h2>
-          <p className="font-mono text-xs mt-1">© {new Date().getFullYear()} All rights reserved.</p>
+          <p className="font-mono text-xs mt-0.5 md:mt-1">© {new Date().getFullYear()} All rights reserved.</p>
         </div>
-        <div className="flex gap-6">
+        <div className="flex gap-4 md:gap-6">
           {Object.entries(t.portfolio.socials).map(([key, url]) => (
             <a
               key={key}
