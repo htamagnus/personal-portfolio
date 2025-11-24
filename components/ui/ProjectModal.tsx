@@ -208,7 +208,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                     {macMocks && macMocks.length > 0 && (
                       <div className="grid grid-cols-1 gap-6">
                         {macMocks.map((img, idx) => (
-                          <div key={idx} className="relative w-full aspect-[16/10]">
+                          <div key={idx} className="relative w-full aspect-[16/12] md:aspect-[16/7] mb-1 md:mb-14">
                             <Image
                               src={img}
                               alt={`MacBook mock ${idx + 1}`}

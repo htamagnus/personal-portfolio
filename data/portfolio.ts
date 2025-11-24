@@ -78,6 +78,13 @@ export const portfolioData = {
       gallery: {
         macMocks: [
           "/projects/project-2/mock-mac-1.png",
+          "/projects/project-2/mock-mac-2.png",
+          "/projects/project-2/mock-mac-3.png",
+          "/projects/project-2/mock-mac-4.png",
+          "/projects/project-2/mock-mac-5.png",
+          "/projects/project-2/mock-mac-6.png",
+          "/projects/project-2/mock-mac-7.png",
+          "/projects/project-2/mock-mac-8.png",
         ]
       }
     }
