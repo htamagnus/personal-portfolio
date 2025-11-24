@@ -170,3 +170,24 @@ html {
 ::-webkit-scrollbar-corner {
   background: var(--foreground);
 }
+
+/* Hide scrollbar on mobile, show on desktop */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .md\:scrollbar-default {
+    -ms-overflow-style: auto;
+    scrollbar-width: auto;
+  }
+
+  .md\:scrollbar-default::-webkit-scrollbar {
+    display: block;
+  }
+}

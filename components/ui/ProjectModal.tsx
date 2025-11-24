@@ -68,36 +68,36 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-0 z-[80] flex items-center justify-center p-4 pointer-events-none"
+            className="fixed inset-0 z-[80] flex items-center justify-center p-2 md:p-4 pointer-events-none"
           >
-            <div className="bg-[#FCEEE3] w-full lg:max-w-[1550px] max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden">
+            <div className="bg-[#FCEEE3] w-full lg:max-w-[1550px] h-[92vh] md:max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden">
               
-              <div className="bg-neon-blue border-b-4 border-black p-2 flex justify-between items-center select-none">
-                <div className="flex items-center gap-2 px-2">
-                  <div className="w-3 h-3 bg-white border border-black rounded-full"></div>
-                  <div className="w-3 h-3 bg-white border border-black rounded-full"></div>
-                  <div className="w-3 h-3 bg-white border border-black rounded-full"></div>
-                  <span className="font-mono font-bold text-sm ml-2 uppercase truncate max-w-[200px] md:max-w-none">
+              <div className="bg-neon-blue border-b-4 border-black p-2 md:p-2 flex justify-between items-center select-none">
+                <div className="flex items-center gap-1 md:gap-2 px-1 md:px-2">
+                  <div className="w-2 h-2 md:w-3 md:h-3 bg-white border border-black rounded-full"></div>
+                  <div className="w-2 h-2 md:w-3 md:h-3 bg-white border border-black rounded-full"></div>
+                  <div className="w-2 h-2 md:w-3 md:h-3 bg-white border border-black rounded-full"></div>
+                  <span className="font-mono font-bold text-xs md:text-sm ml-1 md:ml-2 uppercase truncate max-w-[120px] md:max-w-none">
                     {project.title} - Explorer.exe
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button className="p-1 hover:bg-white/50 border border-transparent hover:border-black transition-colors">
+                <div className="flex items-center gap-1 md:gap-2">
+                  <button className="p-1 hover:bg-white/50 border border-transparent hover:border-black transition-colors hidden md:block">
                     <Minus className="w-4 h-4" />
                   </button>
-                  <button className="p-1 hover:bg-white/50 border border-transparent hover:border-black transition-colors">
+                  <button className="p-1 hover:bg-white/50 border border-transparent hover:border-black transition-colors hidden md:block">
                     <Maximize2 className="w-4 h-4" />
                   </button>
                   <button 
                     onClick={onClose}
-                    className="p-1 bg-red-500 hover:bg-red-600 text-white border border-black transition-colors"
+                    className="p-1.5 md:p-1 bg-red-500 hover:bg-red-600 text-white border-2 border-black transition-colors"
                   >
-                    <X className="w-4 h-4" />
+                    <X className="w-5 h-5 md:w-4 md:h-4" />
                   </button>
                 </div>
               </div>
 
-              <div className="overflow-y-auto p-6 md:p-8 bg-grid-pattern h-full">
+              <div className="overflow-y-auto p-6 md:p-8 bg-grid-pattern h-full scrollbar-hide md:scrollbar-default">
                 <div className="flex flex-col gap-8">
                   
                   <div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b-2 border-black pb-6">
