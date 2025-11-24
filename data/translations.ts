@@ -155,7 +155,7 @@ export const translations = {
             { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
             { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
           ],
-          thumbnail: "/projects/velox-thumb.png"
+          thumbnail: "/projects/project-1/thumb-velox.png"
         },
         {
           title: "Portfolio | Aquatic Ambience",
@@ -168,7 +168,7 @@ export const translations = {
             { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
             { label: "GitHub", url: "#", type: "github" },
           ],
-          thumbnail: "/projects/aquatic-thumb-2.png"
+          thumbnail: "/projects/project-2/aquatic-thumb-2.png"
         }
       ],
       education: {

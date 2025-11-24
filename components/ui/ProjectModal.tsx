@@ -43,9 +43,9 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
 
   if (!project) return null;
 
-  const projectImages = [
-    "/projects/aquatic.png",
-    "/projects/aquatic.png"
+  const project1Images = [
+    "/projects/project-1/thumb-velox.png",
+    "/projects/project-1/image-1.png",
   ];
 
   return (
@@ -170,7 +170,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       Gallery
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {projectImages.map((img, idx) => (
+                      {project1Images.map((img, idx) => (
                         <div key={idx} className="relative w-full h-60 md:h-88 border-2 border-black bg-gray-200 group overflow-hidden">
                           <Image
                             src={img}
@@ -181,6 +181,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                         </div>
                       ))}
                     </div>
+
                   </div>
 
                 </div>

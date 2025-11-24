@@ -60,7 +60,7 @@ export function Projects() {
                 onClick={() => setSelectedProject(project)}
               >
                 {project.thumbnail && (
-                  <div className="w-full h-64 relative border-b-4 border-black mb-6 overflow-hidden">
+                  <div className="w-full h-70 relative border-b-4 border-black mb-6 overflow-hidden">
                      <Image
                       src={project.thumbnail}
                       alt={project.title}
