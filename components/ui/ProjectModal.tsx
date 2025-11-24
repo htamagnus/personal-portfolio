@@ -169,7 +169,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       <span className="w-2 h-2 bg-black"></span>
                       Gallery
                     </h3>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {projectImages.map((img, idx) => (
                         <div key={idx} className="relative w-full h-60 md:h-88 border-2 border-black bg-gray-200 group overflow-hidden">
                           <Image
