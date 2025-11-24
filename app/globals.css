@@ -146,3 +146,27 @@ html {
   animation: highlight-pulse 4s ease-in-out infinite, text-fill-black 4s ease-in-out infinite;
   will-change: background-size, color;
 }
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+  border-left: var(--border-thick) solid var(--foreground);
+  border-top: var(--border-thick) solid var(--foreground);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neon-pink);
+  border: var(--border-thick) solid var(--foreground);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-blue);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--foreground);
+}

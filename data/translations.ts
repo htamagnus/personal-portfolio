@@ -145,10 +145,11 @@ export const translations = {
       ],
       projects: [
         {
-          title: "Velox",
+          title: "Velox | WEB APP",
           role: "Desenvolvimento Full Stack",
           period: "2025",
-          description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. Integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
+          description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. O app integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
+          infoProject: "A diferença do velox é simples: ele calcula o tempo do percurso usando a sua velocidade média real, não em uma média genérica. Além disso, o velox gera a rota com mapa interativo e perfil de elevação, mostra o clima usando openweather, exibe o tráfego em tempo real, sugere rotas alternativas como a mais rápida, a com menos subidas ou a mais longa, calcula calorias com base no seu peso, idade e intensidade, mostra ganho e perda de elevação, oferece modos como mtb, speed e urbano e ainda guarda o histórico das suas rotas.",
           stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
           links: [
             { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
@@ -160,7 +161,8 @@ export const translations = {
           title: "Portfolio | Aquatic Ambience",
           role: "Desenvolvimento Frontend",
           period: "2025",
-          description: "Um portfólio pessoal inspirado na estética calmante de ambientes aquáticos e computação retrô. Apresenta paisagens sonoras imersivas e animações fluidas.",
+          description: "Portfólio construído para uma cliente, combinando a calmaria de ambientes aquáticos com um toque retrô dos anos 2000. Ele tem paisagens sonoras imersivas, animações suaves com framer-motion e vários easter eggs escondidos.",
+          infoProject: "O site usa animações bem fluidas e transições leves que deixam a navegação mais natural. A estética lembra telas antigas, inspiradas em interfaces clássicas. Vários elementos reagem ao mouse ou ao scroll, criando microinterações que deixam a experiência mais viva. Detalhes como sons do windows antigo, efeitos de água e pequenas surpresas fazem o usuário querer explorar cada canto. Será que você consegue encontrar todos os <strong>easter eggs</strong> que eu construí?",
           stack: ["Next.js", "TailwindCSS", "Framer Motion"],
           links: [
             { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },

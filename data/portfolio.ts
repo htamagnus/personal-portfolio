@@ -41,6 +41,7 @@ export const portfolioData = {
       role: "Full Stack Development",
       period: "2025",
       description: "Built a personalized bike route planner deployed on AWS Free Tier. Features Strava integration for realistic time estimates, real-time weather/traffic data, and elevation profiles.",
+      infoProject: "The difference with velox is simple: it calculates your route time using <strong>your real average speed</strong>, not a generic estimate. It also builds the route with an interactive map and elevation profile, shows weather using openweather, displays real time traffic, suggests alternative routes like the fastest, the one with fewer climbs or the longer option, calculates calories based on your weight, age and intensity, shows elevation gain and loss, supports mtb, road and urban modes and keeps the history of your routes.",
       stack: ["Next.js", "NestJS", "AWS", "Google Maps API", "Strava API"],
       links: [
         { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
@@ -52,7 +53,8 @@ export const portfolioData = {
       title: "Portfolio | Aquatic Ambience",
       role: "Frontend Development",
       period: "2025",
-      description: "A personal portfolio website inspired by the calming aesthetics of aquatic environments and retro computing. Features immersive soundscapes and fluid animations.",
+      description: "Portfolio built for a client, blending the calm vibe of aquatic environments with a soft early-2000s retro touch. It features immersive soundscapes, smooth framer-motion animations and several hidden easter eggs.",
+      infoProject: "The site uses fluid animations and gentle transitions that make navigation feel natural. The aesthetic echoes old screens inspired by classic interfaces. Many elements react to mouse movement or scrolling, creating microinteractions that make the experience feel more alive. Details like old windows sounds, water effects and small surprises encourage the user to explore every corner. Can you find all the <strong>easter eggs</strong> i hid in the site?",
       stack: ["Next.js", "TailwindCSS", "Framer Motion", "Typescript"],
       links: [
         { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
