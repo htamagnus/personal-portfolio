@@ -49,11 +49,13 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   ];
 
   const project1Mocks = [
+    "/projects/project-1/mock-iphone-4.png",
+    "/projects/project-1/mock-iphone-5.png",
     "/projects/project-1/mock-iphone-1.png",
     "/projects/project-1/mock-iphone-2.png",
     "/projects/project-1/mock-iphone-3.png",
-    "/projects/project-1/mock-iphone-4.png",
-    "/projects/project-1/mock-iphone-5.png",
+
+ 
     "/projects/project-1/mock-iphone-6.png",
   ];
 
@@ -182,7 +184,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {project1Images.map((img, idx) => (
-                        <div key={idx} className="relative w-full h-60 md:h-88 border-2 border-black bg-gray-200 group overflow-hidden">
+                        <div key={idx} className="relative w-full h-60 md:h-120 border-2 border-black bg-gray-200 group overflow-hidden mb-8">
                           <Image
                             src={img}
                             alt={`Project screenshot ${idx + 1}`}
@@ -194,7 +196,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                     </div>
 
                     {isProject1 && (
-                      <div className="grid grid-cols-3 gap-4 mt-4">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                         {project1Mocks.map((img, idx) => (
                           <div key={idx} className="relative w-full aspect-[9/17]">
                             <Image
@@ -202,6 +204,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                               alt={`iPhone mock ${idx + 1}`}
                               fill
                               className="object-contain"
+                              style={{ filter: "drop-shadow(12px 8px 0px #000000)" }}
                             />
                           </div>
                         ))}
