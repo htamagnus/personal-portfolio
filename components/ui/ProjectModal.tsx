@@ -20,6 +20,10 @@ interface Project {
   stack: string[];
   links: ProjectLink[];
   thumbnail?: string;
+  gallery?: {
+    images: string[];
+    mocks?: string[];
+  };
 }
 
 interface ProjectModalProps {
@@ -43,23 +47,8 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
 
   if (!project) return null;
 
-  const project1Images = [
-    "/projects/project-1/thumb-velox.png",
-    "/projects/project-1/image-1.png",
-  ];
-
-  const project1Mocks = [
-    "/projects/project-1/mock-iphone-4.png",
-    "/projects/project-1/mock-iphone-5.png",
-    "/projects/project-1/mock-iphone-1.png",
-    "/projects/project-1/mock-iphone-2.png",
-    "/projects/project-1/mock-iphone-3.png",
-
- 
-    "/projects/project-1/mock-iphone-6.png",
-  ];
-
-  const isProject1 = project.title.toLowerCase().includes("velox");
+  const projectImages = project.gallery?.images || [];
+  const projectMocks = project.gallery?.mocks;
 
   return (
     <AnimatePresence>
@@ -183,7 +172,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       Gallery
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {project1Images.map((img, idx) => (
+                      {projectImages.map((img, idx) => (
                         <div key={idx} className="relative w-full h-60 md:h-120 border-2 border-black bg-gray-200 group overflow-hidden mb-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                           <Image
                             src={img}
@@ -195,9 +184,9 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       ))}
                     </div>
 
-                    {isProject1 && (
+                    {projectMocks && projectMocks.length > 0 && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        {project1Mocks.map((img, idx) => (
+                        {projectMocks.map((img, idx) => (
                           <div key={idx} className="relative w-full aspect-[9/17]">
                             <Image
                               src={img}

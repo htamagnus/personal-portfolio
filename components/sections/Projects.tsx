@@ -26,6 +26,10 @@ interface Project {
   stack: string[];
   links: ProjectLink[];
   thumbnail?: string;
+  gallery?: {
+    images: string[];
+    mocks?: string[];
+  };
 }
 
 export function Projects() {
