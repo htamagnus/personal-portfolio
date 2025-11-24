@@ -48,6 +48,17 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
     "/projects/project-1/image-1.png",
   ];
 
+  const project1Mocks = [
+    "/projects/project-1/mock-iphone-1.png",
+    "/projects/project-1/mock-iphone-2.png",
+    "/projects/project-1/mock-iphone-3.png",
+    "/projects/project-1/mock-iphone-4.png",
+    "/projects/project-1/mock-iphone-5.png",
+    "/projects/project-1/mock-iphone-6.png",
+  ];
+
+  const isProject1 = project.title.toLowerCase().includes("velox");
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -182,6 +193,20 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       ))}
                     </div>
 
+                    {isProject1 && (
+                      <div className="grid grid-cols-3 gap-4 mt-4">
+                        {project1Mocks.map((img, idx) => (
+                          <div key={idx} className="relative w-full aspect-[9/17]">
+                            <Image
+                              src={img}
+                              alt={`iPhone mock ${idx + 1}`}
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                 </div>
