@@ -155,7 +155,21 @@ export const translations = {
             { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
             { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
           ],
-          thumbnail: "/projects/project-1/thumb-velox.png"
+          thumbnail: "/projects/project-1/thumb-velox.png",
+          gallery: {
+            images: [
+              "/projects/project-1/thumb-velox.png",
+              "/projects/project-1/image-1.png",
+            ],
+            iphoneMocks: [
+              "/projects/project-1/mock-iphone-4.png",
+              "/projects/project-1/mock-iphone-5.png",
+              "/projects/project-1/mock-iphone-1.png",
+              "/projects/project-1/mock-iphone-2.png",
+              "/projects/project-1/mock-iphone-3.png",
+              "/projects/project-1/mock-iphone-6.png",
+            ]
+          }
         },
         {
           title: "Portfolio | Aquatic Ambience",
@@ -168,7 +182,19 @@ export const translations = {
             { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
             { label: "GitHub", url: "#", type: "github" },
           ],
-          thumbnail: "/projects/project-2/aquatic-thumb-2.png"
+          thumbnail: "/projects/project-2/aquatic-thumb-2.png",
+          gallery: {
+            macMocks: [
+              "/projects/project-2/mock-mac-1.png",
+              "/projects/project-2/mock-mac-2.png",
+              "/projects/project-2/mock-mac-3.png",
+              "/projects/project-2/mock-mac-4.png",
+              "/projects/project-2/mock-mac-5.png",
+              "/projects/project-2/mock-mac-6.png",
+              "/projects/project-2/mock-mac-7.png",
+              "/projects/project-2/mock-mac-8.png",
+            ]
+          }
         }
       ],
       education: {
