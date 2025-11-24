@@ -53,7 +53,7 @@ export const portfolioData = {
           "/projects/project-1/thumb-velox.png",
           "/projects/project-1/image-1.png",
         ],
-        mocks: [
+        iphoneMocks: [
           "/projects/project-1/mock-iphone-4.png",
           "/projects/project-1/mock-iphone-5.png",
           "/projects/project-1/mock-iphone-1.png",
@@ -76,7 +76,7 @@ export const portfolioData = {
       ],
       thumbnail: "/projects/project-2/aquatic-thumb-2.png",
       gallery: {
-        images: [
+        macMocks: [
           "/projects/project-2/mock-mac-1.png",
         ]
       }

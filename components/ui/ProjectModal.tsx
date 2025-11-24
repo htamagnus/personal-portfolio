@@ -21,8 +21,9 @@ interface Project {
   links: ProjectLink[];
   thumbnail?: string;
   gallery?: {
-    images: string[];
-    mocks?: string[];
+    images?: string[];
+    iphoneMocks?: string[];
+    macMocks?: string[];
   };
 }
 
@@ -48,7 +49,8 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   if (!project) return null;
 
   const projectImages = project.gallery?.images || [];
-  const projectMocks = project.gallery?.mocks;
+  const iphoneMocks = project.gallery?.iphoneMocks;
+  const macMocks = project.gallery?.macMocks;
 
   return (
     <AnimatePresence>
@@ -171,26 +173,45 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       <span className="w-2 h-2 bg-black"></span>
                       Gallery
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {projectImages.map((img, idx) => (
-                        <div key={idx} className="relative w-full h-60 md:h-120 border-2 border-black bg-gray-200 group overflow-hidden mb-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                          <Image
-                            src={img}
-                            alt={`Project screenshot ${idx + 1}`}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                      ))}
-                    </div>
+                    
+                    {projectImages.length > 0 && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        {projectImages.map((img, idx) => (
+                          <div key={idx} className="relative w-full h-60 md:h-120 border-2 border-black bg-gray-200 group overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                            <Image
+                              src={img}
+                              alt={`Project screenshot ${idx + 1}`}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
-                    {projectMocks && projectMocks.length > 0 && (
+                    {iphoneMocks && iphoneMocks.length > 0 && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        {projectMocks.map((img, idx) => (
+                        {iphoneMocks.map((img, idx) => (
                           <div key={idx} className="relative w-full aspect-[9/17]">
                             <Image
                               src={img}
                               alt={`iPhone mock ${idx + 1}`}
+                              fill
+                              className="object-contain"
+                              style={{ filter: "drop-shadow(12px 8px 0px #000000)" }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {macMocks && macMocks.length > 0 && (
+                      <div className="grid grid-cols-1 gap-6">
+                        {macMocks.map((img, idx) => (
+                          <div key={idx} className="relative w-full aspect-[16/10]">
+                            <Image
+                              src={img}
+                              alt={`MacBook mock ${idx + 1}`}
                               fill
                               className="object-contain"
                               style={{ filter: "drop-shadow(12px 8px 0px #000000)" }}

@@ -27,8 +27,9 @@ interface Project {
   links: ProjectLink[];
   thumbnail?: string;
   gallery?: {
-    images: string[];
-    mocks?: string[];
+    images?: string[];
+    iphoneMocks?: string[];
+    macMocks?: string[];
   };
 }
 
