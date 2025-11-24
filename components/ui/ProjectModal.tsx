@@ -184,7 +184,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {project1Images.map((img, idx) => (
-                        <div key={idx} className="relative w-full h-60 md:h-120 border-2 border-black bg-gray-200 group overflow-hidden mb-8">
+                        <div key={idx} className="relative w-full h-60 md:h-120 border-2 border-black bg-gray-200 group overflow-hidden mb-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                           <Image
                             src={img}
                             alt={`Project screenshot ${idx + 1}`}
