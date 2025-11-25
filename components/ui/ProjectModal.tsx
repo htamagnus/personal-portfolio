@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Github, Globe, ArrowUpRight, Maximize2, Minus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface ProjectLink {
   label: string;
@@ -34,7 +34,8 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
-  // Prevent scrolling when modal is open
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('overflow-hidden');
@@ -51,6 +52,10 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   const projectImages = project.gallery?.images || [];
   const iphoneMocks = project.gallery?.iphoneMocks;
   const macMocks = project.gallery?.macMocks;
+
+  const handleImageLoad = (src: string) => {
+    setLoadedImages((prev) => new Set(prev).add(src));
+  };
 
   return (
     <AnimatePresence>
@@ -178,11 +183,21 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         {projectImages.map((img, idx) => (
                           <div key={idx} className="relative w-full h-60 md:h-120 border-2 border-black bg-gray-200 group overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                            {!loadedImages.has(img) && (
+                              <div className="absolute inset-0 bg-gray-200 animate-pulse">
+                                <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
+                              </div>
+                            )}
                             <Image
                               src={img}
                               alt={`Project screenshot ${idx + 1}`}
                               fill
-                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                              priority={idx < 2}
+                              loading={idx < 2 ? "eager" : "lazy"}
+                              className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                                loadedImages.has(img) ? "opacity-100" : "opacity-0"
+                              }`}
+                              onLoad={() => handleImageLoad(img)}
                             />
                           </div>
                         ))}
@@ -193,12 +208,20 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                         {iphoneMocks.map((img, idx) => (
                           <div key={idx} className="relative w-full aspect-[9/17]">
+                            {!loadedImages.has(img) && (
+                              <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-3xl" />
+                            )}
                             <Image
                               src={img}
                               alt={`iPhone mock ${idx + 1}`}
                               fill
-                              className="object-contain"
+                              priority={idx < 3}
+                              loading={idx < 3 ? "eager" : "lazy"}
+                              className={`object-contain transition-opacity duration-500 ${
+                                loadedImages.has(img) ? "opacity-100" : "opacity-0"
+                              }`}
                               style={{ filter: "drop-shadow(12px 8px 0px #000000)" }}
+                              onLoad={() => handleImageLoad(img)}
                             />
                           </div>
                         ))}
@@ -209,12 +232,20 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       <div className="grid grid-cols-1 gap-6">
                         {macMocks.map((img, idx) => (
                           <div key={idx} className="relative w-full aspect-[16/12] md:aspect-[16/7] mb-1 md:mb-14">
+                            {!loadedImages.has(img) && (
+                              <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-xl" />
+                            )}
                             <Image
                               src={img}
                               alt={`MacBook mock ${idx + 1}`}
                               fill
-                              className="object-contain"
+                              priority={idx === 0}
+                              loading={idx === 0 ? "eager" : "lazy"}
+                              className={`object-contain transition-opacity duration-500 ${
+                                loadedImages.has(img) ? "opacity-100" : "opacity-0"
+                              }`}
                               style={{ filter: "drop-shadow(12px 8px 0px #000000)" }}
+                              onLoad={() => handleImageLoad(img)}
                             />
                           </div>
                         ))}

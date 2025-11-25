@@ -170,8 +170,6 @@ html {
 ::-webkit-scrollbar-corner {
   background: var(--foreground);
 }
-
-/* Hide scrollbar on mobile, show on desktop */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -190,4 +188,17 @@ html {
   .md\:scrollbar-default::-webkit-scrollbar {
     display: block;
   }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }

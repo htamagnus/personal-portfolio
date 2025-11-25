@@ -8,8 +8,17 @@ import Link from "next/link";
 import { Github, Globe, ArrowUpRight, Maximize2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ProjectModal } from "@/components/ui/ProjectModal";
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 interface ProjectLink {
   label: string;
@@ -37,6 +46,52 @@ export function Projects() {
   const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  const openProject = useCallback((project: Project) => {
+    setSelectedProject(project);
+    const slug = slugify(project.title);
+    window.history.replaceState(null, "", `?project=${slug}`);
+  }, []);
+
+  const closeProject = useCallback(() => {
+    setSelectedProject(null);
+    window.history.replaceState(null, "", window.location.pathname);
+  }, []);
+
+  const preloadProjectImages = useCallback((project: Project) => {
+    const allImages = [
+      ...(project.gallery?.images || []),
+      ...(project.gallery?.iphoneMocks || []),
+      ...(project.gallery?.macMocks || []),
+    ];
+    
+    allImages.slice(0, 3).forEach((src) => {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = src;
+      document.head.appendChild(link);
+    });
+  }, []);
+
+  const hasInitialized = useRef(false);
+  
+  useEffect(() => {
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
+
+    const params = new URLSearchParams(window.location.search);
+    const projectSlug = params.get("project");
+    
+    if (projectSlug) {
+      const project = t.portfolio.projects.find(
+        (p) => slugify(p.title) === projectSlug
+      );
+      if (project) {
+        queueMicrotask(() => setSelectedProject(project));
+      }
+    }
+  }, [t.portfolio.projects]);
+
   return (
     <div className="w-full bg-neon-green border-y-4 border-black">
       <Section id="projects" className="bg-transparent scroll-mt-20">
@@ -62,7 +117,8 @@ export function Projects() {
             >
               <Card 
                 className="h-full flex flex-col hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 bg-white border-black cursor-pointer group"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => openProject(project)}
+                onMouseEnter={() => preloadProjectImages(project)}
               >
                 {project.thumbnail && (
                   <div className="w-full h-70 relative border-b-4 border-black mb-6 overflow-hidden">
@@ -136,7 +192,7 @@ export function Projects() {
 
       <ProjectModal 
         isOpen={!!selectedProject} 
-        onClose={() => setSelectedProject(null)} 
+        onClose={closeProject} 
         project={selectedProject} 
       />
     </div>
