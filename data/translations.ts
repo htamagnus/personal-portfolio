@@ -156,7 +156,7 @@ export const translations = {
                 "Migrei a persistência de Prisma/SQLite para <strong>Drizzle + PostgreSQL</strong> e modelei o schema compartilhado entre o produto e o Portal.",
                 "Integrei o Instagram pela plataforma da Meta: login com a conta que o creator já usa, webhook de comentários com validação de assinatura, e a resposta pública e a DM no mesmo fluxo.",
                 "Fiz um <strong>estudo de capacidade</strong> com harness de carga (Graph API mockada, webhooks assinados em taxa fixa). Ele achou o teto real por pod, mostrou que o limite da Meta de 750 DMs por hora por creator chega antes da nossa infra, e pegou um índice faltando que deixava a dedup mais lenta a cada evento gravado.",
-                "Montei a observabilidade: log estruturado, alertas por log, probes de liveness e readiness e shutdown sem perder o que está em processamento.",
+                "Montei a observabilidade: log estruturado, alertas por log, <a href=\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\" target=\"_blank\" rel=\"noopener noreferrer\">probes de liveness e readiness</a> e shutdown sem perder o que está em processamento.",
                 "Integrei com o nosso produto: 9 rotas, um ciclo de vida da ativação com 7 estados.",
               ],
               metrics: [
@@ -190,7 +190,7 @@ export const translations = {
               headline: "Importação 8,2× mais rápida, sem problemas de performance desde então",
               summary: "Com o volume crescendo, importações com mais de 10 mil perfis começaram a <mark>estourar o timeout</mark>. Em vez de chutar, fiz profiling do fluxo antes de mexer e corrigi em duas rodadas, medindo de novo depois de cada uma. Desde então, a feature não teve mais <strong>nenhum bug nem problema de performance</strong>.",
               points: [
-                "Profiling com <strong>Clinic.js Doctor e Flame</strong>: picos de event loop delay de ~700 ms e duas funções dominando a execução, ambas esperando o banco.",
+                "Profiling com <a href=\"https://clinicjs.org/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Clinic.js Doctor e Flame</strong></a>: picos de event loop delay de ~700 ms e duas funções dominando a execução, ambas esperando o banco.",
                 "Diagnóstico: um <strong>N+1 disfarçado de paralelismo</strong>. Cerca de 22 mil operações individuais disparadas de uma vez disputavam o mesmo connection pool do MongoDB.",
                 "Troquei por <code>bulkWrite</code> com <code>ordered: false</code> em chunks de 1.000.",
                 "Logs de auditoria em fire-and-forget, com lotes em paralelo e <code>.catch()</code> explícito para nenhum erro se perder.",
@@ -210,7 +210,7 @@ export const translations = {
               headline: "13 falhas corrigidas em 7 serviços",
               summary: "Depois de um pentest externo, reforcei o <mark>isolamento de dados entre as empresas</mark> da plataforma em sete serviços.",
               points: [
-                "Trabalhei em três classes do OWASP API Top 10: <strong>BOLA/IDOR</strong>, broken access control e broken function-level authorization.",
+                "Trabalhei em três classes do OWASP API Top 10: <a href=\"https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>BOLA/IDOR</strong></a>, broken access control e broken function-level authorization.",
                 "Coloquei a checagem de dono num guard compartilhado que roda <strong>antes</strong> da validação do payload, para que uma requisição negada nunca revele se o recurso existe nem devolva os dados dele.",
                 "Toda escrita passou a registrar quem fez a alteração (<code>updatedBy</code>).",
                 "Troquei um link de download que dependia da sessão de login por um token de curta duração preso a um único arquivo, para os links enviados por e-mail continuarem funcionando sem abrir a rota.",
@@ -272,7 +272,7 @@ export const translations = {
               summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Essa informação não fica em um lugar só: está espalhada em chamadas HTTP dentro do código de cada repositório, feitas de jeitos diferentes. Sem esse mapa, mudar ou proteger uma rota significa descobrir na mão quem depende dela, e um chamador esquecido pode quebrar em produção. Numa migração de autenticação entre serviços, isso virou busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
               points: [
                 "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
-                "<strong>Strategy Pattern</strong> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
+                "<a href=\"https://refactoring.guru/pt-br/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
                 "Normalização de paths (<code>/users/123</code> → <code>/users/:id</code>) para agrupar chamadas equivalentes.",
                 "Grafo interativo para explorar qualquer serviço: quem chama ele e quem ele chama.",
               ],
@@ -292,7 +292,7 @@ export const translations = {
               headline: "JWT assinado entre serviços e uma dependência arriscada removida",
               summary: "Token estático entre serviços é um risco clássico: ele não expira e, <strong>se vazar, continua valendo até alguém trocar na mão</strong>, o que exige atualizar a configuração de todos os serviços que usam ele. A empresa estava migrando a autenticação entre serviços para JWT assinado em RS256, em que só quem tem a chave privada consegue emitir um token válido e quem recebe confere a assinatura com a chave pública. Migrei as chamadas internas de um serviço e fui <mark>além do escopo do card</mark> no caminho.",
               points: [
-                "Implementei autenticação M2M com <strong>JWT assinado em RS256</strong>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
+                "Implementei autenticação M2M com <a href=\"https://www.jwt.io/introduction\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>JWT assinado em RS256</strong></a>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
                 "Percebi que o serviço dependia de uma <strong>rota interna deprecada e com problemas de segurança</strong>. Não fazia sentido colocar autenticação numa rota que ia ser removida, então passei a buscar esse dado direto no banco com Drizzle ORM.",
                 "Removi o código legado da autenticação antiga.",
               ],

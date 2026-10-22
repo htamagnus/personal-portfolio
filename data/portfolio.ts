@@ -42,7 +42,7 @@ export const portfolioData = {
             "Moved persistence from Prisma/SQLite to <strong>Drizzle + PostgreSQL</strong> and designed the schema shared by the product and the Portal, with native enums and no cascading deletes.",
             "Integrated Instagram through the Meta platform: login with the creator's existing account, comment webhooks with signature validation, and the public reply and DM in a single flow.",
             "Ran a <strong>capacity study</strong> with a load harness (mocked Graph API, signed webhooks at a fixed rate). It found the real ceiling per pod, showed that Meta's limit of 750 DMs per hour per creator hits before our infra does, and caught a missing index that made deduplication slower with every event stored.",
-            "Built the observability: structured logs, log-based alerts, liveness and readiness probes, and a graceful shutdown.",
+            "Built the observability: structured logs, log-based alerts, <a href=\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\" target=\"_blank\" rel=\"noopener noreferrer\">liveness and readiness probes</a>, and a graceful shutdown.",
             "Integrated it into the Portal: 9 routes, a 7-state activation lifecycle.",
           ],
           metrics: [
@@ -76,7 +76,7 @@ export const portfolioData = {
           headline: "8.2× faster imports, no performance issues since",
           summary: "As volume grew, imports with more than 10,000 profiles started <mark>hitting the request timeout</mark>. Instead of guessing, I profiled the flow first and fixed it in two rounds, measuring again after each one. The feature <strong>hasn't had a bug or performance issue since</strong>.",
           points: [
-            "Profiled with <strong>Clinic.js Doctor and Flame</strong>: event loop delay peaks of ~700 ms and two functions dominating the run, both waiting on the database.",
+            "Profiled with <a href=\"https://clinicjs.org/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Clinic.js Doctor and Flame</strong></a>: event loop delay peaks of ~700 ms and two functions dominating the run, both waiting on the database.",
             "Diagnosis: an <strong>N+1 disguised as parallelism</strong>. About 22,000 individual operations fired at once were competing for the same MongoDB connection pool.",
             "Switched to <code>bulkWrite</code> with <code>ordered: false</code> in chunks of 1,000.",
             "Made audit logs fire-and-forget, with parallel batches and an explicit <code>.catch()</code> so no error gets lost.",
@@ -96,7 +96,7 @@ export const portfolioData = {
           headline: "13 findings fixed across 7 services",
           summary: "After an external pentest, I strengthened <mark>data isolation between the companies</mark> on the platform across seven services.",
           points: [
-            "Worked on three classes from the OWASP API Top 10: <strong>BOLA/IDOR</strong>, broken access control and broken function-level authorization.",
+            "Worked on three classes from the OWASP API Top 10: <a href=\"https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>BOLA/IDOR</strong></a>, broken access control and broken function-level authorization.",
             "Put the ownership check in a shared guard that runs <strong>before</strong> payload validation, so a denied request never reveals whether the resource exists or returns its data.",
             "Every write started recording who made the change (<code>updatedBy</code>).",
             "Replaced a download link that relied on the login session with a short-lived token bound to a single file, so links sent by email kept working without opening the route.",
@@ -158,7 +158,7 @@ export const portfolioData = {
           summary: "The company's microservices grew over the years and <strong>nobody had a clear picture of who calls whom</strong>. That information doesn't live in one place: it's spread across HTTP calls inside each repository's code, made in different ways. Without that map, changing or securing a route means finding out by hand who depends on it, and a forgotten caller can break in production. During a service-to-service auth migration, that turned into searching repo by repo, so, <mark>on my own initiative</mark>, I built a tool that maps them automatically.",
           points: [
             "Extractor based on <strong>static analysis (ts-morph)</strong> that reads each repository's HTTP clients and finds the source, target, method and path of every internal call.",
-            "<strong>Strategy Pattern</strong> to support both the team's standard client and legacy code calling <code>got</code>, <code>axios</code> or <code>fetch</code> directly.",
+            "<a href=\"https://refactoring.guru/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> to support both the team's standard client and legacy code calling <code>got</code>, <code>axios</code> or <code>fetch</code> directly.",
             "Path normalization (<code>/users/123</code> → <code>/users/:id</code>) to group equivalent calls.",
             "Interactive graph to explore any service: who calls it and who it calls.",
           ],
@@ -178,7 +178,7 @@ export const portfolioData = {
           headline: "Signed JWTs between services, one risky dependency removed",
           summary: "Static tokens between services are a classic risk: they don't expire and, <strong>if leaked, stay valid until someone rotates them by hand</strong>, which means updating the config of every service that uses them. The company was moving service-to-service auth to JWTs signed with RS256, where only the holder of the private key can issue a valid token and the receiver checks the signature with the public key. I migrated one service's internal calls and went <mark>beyond the ticket's scope</mark> along the way.",
           points: [
-            "Implemented M2M authentication with <strong>RS256-signed JWTs</strong>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
+            "Implemented M2M authentication with <a href=\"https://www.jwt.io/introduction\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>RS256-signed JWTs</strong></a>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
             "Noticed the service depended on a <strong>deprecated internal route with security concerns</strong>. Adding auth to a route scheduled for removal made no sense, so I moved that read straight to the database with Drizzle ORM.",
             "Removed the legacy code left over from the old authentication.",
           ],
