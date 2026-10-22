@@ -215,7 +215,10 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
 
   return (
     <div className="border-t-2 border-black p-5 md:p-8 flex flex-col gap-6">
-      <p className="font-mono text-base md:text-lg leading-relaxed">{highlight.summary}</p>
+      <p
+        className="font-mono text-base md:text-lg leading-relaxed [&_mark]:bg-neon-pink [&_mark]:text-black [&_mark]:px-1 [&_mark]:box-decoration-clone"
+        dangerouslySetInnerHTML={{ __html: highlight.summary }}
+      />
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {highlight.metrics.map((metric) => (
