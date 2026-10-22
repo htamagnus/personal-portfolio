@@ -126,6 +126,7 @@ export function Projects() {
                       src={project.thumbnail}
                       alt={project.title}
                       fill
+                      sizes="(max-width: 767px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute top-3 right-3 bg-neon-pink border-2 border-black px-3 py-2 font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2">

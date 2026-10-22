@@ -183,7 +183,7 @@ export const translations = {
                 { value: "6,6×", label: "mais rápido" },
               ],
               comparison: { label: "Tempo da requisição de bulk import (staging)", before: 35.5, after: 5.4, unit: "s" },
-              stack: ["TypeScript", "NestJS", "MongoDB"],
+              stack: ["TypeScript", "NestJS", "MongoDB", "Redis"],
             },
             {
               title: "O gargalo dos 11 mil perfis",

@@ -192,6 +192,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                               src={img}
                               alt={`Project screenshot ${idx + 1}`}
                               fill
+                              sizes="(max-width: 767px) 100vw, 50vw"
                               priority={idx < 2}
                               loading={idx < 2 ? "eager" : "lazy"}
                               className={`object-cover transition-all duration-500 group-hover:scale-105 ${
@@ -215,6 +216,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                               src={img}
                               alt={`iPhone mock ${idx + 1}`}
                               fill
+                              sizes="(max-width: 767px) 100vw, 33vw"
                               priority={idx < 3}
                               loading={idx < 3 ? "eager" : "lazy"}
                               className={`object-contain transition-opacity duration-500 ${
@@ -239,6 +241,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                               src={img}
                               alt={`MacBook mock ${idx + 1}`}
                               fill
+                              sizes="100vw"
                               priority={idx === 0}
                               loading={idx === 0 ? "eager" : "lazy"}
                               className={`object-contain transition-opacity duration-500 ${
