@@ -227,11 +227,14 @@ function CountUp({ value, delay }: { value: string; delay: number }) {
       onUpdate: (n) => {
         if (ref.current) ref.current.textContent = format(n);
       },
+      onComplete: () => {
+        if (suffix === "×" && ref.current) animate(ref.current, { scale: [1, 1.4, 1] }, { duration: 0.5, ease: "easeInOut" });
+      },
     });
     return () => controls.stop();
   }, [value, delay, reduceMotion]);
 
-  return <span ref={ref}>{value}</span>;
+  return <span ref={ref} className="inline-block origin-left">{value}</span>;
 }
 
 function HighlightDetails({ highlight }: { highlight: Highlight }) {
