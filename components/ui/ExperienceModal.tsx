@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ChevronDown, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -212,23 +212,27 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
 function HighlightDetails({ highlight }: { highlight: Highlight }) {
   const { t, language } = useLanguage();
   const formatNumber = (n: number) => n.toLocaleString(language === "pt" ? "pt-BR" : "en-US");
+  const reduceMotion = useReducedMotion();
 
   return (
     <div className="border-t-2 border-black p-5 md:p-8 flex flex-col gap-6">
       <p
-        className="font-mono text-base md:text-lg leading-relaxed [&_mark]:bg-neon-pink [&_mark]:text-black [&_mark]:px-1 [&_mark]:box-decoration-clone"
+        className="font-mono text-base md:text-lg leading-relaxed marker"
         dangerouslySetInnerHTML={{ __html: highlight.summary }}
       />
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {highlight.metrics.map((metric) => (
-          <div
+        {highlight.metrics.map((metric, i) => (
+          <motion.div
             key={metric.label}
+            initial={reduceMotion ? false : { opacity: 0, y: 16, rotate: -4 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.3 + i * 0.1 }}
             className="bg-neon-yellow border-2 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
             <div className="font-display font-black text-xl md:text-3xl">{metric.value}</div>
             <div className="font-mono text-xs font-bold uppercase">{metric.label}</div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

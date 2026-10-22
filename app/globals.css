@@ -212,7 +212,24 @@ html {
   }
 }
 
+@keyframes marker-draw {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.marker mark {
+  background: linear-gradient(var(--color-neon-pink), var(--color-neon-pink)) no-repeat 0 center / 100% 100%;
+  color: #1A1A1A;
+  padding: 0 0.25rem;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  .marker mark {
+    background-size: 0% 100%;
+    animation: marker-draw 0.8s ease-out 0.4s forwards;
+  }
+
   .animate-nudge {
     animation: nudge 1.6s ease-in-out infinite;
   }
