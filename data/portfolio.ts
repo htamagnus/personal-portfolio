@@ -68,7 +68,7 @@ export const portfolioData = {
             { value: "-86.4%", label: "response time" },
             { value: "6.6×", label: "faster" },
           ],
-          comparison: { label: "Bulk import request time (staging)", before: 35.5, after: 5.4, unit: "s" },
+          comparison: { label: "Bulk import request time", before: 35.5, after: 5.4, unit: "s" },
           stack: ["TypeScript", "NestJS", "MongoDB"],
         },
         {
@@ -88,7 +88,7 @@ export const portfolioData = {
             { value: "-87.8%", label: "total time" },
             { value: "~22.7k → ~37", label: "database round trips" },
           ],
-          comparison: { label: "Full import of 11,338 profiles (staging)", before: 464, after: 56.6, unit: "s" },
+          comparison: { label: "Full import of 11,338 profiles", before: 464, after: 56.6, unit: "s" },
           stack: ["Node.js", "MongoDB", "Clinic.js"],
         },
         {

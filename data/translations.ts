@@ -182,7 +182,7 @@ export const translations = {
                 { value: "-86,4%", label: "tempo de resposta" },
                 { value: "6,6×", label: "mais rápido" },
               ],
-              comparison: { label: "Tempo da requisição de bulk import (staging)", before: 35.5, after: 5.4, unit: "s" },
+              comparison: { label: "Tempo da requisição de bulk import", before: 35.5, after: 5.4, unit: "s" },
               stack: ["TypeScript", "NestJS", "MongoDB", "Redis"],
             },
             {
@@ -202,7 +202,7 @@ export const translations = {
                 { value: "-87,8%", label: "tempo total" },
                 { value: "~22,7 mil → ~37", label: "idas ao banco" },
               ],
-              comparison: { label: "Importação completa de 11.338 perfis (staging)", before: 464, after: 56.6, unit: "s" },
+              comparison: { label: "Importação completa de 11.338 perfis", before: 464, after: 56.6, unit: "s" },
               stack: ["Node.js", "MongoDB", "Clinic.js"],
             },
             {

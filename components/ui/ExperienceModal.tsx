@@ -301,7 +301,7 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
         {highlight.stack.map((tech) => (
           <span
             key={tech}
-            className="text-xs font-bold uppercase border border-black px-2 py-1 bg-neon-yellow text-black"
+            className="text-xs font-bold uppercase border border-black px-2 py-1 bg-neon-pink text-black"
           >
             {tech}
           </span>
