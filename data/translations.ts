@@ -132,8 +132,8 @@ export const translations = {
           company: "Wake Creators (Squid)",
           role: "Desenvolvedora Full Stack",
           period: "2023 - Atual",
-          description: "Desenvolvendo novas funcionalidades para uma plataforma líder em marketing de influência. Focada em estabilidade do sistema, correções de bugs e otimização de performance.",
-          stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress", "Angular", "NestJS", "Microservices", "Redis", "Firebase", "MySQL"],
+          description: "Construo e mantenho os microsserviços em Node.js + TypeScript de uma plataforma líder em marketing de influência: APIs REST, workers e jobs de ETL, com foco em estabilidade e performance.",
+          stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
         },
         {
           company: "RPG Project (Voluntário)",
@@ -180,7 +180,6 @@ export const translations = {
           stack: ["Next.js", "TailwindCSS", "Framer Motion"],
           links: [
             { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
-            { label: "GitHub", url: "#", type: "github" },
           ],
           thumbnail: "/projects/project-2/aquatic-thumb-2.png",
           gallery: {

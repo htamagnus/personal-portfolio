@@ -4,28 +4,28 @@ export const portfolioData = {
   since: "2021",
   description: "Specialized in building robust backends with NestJS and dynamic frontends with Next.js. Creating digital experiences that merge performance with aesthetics.",
   socials: {
-    github: "https://github.com/agathamagnus",
+    github: "https://github.com/htamagnus",
     linkedin: "https://linkedin.com/in/agathamagnus",
     email: "mailto:agathamagnus.dev@gmail.com",
   },
   skills: {
     languages: ["JavaScript", "TypeScript"],
-    frontend: ["React", "Next.js", "Vue.js", "Angular", "CSS", "Sass"],
-    backend: ["NodeJS", "NestJS", "Express.js"],
-    database: ["MongoDB", "MySQL", "Redis", "Firebase"],
-    devops: ["Docker", "Kubernetes", "AWS", "GCP", "CI/CD"],
+    frontend: ["React", "Next.js", "Angular", "Tailwind CSS", "Framer Motion", "Sass"],
+    backend: ["NodeJS", "NestJS", "Hapi", "Express.js", "Zod"],
+    database: ["MongoDB", "MySQL", "PostgreSQL", "Redis", "Drizzle ORM", "Firebase", "Supabase"],
+    devops: ["Docker", "Kubernetes", "GCP", "AWS", "GitHub Actions"],
     monitoring: ["Grafana", "Google Cloud Logging"],
     testing: ["Jest", "Cypress"],
-    messaging: ["Google Pub/Sub"],
-    analytics: ["Google Analytics 4"],
+    messaging: ["Google Pub/Sub", "BullMQ"],
+    analytics: ["Google Analytics 4", "BigQuery"],
   },
   experience: [
     {
       company: "Wake Creators (Squid)",
       role: "Full Stack Developer",
       period: "2023 - Present",
-      description: "Developing new features for a leading influencer marketing platform. Focused on system stability, bug fixes, and performance optimization.",
-      stack: ["React", "NodeJS", "TypeScript", "AWS", "Cypress", "Angular", "NestJS", "Microservices", "Redis", "Firebase", "MySQL"],
+      description: "Building and maintaining the Node.js + TypeScript microservices behind a leading influencer marketing platform: REST APIs, background workers and ETL jobs, with a focus on stability and performance.",
+      stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
     },
     {
       company: "RPG Project (Volunteer)",
@@ -42,7 +42,7 @@ export const portfolioData = {
       period: "2025",
       description: "Built a personalized bike route planner deployed on AWS Free Tier. Features Strava integration for realistic time estimates, real-time weather/traffic data, and elevation profiles.",
       infoProject: "The difference with velox is simple: it calculates your route time using <strong>your real average speed</strong>, not a generic estimate. It also builds the route with an interactive map and elevation profile, shows weather using openweather, displays real time traffic, suggests alternative routes like the fastest, the one with fewer climbs or the longer option, calculates calories based on your weight, age and intensity, shows elevation gain and loss, supports mtb, road and urban modes and keeps the history of your routes.",
-      stack: ["Next.js", "NestJS", "AWS", "Google Maps API", "Strava API"],
+      stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
       links: [
         { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
         { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
@@ -72,7 +72,6 @@ export const portfolioData = {
       stack: ["Next.js", "TailwindCSS", "Framer Motion", "Typescript"],
       links: [
         { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
-        { label: "GitHub", url: "#", type: "github" },
       ],
       thumbnail: "/projects/project-2/aquatic-thumb-2.png",
       gallery: {
