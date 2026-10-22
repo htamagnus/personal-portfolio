@@ -226,7 +226,7 @@ export const translations = {
               title: "Pré-curadoria de conteúdo com IA",
               tag: "IA",
               headline: "Vídeos avaliados por IA antes de chegar à marca",
-              summary: "Construí o worker que avalia com IA os vídeos dos creators antes de chegarem à marca. Ele confere cada requisito da campanha e devolve uma decisão com a justificativa de cada critério.",
+              summary: "Os vídeos dos creators eram conferidos manualmente contra o briefing. Com o volume crescendo, a revisão virou gargalo, o critério mudava de revisor para revisor e o creator só descobria o erro quando a marca reprovava, gerando retrabalho e atrasando a campanha. Construí o worker que avalia com IA cada vídeo antes de chegar à marca: ele confere cada requisito da campanha e devolve uma decisão com a justificativa por critério, então o creator sabe exatamente o que corrigir.",
               flow: {
                 label: "Pipeline",
                 steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Score por critério"],

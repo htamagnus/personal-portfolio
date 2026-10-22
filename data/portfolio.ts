@@ -112,7 +112,7 @@ export const portfolioData = {
           title: "AI content pre-review",
           tag: "AI",
           headline: "Videos reviewed by AI before reaching the brand",
-          summary: "Built the worker that uses AI to review creators' videos before they reach the brand. It checks each campaign requirement and returns a decision with the reasoning for each criterion.",
+          summary: "Creators' videos were checked manually against the campaign brief. As volume grew, review became a bottleneck, criteria varied from reviewer to reviewer, and creators only found out about a problem when the brand rejected the video, causing rework and delaying campaigns. Built the worker that uses AI to review each video before it reaches the brand: it checks every campaign requirement and returns a decision with the reasoning per criterion, so the creator knows exactly what to fix.",
           flow: {
             label: "Pipeline",
             steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Score per criterion"],
