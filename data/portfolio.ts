@@ -112,23 +112,22 @@ export const portfolioData = {
           title: "AI content pre-review",
           tag: "AI",
           headline: "Videos reviewed by AI before reaching the brand",
-          summary: "Built the worker that reviews creators' videos with Gemini before they reach the brand. It checks each campaign requirement, like how the brand is spelled and pronounced or whether there are subtitles, and returns a decision with the reasoning for each one.",
+          summary: "Built the worker that uses AI to review creators' videos before they reach the brand. It checks each campaign requirement and returns a decision with the reasoning for each criterion.",
           flow: {
             label: "Pipeline",
-            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Gemini (Vertex AI)", "Score per criterion"],
+            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Score per criterion"],
           },
           points: [
             "Event-driven worker on <strong>Pub/Sub</strong>, plus a sweeper job that republishes evaluations stuck for more than 10 minutes, with deduplication.",
             "Each campaign requirement became its own criterion for the model, with a structured answer per criterion.",
-            "<strong>Deterministic rejection</strong> where the model shouldn't decide: videos without audio fail pronunciation checks without calling Gemini, including files with a silent audio track, detected by volume.",
-            "Hardened the prompts after real false positives: the model mistook the brand's reference audio for speech in the video, and leaned towards approving ambiguous criteria.",
-            "Found and fixed a bug where the model's evaluations were dropped before scoring, so content passed regardless of the answer.",
+            "<strong>Deterministic rejection</strong> where the model shouldn't decide: videos without audio fail speech-dependent criteria without calling the model, including files with a silent audio track, detected by volume.",
+            "Hardened the prompts after real false positives, like the model leaning towards approving ambiguous criteria.",
           ],
           metrics: [
             { value: "-60 dB", label: "below this, audio counts as silent" },
             { value: "10 min", label: "before a stuck evaluation is retried" },
           ],
-          stack: ["NestJS", "Gemini", "Vertex AI", "Pub/Sub", "PostgreSQL", "FFmpeg"],
+          stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
         },
         {
           title: "Campaign report generator",

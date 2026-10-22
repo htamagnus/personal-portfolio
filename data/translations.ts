@@ -226,22 +226,22 @@ export const translations = {
               title: "Pré-curadoria de conteúdo com IA",
               tag: "IA",
               headline: "Vídeos avaliados por IA antes de chegar à marca",
-              summary: "Construí o worker que avalia os vídeos dos creators com o Gemini antes de chegarem à marca. Ele confere cada requisito da campanha, como a escrita e a pronúncia da marca ou a presença de legendas, e devolve uma decisão com a justificativa de cada um.",
+              summary: "Construí o worker que avalia com IA os vídeos dos creators antes de chegarem à marca. Ele confere cada requisito da campanha e devolve uma decisão com a justificativa de cada critério.",
               flow: {
                 label: "Pipeline",
-                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "Gemini (Vertex AI)", "Score por critério"],
+                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Score por critério"],
               },
               points: [
                 "Worker orientado a eventos no <strong>Pub/Sub</strong>, com um job sweeper que republica avaliações presas há mais de 10 minutos, com deduplicação.",
                 "Cada requisito da campanha virou um critério separado para o modelo, com resposta estruturada por critério.",
-                "<strong>Reprovação determinística</strong> onde o modelo não deve decidir: vídeo sem áudio reprova nos critérios de pronúncia sem chamar o Gemini, inclusive arquivos com faixa de áudio muda, detectada pelo volume.",
-                "Endureci os prompts depois de falsos positivos reais: o modelo confundia o áudio de referência da marca com a fala do vídeo e tendia a aprovar critérios ambíguos.",
+                "<strong>Reprovação determinística</strong> onde o modelo não deve decidir: vídeo sem áudio reprova nos critérios que dependem de fala sem chamar o modelo, inclusive arquivos com faixa de áudio muda, detectada pelo volume.",
+                "Endureci os prompts depois de falsos positivos reais, como o modelo tendendo a aprovar critérios ambíguos.",
               ],
               metrics: [
                 { value: "-60 dB", label: "abaixo disso, o áudio conta como mudo" },
                 { value: "10 min", label: "até uma avaliação presa ser reenviada" },
               ],
-              stack: ["NestJS", "Gemini", "Vertex AI", "Pub/Sub", "PostgreSQL", "FFmpeg"],
+              stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
             },
             {
               title: "Gerador de relatório de campanha",
