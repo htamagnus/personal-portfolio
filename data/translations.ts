@@ -246,17 +246,18 @@ export const translations = {
               summary: "Os vídeos dos creators eram conferidos manualmente contra o briefing. Com o volume crescendo, <mark>a revisão virou gargalo</mark>, o critério mudava de revisor para revisor e o creator só descobria o erro quando a marca reprovava, gerando retrabalho e atrasando a campanha. Construí o worker que avalia com IA cada vídeo antes de chegar à marca: ele confere cada requisito da campanha e devolve uma decisão com a justificativa por critério, então <strong>o creator sabe exatamente o que corrigir</strong>.",
               flow: {
                 label: "Pipeline",
-                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Score por critério"],
+                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Resultado da avaliação"],
               },
               points: [
-                "Worker orientado a eventos no <strong>Pub/Sub</strong>, com um job sweeper que republica avaliações presas há mais de 10 minutos, com deduplicação.",
                 "Cada requisito da campanha virou um critério separado para o modelo, com resposta estruturada por critério.",
-                "<strong>Reprovação determinística</strong> onde o modelo não deve decidir: vídeo sem áudio reprova nos critérios que dependem de fala sem chamar o modelo, inclusive arquivos com faixa de áudio muda, detectada pelo volume.",
+                "<strong>Reprovação determinística</strong> onde o modelo não deve decidir. O áudio é um exemplo: vídeo sem áudio, ou com a faixa de áudio muda, reprova nos critérios que dependem de fala sem chamar o modelo. Os outros critérios de reprovação são definidos pelo usuário em cada campanha.",
                 "Endureci os prompts depois de falsos positivos reais, como o modelo tendendo a aprovar critérios ambíguos.",
+                "<strong>Tudo auditável</strong>: cada decisão da IA fica registrada no fluxo de aprovação com a justificativa por critério, o modelo usado, a versão da configuração da campanha e os tokens gastos.",
               ],
               metrics: [
-                { value: "-60 dB", label: "abaixo disso, o áudio conta como mudo" },
-                { value: "10 min", label: "até uma avaliação presa ser reenviada" },
+                { value: "22 h → 19 s", label: "tempo mediano do envio à reprovação, curadoria manual → IA" },
+                { value: "~7,5 mil", label: "tokens por avaliação, em média" },
+                { value: "US$ 0,0035", label: "custo médio por avaliação" },
               ],
               stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
             },
@@ -282,22 +283,22 @@ export const translations = {
               ],
               stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
             },
-            {
-              title: "Migração de autenticação M2M, e além do card",
-              tag: "Segurança",
-              headline: "JWT assinado entre serviços e uma dependência arriscada removida",
-              summary: "Token estático entre serviços é um risco clássico: ele não expira e, <strong>se vazar, continua valendo até alguém trocar na mão</strong>, o que exige atualizar a configuração de todos os serviços que usam ele. A empresa estava migrando a autenticação entre serviços para JWT assinado em RS256, em que só quem tem a chave privada consegue emitir um token válido e quem recebe confere a assinatura com a chave pública. Migrei as chamadas internas de um serviço e fui <mark>além do escopo do card</mark> no caminho.",
-              points: [
-                "Implementei autenticação M2M com <a href=\"https://www.jwt.io/introduction\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>JWT assinado em RS256</strong></a>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
-                "Percebi que o serviço dependia de uma <strong>rota interna deprecada e com problemas de segurança</strong>. Não fazia sentido colocar autenticação numa rota que ia ser removida, então passei a buscar esse dado direto no banco com Drizzle ORM.",
-                "Removi o código legado da autenticação antiga.",
-              ],
-              metrics: [
-                { value: "RS256", label: "tokens assinados entre serviços" },
-                { value: "1", label: "dependência deprecada removida" },
-              ],
-              stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
-            },
+            // {
+            //   title: "Migração de autenticação M2M, e além do card",
+            //   tag: "Segurança",
+            //   headline: "JWT assinado entre serviços e uma dependência arriscada removida",
+            //   summary: "Token estático entre serviços é um risco clássico: ele não expira e, <strong>se vazar, continua valendo até alguém trocar na mão</strong>, o que exige atualizar a configuração de todos os serviços que usam ele. A empresa estava migrando a autenticação entre serviços para JWT assinado em RS256, em que só quem tem a chave privada consegue emitir um token válido e quem recebe confere a assinatura com a chave pública. Migrei as chamadas internas de um serviço e fui <mark>além do escopo do card</mark> no caminho.",
+            //   points: [
+            //     "Implementei autenticação M2M com <a href=\"https://www.jwt.io/introduction\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>JWT assinado em RS256</strong></a>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
+            //     "Percebi que o serviço dependia de uma <strong>rota interna deprecada e com problemas de segurança</strong>. Não fazia sentido colocar autenticação numa rota que ia ser removida, então passei a buscar esse dado direto no banco com Drizzle ORM.",
+            //     "Removi o código legado da autenticação antiga.",
+            //   ],
+            //   metrics: [
+            //     { value: "RS256", label: "tokens assinados entre serviços" },
+            //     { value: "1", label: "dependência deprecada removida" },
+            //   ],
+            //   stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
+            // },
             {
               title: "O histórico que voltava vazio",
               tag: "Bug",

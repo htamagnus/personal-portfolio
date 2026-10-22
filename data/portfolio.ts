@@ -130,17 +130,18 @@ export const portfolioData = {
           summary: "Creators' videos were checked manually against the campaign brief. As volume grew, <mark>review became a bottleneck</mark>, criteria varied from reviewer to reviewer, and creators only found out about a problem when the brand rejected the video, causing rework and delaying campaigns. Built the worker that uses AI to review each video before it reaches the brand: it checks every campaign requirement and returns a decision with the reasoning per criterion, so <strong>the creator knows exactly what to fix</strong>.",
           flow: {
             label: "Pipeline",
-            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Score per criterion"],
+            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Evaluation result"],
           },
           points: [
-            "Event-driven worker on <strong>Pub/Sub</strong>, plus a sweeper job that republishes evaluations stuck for more than 10 minutes, with deduplication.",
             "Each campaign requirement became its own criterion for the model, with a structured answer per criterion.",
-            "<strong>Deterministic rejection</strong> where the model shouldn't decide: videos without audio fail speech-dependent criteria without calling the model, including files with a silent audio track, detected by volume.",
+            "<strong>Deterministic rejection</strong> where the model shouldn't decide. Audio is one example: a video with no audio, or with a silent audio track, fails the speech-dependent criteria without calling the model. The other rejection criteria are defined by the user for each campaign.",
             "Hardened the prompts after real false positives, like the model leaning towards approving ambiguous criteria.",
+            "<strong>Fully auditable</strong>: every AI decision is recorded in the approval workflow with the reasoning per criterion, the model used, the campaign config version and the tokens spent.",
           ],
           metrics: [
-            { value: "-60 dB", label: "below this, audio counts as silent" },
-            { value: "10 min", label: "before a stuck evaluation is retried" },
+            { value: "22 h → 19 s", label: "median time from submission to rejection, manual review → AI" },
+            { value: "~7.5k", label: "tokens per evaluation, on average" },
+            { value: "$0.0035", label: "average cost per evaluation" },
           ],
           stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
         },
@@ -166,22 +167,22 @@ export const portfolioData = {
           ],
           stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
         },
-        {
-          title: "M2M auth migration, and beyond the ticket",
-          tag: "Security",
-          headline: "Signed JWTs between services, one risky dependency removed",
-          summary: "Static tokens between services are a classic risk: they don't expire and, <strong>if leaked, stay valid until someone rotates them by hand</strong>, which means updating the config of every service that uses them. The company was moving service-to-service auth to JWTs signed with RS256, where only the holder of the private key can issue a valid token and the receiver checks the signature with the public key. I migrated one service's internal calls and went <mark>beyond the ticket's scope</mark> along the way.",
-          points: [
-            "Implemented M2M authentication with <a href=\"https://www.jwt.io/introduction\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>RS256-signed JWTs</strong></a>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
-            "Noticed the service depended on a <strong>deprecated internal route with security concerns</strong>. Adding auth to a route scheduled for removal made no sense, so I moved that read straight to the database with Drizzle ORM.",
-            "Removed the legacy code left over from the old authentication.",
-          ],
-          metrics: [
-            { value: "RS256", label: "signed tokens between services" },
-            { value: "1", label: "deprecated dependency removed" },
-          ],
-          stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
-        },
+        // {
+        //   title: "M2M auth migration, and beyond the ticket",
+        //   tag: "Security",
+        //   headline: "Signed JWTs between services, one risky dependency removed",
+        //   summary: "Static tokens between services are a classic risk: they don't expire and, <strong>if leaked, stay valid until someone rotates them by hand</strong>, which means updating the config of every service that uses them. The company was moving service-to-service auth to JWTs signed with RS256, where only the holder of the private key can issue a valid token and the receiver checks the signature with the public key. I migrated one service's internal calls and went <mark>beyond the ticket's scope</mark> along the way.",
+        //   points: [
+        //     "Implemented M2M authentication with <a href=\"https://www.jwt.io/introduction\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>RS256-signed JWTs</strong></a>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
+        //     "Noticed the service depended on a <strong>deprecated internal route with security concerns</strong>. Adding auth to a route scheduled for removal made no sense, so I moved that read straight to the database with Drizzle ORM.",
+        //     "Removed the legacy code left over from the old authentication.",
+        //   ],
+        //   metrics: [
+        //     { value: "RS256", label: "signed tokens between services" },
+        //     { value: "1", label: "deprecated dependency removed" },
+        //   ],
+        //   stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
+        // },
         {
           title: "The history that came back empty",
           tag: "Bug",
