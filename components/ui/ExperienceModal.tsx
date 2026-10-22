@@ -106,7 +106,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                       {experience.company}
                     </h2>
                     <div className="flex flex-wrap gap-3 items-center">
-                      <span className="font-mono font-bold text-neon-pink bg-black px-2 py-0.5">
+                      <span className="font-mono font-bold text-black bg-neon-pink border border-black px-2 py-0.5">
                         {experience.role}
                       </span>
                       <span className="font-mono font-bold text-black border border-black px-2 py-0.5">

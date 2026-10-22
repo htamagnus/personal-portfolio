@@ -189,6 +189,27 @@ export const portfolioData = {
           stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
         },
         {
+          title: "The history that came back empty",
+          tag: "Bug",
+          headline: "String ≠ ObjectId, and a bug born in another service",
+          summary: "A creator's history tab in a campaign showed up empty, even after the profile had gone through several stages. The data was in the database, but the query couldn't find it. In microservices this kind of bug is hard to trace because <strong>the cause isn't in the service that breaks</strong>: it was born <mark>months earlier, in another service</mark>.",
+          flow: {
+            label: "How the data got lost",
+            steps: ["Service A writes a String", "Same collection", "Service B queries", "Mongoose casts to ObjectId", "No results"],
+          },
+          points: [
+            "Two services wrote to the same MongoDB collection: one stored the company ID as an <code>ObjectId</code> and the other, since a change months earlier, as a <code>String</code>.",
+            "On read, Mongoose applied <a href=\"https://mongoosejs.com/docs/tutorials/query_casting.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>automatic casting</strong></a> to the query value, turning it into an <code>ObjectId</code>. In BSON different types never match, so records stored as text never showed up.",
+            "Confirmed it with two counts side by side: the same query returned 0 with an <code>ObjectId</code> and 2 with a <code>String</code>.",
+            "Fixed it <strong>without a data migration</strong>, to avoid touching production data: the field became <code>Mixed</code>, turning off the cast, and the query matches both formats with <code>$in</code>, covering old and new records.",
+          ],
+          metrics: [
+            { value: "0 → 2", label: "records found by the same query" },
+            { value: "0", label: "data migrations needed" },
+          ],
+          stack: ["Node.js", "Hapi", "GraphQL", "MongoDB", "Mongoose"],
+        },
+        {
           title: "The date that slipped a day",
           tag: "Bug fix",
           headline: "D-1 → D, no timezone bugs since",
