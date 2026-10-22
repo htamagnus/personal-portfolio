@@ -278,7 +278,7 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
           <li key={point} className="flex gap-3 font-mono text-sm md:text-base leading-relaxed">
             <span className="mt-2 w-2 h-2 bg-black shrink-0"></span>
             <span
-              className="[&_code]:bg-neon-yellow [&_code]:border [&_code]:border-black [&_code]:px-1 [&_code]:text-sm"
+              className="[&_code]:bg-neon-yellow [&_code]:border [&_code]:border-black [&_code]:px-1 [&_code]:text-sm [&_a]:underline [&_a]:decoration-2 [&_a]:decoration-neon-pink [&_a]:underline-offset-4 [&_a:hover]:bg-neon-pink"
               dangerouslySetInnerHTML={{ __html: point }}
             />
           </li>
