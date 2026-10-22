@@ -269,7 +269,7 @@ export const translations = {
               title: "Mapa de microsserviços",
               tag: "Iniciativa",
               headline: "44 serviços e 111 conexões mapeados automaticamente",
-              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Numa migração de autenticação entre serviços, mapear essas dependências exigia busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
+              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Essa informação não fica em um lugar só: está espalhada em chamadas HTTP dentro do código de cada repositório, feitas de jeitos diferentes. Sem esse mapa, mudar ou proteger uma rota significa descobrir na mão quem depende dela, e um chamador esquecido pode quebrar em produção. Numa migração de autenticação entre serviços, isso virou busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
               points: [
                 "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
                 "<strong>Strategy Pattern</strong> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
