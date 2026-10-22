@@ -128,7 +128,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                               }}
                               className={`w-full flex items-center gap-3 md:gap-4 p-4 md:p-5 text-left transition-colors ${open ? "bg-neon-yellow" : "hover:bg-neon-yellow"}`}
                             >
-                              <span className="font-mono font-black text-lg md:text-2xl bg-black text-neon-pink px-2 shrink-0">
+                              <span className="font-mono font-black text-lg md:text-2xl bg-neon-pink text-black border-2 border-black px-2 shrink-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                                 {String(index + 1).padStart(2, "0")}
                               </span>
                               <span className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
