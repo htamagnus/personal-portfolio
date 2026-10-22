@@ -227,7 +227,7 @@ html {
 @media (prefers-reduced-motion: no-preference) {
   .marker mark {
     background-size: 0% 100%;
-    animation: marker-draw 0.8s ease-out 0.4s forwards;
+    animation: marker-draw 1.2s ease-in-out 0.8s forwards;
   }
 
   .animate-nudge {
