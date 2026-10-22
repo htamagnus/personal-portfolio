@@ -43,7 +43,7 @@ export const portfolioData = {
             "Integrated Instagram through the Meta platform: login with the creator's existing account, comment webhooks with signature validation, and the public reply and DM in a single flow.",
             "Ran a <strong>capacity study</strong> with a load harness (mocked Graph API, signed webhooks at a fixed rate). It found the real ceiling per pod, showed that Meta's limit of 750 DMs per hour per creator hits before our infra does, and caught a missing index that made deduplication slower with every event stored.",
             "Built the observability: structured logs, log-based alerts, liveness and readiness probes, and a graceful shutdown.",
-            "Integrated it into the Portal: 9 routes, a 7-state activation lifecycle, keyword collision checks across campaigns, and automatic shutdown when a campaign ends.",
+            "Integrated it into the Portal: 9 routes, a 7-state activation lifecycle.",
           ],
           metrics: [
             { value: "~7k/min", label: "comments per pod, load tested" },

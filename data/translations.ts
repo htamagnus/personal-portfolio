@@ -153,11 +153,11 @@ export const translations = {
                 steps: ["Seguidor comenta a palavra-chave", "Webhook da Meta", "Acha a ativação do creator", "Resposta pública", "DM com link rastreável"],
               },
               points: [
-                "Migrei a persistência de Prisma/SQLite para <strong>Drizzle + PostgreSQL</strong> e modelei o schema compartilhado entre o produto e o Portal, com enums nativos e sem delete em cascata.",
+                "Migrei a persistência de Prisma/SQLite para <strong>Drizzle + PostgreSQL</strong> e modelei o schema compartilhado entre o produto e o Portal.",
                 "Integrei o Instagram pela plataforma da Meta: login com a conta que o creator já usa, webhook de comentários com validação de assinatura, e a resposta pública e a DM no mesmo fluxo.",
                 "Fiz um <strong>estudo de capacidade</strong> com harness de carga (Graph API mockada, webhooks assinados em taxa fixa). Ele achou o teto real por pod, mostrou que o limite da Meta de 750 DMs por hora por creator chega antes da nossa infra, e pegou um índice faltando que deixava a dedup mais lenta a cada evento gravado.",
                 "Montei a observabilidade: log estruturado, alertas por log, probes de liveness e readiness e shutdown sem perder o que está em processamento.",
-                "Integrei com o nosso produto: 9 rotas, um ciclo de vida da ativação com 7 estados, trava de palavra-chave entre campanhas e desligamento automático quando a campanha encerra.",
+                "Integrei com o nosso produto: 9 rotas, um ciclo de vida da ativação com 7 estados.",
               ],
               metrics: [
                 { value: "~7 mil/min", label: "comentários por pod, em teste de carga" },
