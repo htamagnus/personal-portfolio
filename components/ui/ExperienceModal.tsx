@@ -114,7 +114,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                       </span>
                     </div>
                     {experience.about && (
-                      <p className="font-mono text-sm md:text-base leading-relaxed mt-4 max-w-3xl">
+                      <p className="font-mono text-sm md:text-base leading-relaxed mt-4">
                         {experience.about}{" "}
                         {experience.website && (
                           <a
