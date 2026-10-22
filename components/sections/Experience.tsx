@@ -8,12 +8,17 @@ import Link from "next/link";
 import { Github, Globe, ArrowUpRight, Maximize2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ExperienceModal, type Experience as ExperienceItem } from "@/components/ui/ExperienceModal";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+import { useUrlParam } from "@/lib/useUrlParam";
+
+const slug = (exp: ExperienceItem) => exp.company.toLowerCase().replace(/\W+/g, "-");
 
 export function Experience() {
   const { t } = useLanguage();
-  const [selected, setSelected] = useState<ExperienceItem | null>(null);
-  const close = useCallback(() => setSelected(null), []);
+  const [highlights, setHighlights] = useUrlParam("highlights");
+  const selected = t.portfolio.experience.find((exp) => slug(exp) === highlights) ?? null;
+  const setSelected = (exp: ExperienceItem) => setHighlights(slug(exp));
+  const close = useCallback(() => setHighlights(null), [setHighlights]);
 
   return (
     <div className="w-full bg-grid-pattern">
