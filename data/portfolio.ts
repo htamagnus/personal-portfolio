@@ -176,7 +176,7 @@ export const portfolioData = {
           title: "M2M auth migration, and beyond the ticket",
           tag: "Security",
           headline: "Signed JWTs between services, one risky dependency removed",
-          summary: "As part of a company-wide move to a new service-to-service authentication, I migrated a service's internal calls to signed JWTs, and went <mark>beyond the ticket's scope</mark> along the way.",
+          summary: "Static tokens between services are a classic risk: they don't expire and, <strong>if leaked, stay valid until someone rotates them by hand</strong>, which means updating the config of every service that uses them. The company was moving service-to-service auth to JWTs signed with RS256, where only the holder of the private key can issue a valid token and the receiver checks the signature with the public key. I migrated one service's internal calls and went <mark>beyond the ticket's scope</mark> along the way.",
           points: [
             "Implemented M2M authentication with <strong>RS256-signed JWTs</strong>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
             "Noticed the service depended on a <strong>deprecated internal route with security concerns</strong>. Adding auth to a route scheduled for removal made no sense, so I moved that read straight to the database with Drizzle ORM.",

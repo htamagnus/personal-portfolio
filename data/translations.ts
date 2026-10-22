@@ -290,7 +290,7 @@ export const translations = {
               title: "Migração de autenticação M2M, e além do card",
               tag: "Segurança",
               headline: "JWT assinado entre serviços e uma dependência arriscada removida",
-              summary: "Dentro da migração da empresa para uma nova autenticação entre serviços, migrei as chamadas internas de um serviço para JWT assinado, e fui <mark>além do escopo do card</mark> no caminho.",
+              summary: "Token estático entre serviços é um risco clássico: ele não expira e, <strong>se vazar, continua valendo até alguém trocar na mão</strong>, o que exige atualizar a configuração de todos os serviços que usam ele. A empresa estava migrando a autenticação entre serviços para JWT assinado em RS256, em que só quem tem a chave privada consegue emitir um token válido e quem recebe confere a assinatura com a chave pública. Migrei as chamadas internas de um serviço e fui <mark>além do escopo do card</mark> no caminho.",
               points: [
                 "Implementei autenticação M2M com <strong>JWT assinado em RS256</strong>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
                 "Percebi que o serviço dependia de uma <strong>rota interna deprecada e com problemas de segurança</strong>. Não fazia sentido colocar autenticação numa rota que ia ser removida, então passei a buscar esse dado direto no banco com Drizzle ORM.",
