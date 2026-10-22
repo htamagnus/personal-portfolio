@@ -274,3 +274,17 @@ html {
     animation: wiggle 2.5s ease-in-out infinite;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll,
+  .animate-scroll-reverse,
+  .animate-shimmer {
+    animation: none;
+  }
+
+  .animate-highlight {
+    animation: none;
+    background-size: 100% 100%;
+    color: #1A1A1A;
+  }
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { MotionConfig } from "framer-motion";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
 
@@ -120,9 +121,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <MotionConfig reducedMotion="user">
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </MotionConfig>
       </body>
     </html>
   );

@@ -2,13 +2,13 @@
 
 import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 import { Github, Globe, ArrowUpRight, Maximize2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ExperienceModal, type Experience as ExperienceItem } from "@/components/ui/ExperienceModal";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useUrlParam } from "@/lib/useUrlParam";
 
 const slug = (exp: ExperienceItem) => exp.company.toLowerCase().replace(/\W+/g, "-");
@@ -23,6 +23,9 @@ export function Experience() {
     setHighlights(slug(exp));
   };
   const close = useCallback(() => setHighlights(null), [setHighlights]);
+  const reduceMotion = useReducedMotion();
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ["start center", "end center"] });
 
   return (
     <div className="w-full bg-grid-pattern">
@@ -36,8 +39,11 @@ export function Experience() {
           description={t.experience.description}
         />
 
-        <div className="space-y-12 relative">
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-black -translate-x-1/2 hidden md:block"></div>
+        <div ref={timelineRef} className="space-y-12 relative">
+          <motion.div
+            style={{ scaleY: reduceMotion ? 1 : scrollYProgress, originY: 0 }}
+            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-black -translate-x-1/2 hidden md:block"
+          />
 
           {t.portfolio.experience.map((exp, index) => (
             <motion.div
@@ -91,7 +97,13 @@ export function Experience() {
                   )}
                 </Card>
               </div>
-              <div className="w-8 h-8 bg-neon-green border-4 border-black dark:border-white rounded-full z-10 hidden md:block"></div>
+              <motion.div
+                initial={reduceMotion ? false : { scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, margin: "0px 0px -50% 0px" }}
+                transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                className="w-8 h-8 bg-neon-green border-4 border-black dark:border-white rounded-full z-10 hidden md:block"
+              />
               
               <div className="flex-1 w-full hidden md:block"></div>
             </motion.div>
