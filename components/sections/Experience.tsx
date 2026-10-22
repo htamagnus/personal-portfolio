@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Github, Globe, ArrowUpRight, Maximize2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ExperienceModal, type Experience as ExperienceItem } from "@/components/ui/ExperienceModal";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useUrlParam } from "@/lib/useUrlParam";
 
 const slug = (exp: ExperienceItem) => exp.company.toLowerCase().replace(/\W+/g, "-");
@@ -17,7 +17,11 @@ export function Experience() {
   const { t } = useLanguage();
   const [highlights, setHighlights] = useUrlParam("highlights");
   const selected = t.portfolio.experience.find((exp) => slug(exp) === highlights) ?? null;
-  const setSelected = (exp: ExperienceItem) => setHighlights(slug(exp));
+  const [seen, setSeen] = useState(false);
+  const setSelected = (exp: ExperienceItem) => {
+    setSeen(true);
+    setHighlights(slug(exp));
+  };
   const close = useCallback(() => setHighlights(null), [setHighlights]);
 
   return (
@@ -80,8 +84,8 @@ export function Experience() {
                   </div>
 
                   {exp.highlights && (
-                    <div className="mt-6 inline-flex items-center gap-2 bg-neon-pink border-2 border-black px-3 py-2 font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
-                      <Maximize2 className="w-4 h-4" />
+                    <div className={`mt-6 inline-flex items-center gap-2 bg-neon-pink border-2 border-black px-4 py-2.5 font-mono text-sm font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all ${seen ? "" : "animate-wiggle"}`}>
+                      <Maximize2 className="w-5 h-5" />
                       {t.experience.view_highlights}
                     </div>
                   )}
