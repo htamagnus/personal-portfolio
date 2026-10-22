@@ -33,7 +33,7 @@ export const portfolioData = {
           title: "Eu Quero: from POC to production",
           tag: "Product",
           headline: "Instagram DM automation, built end to end",
-          summary: "Eu Quero automates Instagram for campaign creators: when a follower comments the campaign keyword on a creator's post, it replies publicly and sends a DM with the creator's trackable link. I drove it from a proof of concept to production.",
+          summary: "In a campaign with many creators, the brand couldn't measure how many conversions came from each one. Eu Quero solves that by automating the creators' Instagram: when a follower comments the campaign keyword on a post, it replies publicly and sends a DM with that creator's trackable link. I drove it from a proof of concept to production.",
           flow: {
             label: "How it works",
             steps: ["Follower comments the keyword", "Meta webhook", "Match the creator's activation", "Public reply", "DM with trackable link"],
@@ -133,7 +133,7 @@ export const portfolioData = {
           title: "Campaign report generator",
           tag: "Refactor",
           headline: "Shipped with zero bugs",
-          summary: "Migrated and refactored the route that builds a campaign's results deck in Google Slides, moving it from a legacy JavaScript service into a TypeScript one. It's a long pipeline across MongoDB, MySQL and three Google APIs, and it shipped with zero bugs.",
+          summary: "The route that builds a campaign's results deck in Google Slides lived in a legacy JavaScript service, full of magic numbers and dead parameters, so any change was risky. It picked slides by campaign type, which produced empty sections or data that didn't apply, and it depended on another API just to fetch the metrics. Migrated and refactored it to TypeScript: a long pipeline across MongoDB, MySQL and three Google APIs that shipped with zero bugs.",
           flow: {
             label: "What the route does",
             steps: ["Campaign (MongoDB)", "Metrics (MySQL)", "Copy template (Drive)", "Fill slides (Slides)", "Build charts (Sheets)", "Share link"],

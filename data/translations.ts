@@ -147,7 +147,7 @@ export const translations = {
               title: "Eu Quero: da POC à produção",
               tag: "Produto",
               headline: "Automação de DMs no Instagram, de ponta a ponta",
-              summary: "O Eu Quero automatiza o Instagram dos creators de uma campanha: quando um seguidor comenta a palavra-chave num post do creator, ele responde em público e manda uma DM com o link rastreável do creator. Levei o produto de uma prova de conceito até produção.",
+              summary: "Numa campanha com vários creators, a marca não conseguia medir quantas conversões vinham de cada um. O Eu Quero resolve isso automatizando o Instagram dos creators: quando um seguidor comenta a palavra-chave num post, ele responde em público e manda uma DM com o link rastreável daquele creator. Levei o produto de uma prova de conceito até produção.",
               flow: {
                 label: "Como funciona",
                 steps: ["Seguidor comenta a palavra-chave", "Webhook da Meta", "Acha a ativação do creator", "Resposta pública", "DM com link rastreável"],
@@ -247,7 +247,7 @@ export const translations = {
               title: "Gerador de relatório de campanha",
               tag: "Refatoração",
               headline: "Foi para produção sem nenhum bug",
-              summary: "Migrei e refatorei a rota que monta a apresentação de resultados de uma campanha no Google Slides, levando ela de um serviço legado em JavaScript para um em TypeScript. É um pipeline longo, passando por MongoDB, MySQL e três APIs do Google, e foi para produção sem nenhum bug.",
+              summary: "A rota que monta a apresentação de resultados de uma campanha no Google Slides vivia num serviço legado em JavaScript, com magic numbers e parâmetros mortos, então qualquer mudança era arriscada. Ela decidia os slides pelo tipo da campanha, o que gerava seções vazias ou com dados que não se aplicavam, e dependia de outra API só para buscar as métricas. Migrei e refatorei a rota para TypeScript: um pipeline longo, passando por MongoDB, MySQL e três APIs do Google, que foi para produção sem nenhum bug.",
               flow: {
                 label: "O que a rota faz",
                 steps: ["Campanha (MongoDB)", "Métricas (MySQL)", "Copia template (Drive)", "Preenche slides (Slides)", "Gera gráficos (Sheets)", "Compartilha link"],
