@@ -147,7 +147,7 @@ export const translations = {
               title: "Eu Quero: da POC à produção",
               tag: "Produto",
               headline: "Automação de DMs no Instagram, de ponta a ponta",
-              summary: "Numa campanha com vários creators, a marca <mark>não conseguia medir quantas conversões vinham de cada um</mark>. O Eu Quero resolve isso automatizando o Instagram dos creators: quando um seguidor comenta a palavra-chave num post, ele responde em público e manda uma DM com o link rastreável daquele creator. Levei o produto <mark>de uma prova de conceito até produção</mark>.",
+              summary: "Numa campanha com vários creators, a marca <strong>não conseguia medir quantas conversões vinham de cada um</strong>. O Eu Quero resolve isso automatizando o Instagram dos creators: quando um seguidor comenta a palavra-chave num post, ele responde em público e manda uma DM com o link rastreável daquele creator. Levei o produto de uma <mark>prova de conceito até produção</mark>.",
               flow: {
                 label: "Como funciona",
                 steps: ["Seguidor comenta a palavra-chave", "Webhook da Meta", "Acha a ativação do creator", "Resposta pública", "DM com link rastreável"],
@@ -169,7 +169,7 @@ export const translations = {
               title: "Migração do bulk import de recrutamentos",
               tag: "Migração",
               headline: "-86,4% no tempo de resposta",
-              summary: "Na minha primeira semana no novo time, assumi a migração de um microsserviço legado em Express.js, que gerava bugs com frequência, para TypeScript. A rota mais crítica era a de inserção de recrutamentos: ela podia receber <mark>até 10 mil de uma vez</mark>, mas o código legado tinha sido escrito para <mark>inserir um por vez</mark>.",
+              summary: "Na minha primeira semana no novo time, assumi a migração de um microsserviço legado em Express.js, que gerava bugs com frequência, para TypeScript. A rota mais crítica era a de inserção de recrutamentos: ela podia receber <mark>até 10 mil de uma vez</mark>, mas o código legado tinha sido escrito para <strong>inserir um por vez</strong>.",
               points: [
                 "Levantei as regras de negócio e os edge cases do código legado antes de reescrever, indo atrás de documentação para entender o que a migração podia quebrar.",
                 "Troquei a inserção perfil por perfil por <strong>processamento em lotes</strong>.",
@@ -188,7 +188,7 @@ export const translations = {
               title: "O gargalo dos 11 mil perfis",
               tag: "Performance",
               headline: "Importação 8,2× mais rápida, sem problemas de performance desde então",
-              summary: "Com o volume crescendo, importações com mais de 10 mil perfis começaram a <mark>estourar o timeout</mark>. Em vez de chutar, fiz profiling do fluxo antes de mexer e corrigi em duas rodadas, medindo de novo depois de cada uma. Desde então, a feature não teve mais <mark>nenhum bug nem problema de performance</mark>.",
+              summary: "Com o volume crescendo, importações com mais de 10 mil perfis começaram a <mark>estourar o timeout</mark>. Em vez de chutar, fiz profiling do fluxo antes de mexer e corrigi em duas rodadas, medindo de novo depois de cada uma. Desde então, a feature não teve mais <strong>nenhum bug nem problema de performance</strong>.",
               points: [
                 "Profiling com <strong>Clinic.js Doctor e Flame</strong>: picos de event loop delay de ~700 ms e duas funções dominando a execução, ambas esperando o banco.",
                 "Diagnóstico: um <strong>N+1 disfarçado de paralelismo</strong>. Cerca de 22 mil operações individuais disparadas de uma vez disputavam o mesmo connection pool do MongoDB.",
@@ -226,7 +226,7 @@ export const translations = {
               title: "Pré-curadoria de conteúdo com IA",
               tag: "IA",
               headline: "Vídeos avaliados por IA antes de chegar à marca",
-              summary: "Os vídeos dos creators eram conferidos manualmente contra o briefing. Com o volume crescendo, <mark>a revisão virou gargalo</mark>, o critério mudava de revisor para revisor e o creator só descobria o erro quando a marca reprovava, gerando retrabalho e atrasando a campanha. Construí o worker que avalia com IA cada vídeo antes de chegar à marca: ele confere cada requisito da campanha e devolve uma decisão com a justificativa por critério, então <mark>o creator sabe exatamente o que corrigir</mark>.",
+              summary: "Os vídeos dos creators eram conferidos manualmente contra o briefing. Com o volume crescendo, <mark>a revisão virou gargalo</mark>, o critério mudava de revisor para revisor e o creator só descobria o erro quando a marca reprovava, gerando retrabalho e atrasando a campanha. Construí o worker que avalia com IA cada vídeo antes de chegar à marca: ele confere cada requisito da campanha e devolve uma decisão com a justificativa por critério, então <strong>o creator sabe exatamente o que corrigir</strong>.",
               flow: {
                 label: "Pipeline",
                 steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Score por critério"],
@@ -247,7 +247,7 @@ export const translations = {
               title: "Gerador de relatório de campanha",
               tag: "Refatoração",
               headline: "Foi para produção sem nenhum bug",
-              summary: "A rota que monta a apresentação de resultados de uma campanha no Google Slides vivia num serviço legado em JavaScript, com magic numbers e parâmetros mortos, então <mark>qualquer mudança era arriscada</mark>. Ela decidia os slides pelo tipo da campanha, o que gerava seções vazias ou com dados que não se aplicavam, e dependia de outra API só para buscar as métricas. Migrei e refatorei a rota para TypeScript: um pipeline longo, passando por MongoDB, MySQL e três APIs do Google, que <mark>foi para produção sem nenhum bug</mark>.",
+              summary: "A rota que monta a apresentação de resultados de uma campanha no Google Slides vivia num serviço legado em JavaScript, com magic numbers e parâmetros mortos, então <strong>qualquer mudança era arriscada</strong>. Ela decidia os slides pelo tipo da campanha, o que gerava seções vazias ou com dados que não se aplicavam, e dependia de outra API só para buscar as métricas. Migrei e refatorei a rota para TypeScript: um pipeline longo, passando por MongoDB, MySQL e três APIs do Google, que foi para produção <mark>sem nenhum bug</mark>.",
               flow: {
                 label: "O que a rota faz",
                 steps: ["Campanha (MongoDB)", "Métricas (MySQL)", "Copia template (Drive)", "Preenche slides (Slides)", "Gera gráficos (Sheets)", "Compartilha link"],
@@ -269,7 +269,7 @@ export const translations = {
               title: "Mapa de microsserviços",
               tag: "Iniciativa",
               headline: "44 serviços e 111 conexões mapeados automaticamente",
-              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <mark>ninguém tinha uma visão clara de quem chama quem</mark>. Numa migração de autenticação entre serviços, mapear essas dependências exigia busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
+              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Numa migração de autenticação entre serviços, mapear essas dependências exigia busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
               points: [
                 "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
                 "<strong>Strategy Pattern</strong> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
@@ -290,7 +290,7 @@ export const translations = {
               title: "Migração de autenticação M2M, e além do card",
               tag: "Segurança",
               headline: "JWT assinado entre serviços e uma dependência arriscada removida",
-              summary: "Dentro da migração da empresa para uma nova autenticação entre serviços, migrei as chamadas internas de um serviço para JWT assinado, e <mark>fui além do escopo do card</mark> no caminho.",
+              summary: "Dentro da migração da empresa para uma nova autenticação entre serviços, migrei as chamadas internas de um serviço para JWT assinado, e fui <mark>além do escopo do card</mark> no caminho.",
               points: [
                 "Implementei autenticação M2M com <strong>JWT assinado em RS256</strong>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
                 "Percebi que o serviço dependia de uma <strong>rota interna deprecada e com problemas de segurança</strong>. Não fazia sentido colocar autenticação numa rota que ia ser removida, então passei a buscar esse dado direto no banco com Drizzle ORM.",
@@ -306,7 +306,7 @@ export const translations = {
               title: "A data que voltava um dia",
               tag: "Bug",
               headline: "D-1 → D, sem bugs de timezone desde então",
-              summary: "O upload de conteúdo falhava quando a data escolhida era \"hoje\". <mark>O bug do back estava escondido atrás de um bug do front</mark>: o front quebrava antes, então a requisição nem chegava na API.",
+              summary: "O upload de conteúdo falhava quando a data escolhida era \"hoje\". O bug do back estava <mark>escondido atrás de um bug do front</mark>: o front quebrava antes, então a requisição nem chegava na API.",
               points: [
                 "Corrigi o front primeiro: quando a data era hoje, ela era tratada como número em vez de <code>Date</code>, diferente do resto do fluxo.",
                 "Com isso resolvido, apareceu o problema real do back: o conteúdo era criado, mas aparecia no board com um dia a menos.",

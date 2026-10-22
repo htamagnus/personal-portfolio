@@ -33,7 +33,7 @@ export const portfolioData = {
           title: "Eu Quero: from POC to production",
           tag: "Product",
           headline: "Instagram DM automation, built end to end",
-          summary: "In a campaign with many creators, the brand <mark>couldn't measure how many conversions came from each one</mark>. Eu Quero solves that by automating the creators' Instagram: when a follower comments the campaign keyword on a post, it replies publicly and sends a DM with that creator's trackable link. I drove it <mark>from a proof of concept to production</mark>.",
+          summary: "In a campaign with many creators, the brand <strong>couldn't measure how many conversions came from each one</strong>. Eu Quero solves that by automating the creators' Instagram: when a follower comments the campaign keyword on a post, it replies publicly and sends a DM with that creator's trackable link. I drove it from a <mark>proof of concept to production</mark>.",
           flow: {
             label: "How it works",
             steps: ["Follower comments the keyword", "Meta webhook", "Match the creator's activation", "Public reply", "DM with trackable link"],
@@ -55,7 +55,7 @@ export const portfolioData = {
           title: "Migrating the recruitment bulk import",
           tag: "Migration",
           headline: "-86.4% response time",
-          summary: "In my first week on the team I took over the migration of a legacy Express.js microservice that kept generating bugs, rewriting it in TypeScript. Its most critical route inserted new recruitments: it could receive <mark>up to 10,000 at once</mark>, but the legacy code was written to <mark>insert them one by one</mark>.",
+          summary: "In my first week on the team I took over the migration of a legacy Express.js microservice that kept generating bugs, rewriting it in TypeScript. Its most critical route inserted new recruitments: it could receive <mark>up to 10,000 at once</mark>, but the legacy code was written to <strong>insert them one by one</strong>.",
           points: [
             "Mapped the business rules and edge cases of the legacy code before rewriting anything, digging through documentation to understand what the migration could break.",
             "Replaced the profile-by-profile insertion with <strong>batch processing</strong>.",
@@ -74,7 +74,7 @@ export const portfolioData = {
           title: "The 11,000-profile bottleneck",
           tag: "Performance",
           headline: "8.2× faster imports, no performance issues since",
-          summary: "As volume grew, imports with more than 10,000 profiles started <mark>hitting the request timeout</mark>. Instead of guessing, I profiled the flow first and fixed it in two rounds, measuring again after each one. The feature <mark>hasn't had a bug or performance issue since</mark>.",
+          summary: "As volume grew, imports with more than 10,000 profiles started <mark>hitting the request timeout</mark>. Instead of guessing, I profiled the flow first and fixed it in two rounds, measuring again after each one. The feature <strong>hasn't had a bug or performance issue since</strong>.",
           points: [
             "Profiled with <strong>Clinic.js Doctor and Flame</strong>: event loop delay peaks of ~700 ms and two functions dominating the run, both waiting on the database.",
             "Diagnosis: an <strong>N+1 disguised as parallelism</strong>. About 22,000 individual operations fired at once were competing for the same MongoDB connection pool.",
@@ -112,7 +112,7 @@ export const portfolioData = {
           title: "AI content pre-review",
           tag: "AI",
           headline: "Videos reviewed by AI before reaching the brand",
-          summary: "Creators' videos were checked manually against the campaign brief. As volume grew, <mark>review became a bottleneck</mark>, criteria varied from reviewer to reviewer, and creators only found out about a problem when the brand rejected the video, causing rework and delaying campaigns. Built the worker that uses AI to review each video before it reaches the brand: it checks every campaign requirement and returns a decision with the reasoning per criterion, so <mark>the creator knows exactly what to fix</mark>.",
+          summary: "Creators' videos were checked manually against the campaign brief. As volume grew, <mark>review became a bottleneck</mark>, criteria varied from reviewer to reviewer, and creators only found out about a problem when the brand rejected the video, causing rework and delaying campaigns. Built the worker that uses AI to review each video before it reaches the brand: it checks every campaign requirement and returns a decision with the reasoning per criterion, so <strong>the creator knows exactly what to fix</strong>.",
           flow: {
             label: "Pipeline",
             steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Score per criterion"],
@@ -133,7 +133,7 @@ export const portfolioData = {
           title: "Campaign report generator",
           tag: "Refactor",
           headline: "Shipped with zero bugs",
-          summary: "The route that builds a campaign's results deck in Google Slides lived in a legacy JavaScript service, full of magic numbers and dead parameters, so <mark>any change was risky</mark>. It picked slides by campaign type, which produced empty sections or data that didn't apply, and it depended on another API just to fetch the metrics. Migrated and refactored it to TypeScript: a long pipeline across MongoDB, MySQL and three Google APIs that <mark>shipped with zero bugs</mark>.",
+          summary: "The route that builds a campaign's results deck in Google Slides lived in a legacy JavaScript service, full of magic numbers and dead parameters, so <strong>any change was risky</strong>. It picked slides by campaign type, which produced empty sections or data that didn't apply, and it depended on another API just to fetch the metrics. Migrated and refactored it to TypeScript: a long pipeline across MongoDB, MySQL and three Google APIs that shipped with <mark>zero bugs</mark>.",
           flow: {
             label: "What the route does",
             steps: ["Campaign (MongoDB)", "Metrics (MySQL)", "Copy template (Drive)", "Fill slides (Slides)", "Build charts (Sheets)", "Share link"],
@@ -155,7 +155,7 @@ export const portfolioData = {
           title: "Microservices map",
           tag: "Initiative",
           headline: "44 services and 111 connections mapped automatically",
-          summary: "The company's microservices grew over the years and <mark>nobody had a clear picture of who calls whom</mark>. During a service-to-service auth migration, mapping those dependencies meant searching repo by repo, so, <mark>on my own initiative</mark>, I built a tool that maps them automatically.",
+          summary: "The company's microservices grew over the years and <strong>nobody had a clear picture of who calls whom</strong>. During a service-to-service auth migration, mapping those dependencies meant searching repo by repo, so, <mark>on my own initiative</mark>, I built a tool that maps them automatically.",
           points: [
             "Extractor based on <strong>static analysis (ts-morph)</strong> that reads each repository's HTTP clients and finds the source, target, method and path of every internal call.",
             "<strong>Strategy Pattern</strong> to support both the team's standard client and legacy code calling <code>got</code>, <code>axios</code> or <code>fetch</code> directly.",
@@ -176,7 +176,7 @@ export const portfolioData = {
           title: "M2M auth migration, and beyond the ticket",
           tag: "Security",
           headline: "Signed JWTs between services, one risky dependency removed",
-          summary: "As part of a company-wide move to a new service-to-service authentication, I migrated a service's internal calls to signed JWTs, and <mark>went beyond the ticket's scope</mark> along the way.",
+          summary: "As part of a company-wide move to a new service-to-service authentication, I migrated a service's internal calls to signed JWTs, and went <mark>beyond the ticket's scope</mark> along the way.",
           points: [
             "Implemented M2M authentication with <strong>RS256-signed JWTs</strong>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
             "Noticed the service depended on a <strong>deprecated internal route with security concerns</strong>. Adding auth to a route scheduled for removal made no sense, so I moved that read straight to the database with Drizzle ORM.",
@@ -192,7 +192,7 @@ export const portfolioData = {
           title: "The date that slipped a day",
           tag: "Bug fix",
           headline: "D-1 → D, no timezone bugs since",
-          summary: "Uploading content with the date set to \"today\" was failing. <mark>The backend bug was hiding behind a frontend one</mark>: the frontend crashed first, so the request never reached the API.",
+          summary: "Uploading content with the date set to \"today\" was failing. The backend bug was <mark>hiding behind a frontend one</mark>: the frontend crashed first, so the request never reached the API.",
           points: [
             "Fixed the frontend first: when the date was today, it was handled as a number instead of a <code>Date</code>, unlike the rest of the flow.",
             "With that out of the way, the real backend issue showed up: the content was created, but appeared on the board one day earlier.",
