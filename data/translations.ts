@@ -306,7 +306,7 @@ export const translations = {
               title: "A data que voltava um dia",
               tag: "Bug",
               headline: "D-1 → D, sem bugs de timezone desde então",
-              summary: "O upload de conteúdo falhava quando a data escolhida era \"hoje\". O bug do back estava <mark>escondido atrás de um bug do front</mark>: o front quebrava antes, então a requisição nem chegava na API.",
+              summary: "O upload de conteúdo falhava quando a data escolhida era \"hoje\". Bug de timezone é traiçoeiro: uma data de calendário, como \"22/10\", não tem horário, mas o Date do JavaScript e o banco guardam um instante exato. Para converter, o código precisa escolher uma hora e um fuso, e se front, back e banco não concordam, <strong>a mesma data vira dias diferentes</strong> dependendo de onde é lida. Como o erro só aparece em certos fusos e horários, ele costuma passar nos testes. Aqui, o bug do back ainda estava <mark>escondido atrás de um bug do front</mark>: o front quebrava antes, então a requisição nem chegava na API.",
               points: [
                 "Corrigi o front primeiro: quando a data era hoje, ela era tratada como número em vez de <code>Date</code>, diferente do resto do fluxo.",
                 "Com isso resolvido, apareceu o problema real do back: o conteúdo era criado, mas aparecia no board com um dia a menos.",

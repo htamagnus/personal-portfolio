@@ -192,7 +192,7 @@ export const portfolioData = {
           title: "The date that slipped a day",
           tag: "Bug fix",
           headline: "D-1 → D, no timezone bugs since",
-          summary: "Uploading content with the date set to \"today\" was failing. The backend bug was <mark>hiding behind a frontend one</mark>: the frontend crashed first, so the request never reached the API.",
+          summary: "Uploading content with the date set to \"today\" was failing. Timezone bugs are sneaky: a calendar date like \"Oct 22\" has no time, but JavaScript's Date and the database store an exact instant. To convert, the code has to pick a time and a timezone, and if frontend, backend and database don't agree, <strong>the same date becomes different days</strong> depending on where it's read. Since the error only shows up in certain timezones and hours, it usually slips past tests. Here, the backend bug was also <mark>hiding behind a frontend one</mark>: the frontend crashed first, so the request never reached the API.",
           points: [
             "Fixed the frontend first: when the date was today, it was handled as a number instead of a <code>Date</code>, unlike the rest of the flow.",
             "With that out of the way, the real backend issue showed up: the content was created, but appeared on the board one day earlier.",
