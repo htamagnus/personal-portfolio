@@ -102,6 +102,18 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (max-width: 767px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  /* iOS zooms into inputs below 16px */
+  input,
+  textarea {
+    font-size: 16px;
+  }
+}
+
 .bg-grid-pattern {
   background-size: 60px 60px;
   background-image: linear-gradient(to right, rgba(26, 26, 26, 0.15) 1px, transparent 1px),
