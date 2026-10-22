@@ -40,11 +40,7 @@ export const portfolioData = {
             "Path normalization (<code>/users/123</code> → <code>/users/:id</code>) to group equivalent calls.",
             "Interactive graph to explore any service: who calls it and who it calls.",
           ],
-          metrics: [
-            { value: "44", label: "services" },
-            { value: "111", label: "connections" },
-            { value: "474", label: "endpoints" },
-          ],
+          result: "With the map, the whole dev team gained a quick way to check the impact of a fix or change to an API. That sped up development and <strong>greatly reduced the risk of changing some code and unknowingly breaking another API or flow that depended on it</strong>. It also made planning new initiatives and fixes easier, raising the quality of what the whole team ships.",
           image: "/experience/microservices-map.webp",
           imageAlt: "Interactive graph showing a service in the center, the services that call it on the left and the ones it calls on the right",
           imageCaption: "Service names blurred for confidentiality.",

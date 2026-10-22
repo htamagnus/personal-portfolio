@@ -41,7 +41,8 @@ export const translations = {
       description: "Explore my professional journey and the projects that define my growth.",
       view_highlights: "View highlights",
       before: "Before",
-      after: "After"
+      after: "After",
+      result: "Result"
     },
     projects: {
       title: "Selected",
@@ -105,7 +106,8 @@ export const translations = {
       description: "Explore minha jornada profissional e os projetos que definem meu crescimento.",
       view_highlights: "Ver destaques",
       before: "Antes",
-      after: "Depois"
+      after: "Depois",
+      result: "Resultado"
     },
     projects: {
       title: "Projetos",
@@ -151,14 +153,9 @@ export const translations = {
               points: [
                 "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
                 "<a href=\"https://refactoring.guru/pt-br/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
-                "Normalização de paths (<code>/users/123</code> → <code>/users/:id</code>) para agrupar chamadas equivalentes.",
                 "Grafo interativo para explorar qualquer serviço: quem chama ele e quem ele chama.",
               ],
-              metrics: [
-                { value: "44", label: "serviços" },
-                { value: "111", label: "conexões" },
-                { value: "474", label: "endpoints" },
-              ],
+              result: "Com o mapa, todo o time de desenvolvimento passou a consultar rapidamente o impacto de uma correção ou mudança numa API. Isso agilizou o desenvolvimento e <strong>diminuiu muito o risco de mexer num código e, sem saber, gerar bug em outra API ou fluxo que dependia dele</strong>. O mapa também facilitou o planejamento de novas iniciativas e correções, melhorando a qualidade das entregas de todo o time.",
               image: "/experience/microservices-map.webp",
               imageAlt: "Grafo interativo com um serviço no centro, os serviços que chamam ele à esquerda e os que ele chama à direita",
               imageCaption: "Nomes dos serviços borrados por confidencialidade.",

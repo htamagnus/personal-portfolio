@@ -249,22 +249,24 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
         dangerouslySetInnerHTML={{ __html: highlight.summary }}
       />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {highlight.metrics.map((metric, i) => (
-          <motion.div
-            key={metric.label}
-            initial={reduceMotion ? false : { opacity: 0, y: 16, rotate: -4 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.3 + i * 0.1 }}
-            className="bg-neon-yellow border-2 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-          >
-            <div className="font-display font-black text-xl md:text-3xl">
-              <CountUp value={metric.value} delay={0.3 + i * 0.1} />
-            </div>
-            <div className="font-mono text-xs font-bold uppercase">{metric.label}</div>
-          </motion.div>
-        ))}
-      </div>
+      {highlight.metrics && (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {highlight.metrics.map((metric, i) => (
+            <motion.div
+              key={metric.label}
+              initial={reduceMotion ? false : { opacity: 0, y: 16, rotate: -4 }}
+              animate={{ opacity: 1, y: 0, rotate: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.3 + i * 0.1 }}
+              className="bg-neon-yellow border-2 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            >
+              <div className="font-display font-black text-xl md:text-3xl">
+                <CountUp value={metric.value} delay={0.3 + i * 0.1} />
+              </div>
+              <div className="font-mono text-xs font-bold uppercase">{metric.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      )}
 
       {highlight.comparison && (
         <div className="border-2 border-black bg-[#FCEEE3] p-4 flex flex-col gap-3">
@@ -288,6 +290,16 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {highlight.result && (
+        <div className="border-2 border-black bg-[#FCEEE3] p-4 flex flex-col gap-3">
+          <span className="font-mono text-xs font-bold uppercase">{t.experience.result}</span>
+          <p
+            className="font-mono text-sm md:text-base leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: highlight.result }}
+          />
         </div>
       )}
 
