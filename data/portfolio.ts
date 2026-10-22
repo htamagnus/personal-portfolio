@@ -46,6 +46,28 @@ export const portfolioData = {
           stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
         },
         {
+          title: "AI content pre-review",
+          tag: "AI",
+          headline: "Videos reviewed by AI before reaching the brand",
+          summary: "Creators' videos were checked manually against the campaign brief. As volume grew, <mark>review became a bottleneck</mark>, criteria varied from reviewer to reviewer, and creators only found out about a problem when the brand rejected the video, causing rework and delaying campaigns. Built the worker that uses AI to review each video before it reaches the brand: it checks every campaign requirement and returns a decision with the reasoning per criterion, so <strong>the creator knows exactly what to fix</strong>.",
+          flow: {
+            label: "Pipeline",
+            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Evaluation result"],
+          },
+          points: [
+            "Each campaign requirement became its own criterion for the model, with a structured answer per criterion.",
+            "<strong>Deterministic rejection</strong> where the model shouldn't decide. Audio is one example: a video with no audio, or with a silent audio track, fails the speech-dependent criteria without calling the model. The other rejection criteria are defined by the user for each campaign.",
+            "Hardened the prompts after real false positives, like the model leaning towards approving ambiguous criteria.",
+            "<strong>Fully auditable</strong>: every AI decision is recorded in the approval workflow with the reasoning per criterion, the model used, the campaign config version and the tokens spent.",
+          ],
+          metrics: [
+            { value: "22 h → 19 s", label: "median time from submission to rejection, manual review → AI" },
+            { value: "~7.5k", label: "tokens per evaluation, on average" },
+            { value: "$0.0035", label: "average cost per evaluation" },
+          ],
+          stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
+        },
+        {
           title: "Eu Quero: from POC to production",
           tag: "Product",
           headline: "Instagram DM automation, built end to end",
@@ -105,46 +127,24 @@ export const portfolioData = {
           comparison: { label: "Full import of 11,338 profiles", before: 464, after: 56.6, unit: "s" },
           stack: ["Node.js", "MongoDB", "Clinic.js"],
         },
-        {
-          title: "Security hardening after a pentest",
-          tag: "Security",
-          headline: "13 findings fixed across 7 services",
-          summary: "After an external pentest, I strengthened <mark>data isolation between the companies</mark> on the platform across seven services.",
-          points: [
-            "Worked on three classes from the OWASP API Top 10: <a href=\"https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>BOLA/IDOR</strong></a>, broken access control and broken function-level authorization.",
-            "Put the ownership check in a shared guard that runs <strong>before</strong> payload validation, so a denied request never reveals whether the resource exists or returns its data.",
-            "Every write started recording who made the change (<code>updatedBy</code>).",
-            "Replaced a download link that relied on the login session with a short-lived token bound to a single file, so links sent by email kept working without opening the route.",
-            "Validated each fix by reproducing the pentest's proof of concept before and after.",
-          ],
-          metrics: [
-            { value: "13", label: "findings fixed" },
-            { value: "7", label: "services" },
-          ],
-          stack: ["Node.js", "NestJS", "Hapi", "JWT", "Angular"],
-        },
-        {
-          title: "AI content pre-review",
-          tag: "AI",
-          headline: "Videos reviewed by AI before reaching the brand",
-          summary: "Creators' videos were checked manually against the campaign brief. As volume grew, <mark>review became a bottleneck</mark>, criteria varied from reviewer to reviewer, and creators only found out about a problem when the brand rejected the video, causing rework and delaying campaigns. Built the worker that uses AI to review each video before it reaches the brand: it checks every campaign requirement and returns a decision with the reasoning per criterion, so <strong>the creator knows exactly what to fix</strong>.",
-          flow: {
-            label: "Pipeline",
-            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Evaluation result"],
-          },
-          points: [
-            "Each campaign requirement became its own criterion for the model, with a structured answer per criterion.",
-            "<strong>Deterministic rejection</strong> where the model shouldn't decide. Audio is one example: a video with no audio, or with a silent audio track, fails the speech-dependent criteria without calling the model. The other rejection criteria are defined by the user for each campaign.",
-            "Hardened the prompts after real false positives, like the model leaning towards approving ambiguous criteria.",
-            "<strong>Fully auditable</strong>: every AI decision is recorded in the approval workflow with the reasoning per criterion, the model used, the campaign config version and the tokens spent.",
-          ],
-          metrics: [
-            { value: "22 h → 19 s", label: "median time from submission to rejection, manual review → AI" },
-            { value: "~7.5k", label: "tokens per evaluation, on average" },
-            { value: "$0.0035", label: "average cost per evaluation" },
-          ],
-          stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
-        },
+        // {
+        //   title: "Security hardening after a pentest",
+        //   tag: "Security",
+        //   headline: "13 findings fixed across 7 services",
+        //   summary: "After an external pentest, I strengthened <mark>data isolation between the companies</mark> on the platform across seven services.",
+        //   points: [
+        //     "Worked on three classes from the OWASP API Top 10: <a href=\"https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>BOLA/IDOR</strong></a>, broken access control and broken function-level authorization.",
+        //     "Put the ownership check in a shared guard that runs <strong>before</strong> payload validation, so a denied request never reveals whether the resource exists or returns its data.",
+        //     "Every write started recording who made the change (<code>updatedBy</code>).",
+        //     "Replaced a download link that relied on the login session with a short-lived token bound to a single file, so links sent by email kept working without opening the route.",
+        //     "Validated each fix by reproducing the pentest's proof of concept before and after.",
+        //   ],
+        //   metrics: [
+        //     { value: "13", label: "findings fixed" },
+        //     { value: "7", label: "services" },
+        //   ],
+        //   stack: ["Node.js", "NestJS", "Hapi", "JWT", "Angular"],
+        // },
         {
           title: "Campaign report generator",
           tag: "Refactor",

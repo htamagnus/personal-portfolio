@@ -162,6 +162,28 @@ export const translations = {
               stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
             },
             {
+              title: "Pré-curadoria de conteúdo com IA",
+              tag: "IA",
+              headline: "Vídeos avaliados por IA antes de chegar à marca",
+              summary: "Os vídeos dos creators eram conferidos manualmente contra o briefing. Com o volume crescendo, <mark>a revisão virou gargalo</mark>, o critério mudava de revisor para revisor e o creator só descobria o erro quando a marca reprovava, gerando retrabalho e atrasando a campanha. Construí o worker que avalia com IA cada vídeo antes de chegar à marca: ele confere cada requisito da campanha e devolve uma decisão com a justificativa por critério, então <strong>o creator sabe exatamente o que corrigir</strong>.",
+              flow: {
+                label: "Pipeline",
+                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Resultado da avaliação"],
+              },
+              points: [
+                "Cada requisito da campanha virou um critério separado para o modelo, com resposta estruturada por critério.",
+                "<strong>Reprovação determinística</strong> onde o modelo não deve decidir. O áudio é um exemplo: vídeo sem áudio, ou com a faixa de áudio muda, reprova nos critérios que dependem de fala sem chamar o modelo. Os outros critérios de reprovação são definidos pelo usuário em cada campanha.",
+                "Endureci os prompts depois de falsos positivos reais, como o modelo tendendo a aprovar critérios ambíguos.",
+                "<strong>Tudo auditável</strong>: cada decisão da IA fica registrada no fluxo de aprovação com a justificativa por critério, o modelo usado, a versão da configuração da campanha e os tokens gastos.",
+              ],
+              metrics: [
+                { value: "22 h → 19 s", label: "tempo mediano do envio à reprovação, curadoria manual → IA" },
+                { value: "~7,5 mil", label: "tokens por avaliação, em média" },
+                { value: "US$ 0,0035", label: "custo médio por avaliação" },
+              ],
+              stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
+            },
+            {
               title: "Eu Quero: da POC à produção",
               tag: "Produto",
               headline: "Automação de DMs no Instagram, de ponta a ponta",
@@ -221,46 +243,24 @@ export const translations = {
               comparison: { label: "Importação completa de 11.338 perfis", before: 464, after: 56.6, unit: "s" },
               stack: ["Node.js", "MongoDB", "Clinic.js"],
             },
-            {
-              title: "Hardening de segurança após pentest",
-              tag: "Segurança",
-              headline: "13 falhas corrigidas em 7 serviços",
-              summary: "Depois de um pentest externo, reforcei o <mark>isolamento de dados entre as empresas</mark> da plataforma em sete serviços.",
-              points: [
-                "Trabalhei em três classes do OWASP API Top 10: <a href=\"https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>BOLA/IDOR</strong></a>, broken access control e broken function-level authorization.",
-                "Coloquei a checagem de dono num guard compartilhado que roda <strong>antes</strong> da validação do payload, para que uma requisição negada nunca revele se o recurso existe nem devolva os dados dele.",
-                "Toda escrita passou a registrar quem fez a alteração (<code>updatedBy</code>).",
-                "Troquei um link de download que dependia da sessão de login por um token de curta duração preso a um único arquivo, para os links enviados por e-mail continuarem funcionando sem abrir a rota.",
-                "Validei cada correção reproduzindo a prova de conceito do pentest antes e depois.",
-              ],
-              metrics: [
-                { value: "13", label: "falhas corrigidas" },
-                { value: "7", label: "serviços" },
-              ],
-              stack: ["Node.js", "NestJS", "Hapi", "JWT", "Angular"],
-            },
-            {
-              title: "Pré-curadoria de conteúdo com IA",
-              tag: "IA",
-              headline: "Vídeos avaliados por IA antes de chegar à marca",
-              summary: "Os vídeos dos creators eram conferidos manualmente contra o briefing. Com o volume crescendo, <mark>a revisão virou gargalo</mark>, o critério mudava de revisor para revisor e o creator só descobria o erro quando a marca reprovava, gerando retrabalho e atrasando a campanha. Construí o worker que avalia com IA cada vídeo antes de chegar à marca: ele confere cada requisito da campanha e devolve uma decisão com a justificativa por critério, então <strong>o creator sabe exatamente o que corrigir</strong>.",
-              flow: {
-                label: "Pipeline",
-                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Resultado da avaliação"],
-              },
-              points: [
-                "Cada requisito da campanha virou um critério separado para o modelo, com resposta estruturada por critério.",
-                "<strong>Reprovação determinística</strong> onde o modelo não deve decidir. O áudio é um exemplo: vídeo sem áudio, ou com a faixa de áudio muda, reprova nos critérios que dependem de fala sem chamar o modelo. Os outros critérios de reprovação são definidos pelo usuário em cada campanha.",
-                "Endureci os prompts depois de falsos positivos reais, como o modelo tendendo a aprovar critérios ambíguos.",
-                "<strong>Tudo auditável</strong>: cada decisão da IA fica registrada no fluxo de aprovação com a justificativa por critério, o modelo usado, a versão da configuração da campanha e os tokens gastos.",
-              ],
-              metrics: [
-                { value: "22 h → 19 s", label: "tempo mediano do envio à reprovação, curadoria manual → IA" },
-                { value: "~7,5 mil", label: "tokens por avaliação, em média" },
-                { value: "US$ 0,0035", label: "custo médio por avaliação" },
-              ],
-              stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
-            },
+            // {
+            //   title: "Hardening de segurança após pentest",
+            //   tag: "Segurança",
+            //   headline: "13 falhas corrigidas em 7 serviços",
+            //   summary: "Depois de um pentest externo, reforcei o <mark>isolamento de dados entre as empresas</mark> da plataforma em sete serviços.",
+            //   points: [
+            //     "Trabalhei em três classes do OWASP API Top 10: <a href=\"https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>BOLA/IDOR</strong></a>, broken access control e broken function-level authorization.",
+            //     "Coloquei a checagem de dono num guard compartilhado que roda <strong>antes</strong> da validação do payload, para que uma requisição negada nunca revele se o recurso existe nem devolva os dados dele.",
+            //     "Toda escrita passou a registrar quem fez a alteração (<code>updatedBy</code>).",
+            //     "Troquei um link de download que dependia da sessão de login por um token de curta duração preso a um único arquivo, para os links enviados por e-mail continuarem funcionando sem abrir a rota.",
+            //     "Validei cada correção reproduzindo a prova de conceito do pentest antes e depois.",
+            //   ],
+            //   metrics: [
+            //     { value: "13", label: "falhas corrigidas" },
+            //     { value: "7", label: "serviços" },
+            //   ],
+            //   stack: ["Node.js", "NestJS", "Hapi", "JWT", "Angular"],
+            // },
             {
               title: "Gerador de relatório de campanha",
               tag: "Refatoração",
