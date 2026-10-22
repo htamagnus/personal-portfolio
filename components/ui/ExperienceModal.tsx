@@ -17,20 +17,40 @@ interface ExperienceModalProps {
 
 export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
   const isOpen = experience !== null;
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const headerRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const scrollTarget = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.classList.add("overflow-hidden");
+    dialogRef.current?.focus();
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      const dialog = dialogRef.current;
+      if (e.key !== "Tab" || !dialog) return;
+      const focusable = dialog.querySelectorAll<HTMLElement>("a[href], button:not([disabled])");
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      const outside = active === dialog || !dialog.contains(active);
+      if (e.shiftKey && (active === first || outside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || outside)) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.classList.remove("overflow-hidden");
       window.removeEventListener("keydown", onKeyDown);
+      previouslyFocused?.focus();
     };
   }, [isOpen, onClose]);
 
@@ -53,10 +73,12 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
             className="fixed inset-0 z-[80] flex items-center justify-center p-2 md:p-4 pointer-events-none"
           >
             <div
+              ref={dialogRef}
               role="dialog"
               aria-modal="true"
               aria-label={experience.company}
-              className="bg-[#FCEEE3] w-full lg:max-w-[1200px] h-[92vh] md:max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden"
+              tabIndex={-1}
+              className="bg-[#FCEEE3] w-full lg:max-w-[1200px] h-[92vh] md:max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden focus:outline-none"
             >
               <div className="bg-neon-pink border-b-4 border-black p-2 flex justify-between items-center select-none">
                 <div className="flex items-center gap-1 md:gap-2 px-1 md:px-2">
@@ -132,8 +154,13 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                                 {String(index + 1).padStart(2, "0")}
                               </span>
                               <span className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                                <span className="font-display font-black uppercase text-base md:text-xl">
-                                  {highlight.title}
+                                <span className="flex flex-col gap-1 min-w-0">
+                                  <span className="font-display font-black uppercase text-base md:text-xl">
+                                    {highlight.title}
+                                  </span>
+                                  <span className="font-mono text-xs md:text-sm text-gray-700">
+                                    {highlight.headline}
+                                  </span>
                                 </span>
                                 <span className="self-start md:self-auto shrink-0 bg-neon-green border-2 border-black px-2 py-0.5 font-mono text-[10px] md:text-xs font-bold uppercase">
                                   {highlight.tag}

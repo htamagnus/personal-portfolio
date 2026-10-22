@@ -146,6 +146,7 @@ export const translations = {
             {
               title: "Eu Quero: da POC à produção",
               tag: "Produto",
+              headline: "Automação de DMs no Instagram, de ponta a ponta",
               summary: "O Eu Quero automatiza o Instagram dos creators de uma campanha: quando um seguidor comenta a palavra-chave num post do creator, ele responde em público e manda uma DM com o link rastreável do creator. Levei o produto de uma prova de conceito até produção.",
               flow: {
                 label: "Como funciona",
@@ -168,6 +169,7 @@ export const translations = {
             {
               title: "Migração do bulk import de recrutamentos",
               tag: "Migração",
+              headline: "-86,4% no tempo de resposta",
               summary: "Na minha primeira semana no novo time, assumi a migração de um microsserviço legado em Express.js, que gerava bugs com frequência, para TypeScript. A rota mais crítica era a de inserção de recrutamentos: ela podia receber até 10 mil de uma vez, mas o código legado tinha sido escrito para inserir um por vez.",
               points: [
                 "Levantei as regras de negócio e os edge cases do código legado antes de reescrever, indo atrás de documentação para entender o que a migração podia quebrar.",
@@ -186,6 +188,7 @@ export const translations = {
             {
               title: "O gargalo dos 11 mil perfis",
               tag: "Performance",
+              headline: "Importação 8,2× mais rápida, sem problemas de performance desde então",
               summary: "Com o volume crescendo, importações com mais de 10 mil perfis começaram a estourar o timeout. Em vez de chutar, fiz profiling do fluxo antes de mexer e corrigi em duas rodadas, medindo de novo depois de cada uma. Desde então, a feature não teve mais nenhum bug nem problema de performance.",
               points: [
                 "Profiling com <strong>Clinic.js Doctor e Flame</strong>: picos de event loop delay de ~700 ms e duas funções dominando a execução, ambas esperando o banco.",
@@ -205,6 +208,7 @@ export const translations = {
             {
               title: "Hardening de segurança após pentest",
               tag: "Segurança",
+              headline: "13 falhas corrigidas em 7 serviços",
               summary: "Depois de um pentest externo, reforcei o isolamento de dados entre as empresas da plataforma em sete serviços.",
               points: [
                 "Trabalhei em três classes do OWASP API Top 10: <strong>BOLA/IDOR</strong>, broken access control e broken function-level authorization.",
@@ -222,6 +226,7 @@ export const translations = {
             {
               title: "Pré-curadoria de conteúdo com IA",
               tag: "IA",
+              headline: "Vídeos avaliados por IA antes de chegar à marca",
               summary: "Construí o worker que avalia os vídeos dos creators com o Gemini antes de chegarem à marca. Ele confere cada requisito da campanha, como a escrita e a pronúncia da marca ou a presença de legendas, e devolve uma decisão com a justificativa de cada um.",
               flow: {
                 label: "Pipeline",
@@ -242,6 +247,7 @@ export const translations = {
             {
               title: "Gerador de relatório de campanha",
               tag: "Refatoração",
+              headline: "Foi para produção sem nenhum bug",
               summary: "Migrei e refatorei a rota que monta a apresentação de resultados de uma campanha no Google Slides, levando ela de um serviço legado em JavaScript para um em TypeScript. É um pipeline longo, passando por MongoDB, MySQL e três APIs do Google, e foi para produção sem nenhum bug.",
               flow: {
                 label: "O que a rota faz",
@@ -263,6 +269,7 @@ export const translations = {
             {
               title: "Mapa de microsserviços",
               tag: "Iniciativa",
+              headline: "44 serviços e 111 conexões mapeados automaticamente",
               summary: "Os microsserviços da empresa cresceram ao longo dos anos e ninguém tinha uma visão clara de quem chama quem. Numa migração de autenticação entre serviços, mapear essas dependências exigia busca manual repo por repo, então, por iniciativa própria, criei uma ferramenta que faz esse mapa automaticamente.",
               points: [
                 "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
@@ -283,6 +290,7 @@ export const translations = {
             {
               title: "Migração de autenticação M2M, e além do card",
               tag: "Segurança",
+              headline: "JWT assinado entre serviços e uma dependência arriscada removida",
               summary: "Dentro da migração da empresa para uma nova autenticação entre serviços, migrei as chamadas internas de um serviço para JWT assinado, e fui além do escopo do card no caminho.",
               points: [
                 "Implementei autenticação M2M com <strong>JWT assinado em RS256</strong>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
@@ -298,6 +306,7 @@ export const translations = {
             {
               title: "A data que voltava um dia",
               tag: "Bug",
+              headline: "D-1 → D, sem bugs de timezone desde então",
               summary: "O upload de conteúdo falhava quando a data escolhida era \"hoje\". O bug do back estava escondido atrás de um bug do front: o front quebrava antes, então a requisição nem chegava na API.",
               points: [
                 "Corrigi o front primeiro: quando a data era hoje, ela era tratada como número em vez de <code>Date</code>, diferente do resto do fluxo.",
