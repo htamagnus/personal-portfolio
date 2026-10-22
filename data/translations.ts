@@ -142,7 +142,7 @@ export const translations = {
           website: "https://squid.com.br",
           role: "Desenvolvedora Full Stack",
           period: "2023 - Atual",
-          description: "Construo e mantenho os microsserviços em Node.js + TypeScript de uma plataforma líder em marketing de influência: APIs REST, workers e jobs de ETL, com foco em estabilidade e performance.",
+          description: "Construo e mantenho os <strong>microsserviços em Node.js + TypeScript</strong> de uma plataforma líder em marketing de influência: APIs REST, workers e jobs de ETL, com foco em estabilidade e performance. Também sou responsável pela <strong>primeira triagem de bugs do time</strong>: recebo o que chega do suporte, garanto que o card está claro, entendo o problema e delego a correção para a pessoa certa, dando mais agilidade e qualidade às correções.",
           stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
           highlights: [
             {

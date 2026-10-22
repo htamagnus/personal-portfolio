@@ -67,7 +67,7 @@ export function Experience() {
                       {exp.period}
                     </span>
                   </div>
-                  <p className="mb-6 font-sans">{exp.description}</p>
+                  <p className="mb-6 font-sans" dangerouslySetInnerHTML={{ __html: exp.description }} />
                   <div className="flex flex-wrap gap-2">
                     {exp.stack.map((tech) => (
                       <span

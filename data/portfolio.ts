@@ -26,7 +26,7 @@ export const portfolioData = {
       website: "https://squid.com.br",
       role: "Full Stack Developer",
       period: "2023 - Present",
-      description: "Building and maintaining the Node.js + TypeScript microservices behind a leading influencer marketing platform: REST APIs, background workers and ETL jobs, with a focus on stability and performance.",
+      description: "Building and maintaining the <strong>Node.js + TypeScript microservices</strong> behind a leading influencer marketing platform: REST APIs, background workers and ETL jobs, with a focus on stability and performance. Also responsible for the team's <strong>first-line bug triage</strong>: taking issues from support, making sure each ticket is clear, understanding the problem and assigning the fix to the right person, which keeps fixes fast and high-quality.",
       stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
       highlights: [
         {
