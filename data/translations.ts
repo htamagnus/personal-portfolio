@@ -144,6 +144,27 @@ export const translations = {
           stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
           highlights: [
             {
+              title: "Mapa de microsserviços",
+              tag: "Iniciativa",
+              headline: "44 serviços e 111 conexões mapeados automaticamente",
+              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Essa informação não fica em um lugar só: está espalhada em chamadas HTTP dentro do código de cada repositório, feitas de jeitos diferentes. Sem esse mapa, mudar ou proteger uma rota significa descobrir na mão quem depende dela, e um chamador esquecido pode quebrar em produção. Numa migração de autenticação entre serviços, isso virou busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
+              points: [
+                "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
+                "<a href=\"https://refactoring.guru/pt-br/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
+                "Normalização de paths (<code>/users/123</code> → <code>/users/:id</code>) para agrupar chamadas equivalentes.",
+                "Grafo interativo para explorar qualquer serviço: quem chama ele e quem ele chama.",
+              ],
+              metrics: [
+                { value: "44", label: "serviços" },
+                { value: "111", label: "conexões" },
+                { value: "474", label: "endpoints" },
+              ],
+              image: "/experience/microservices-map.webp",
+              imageAlt: "Grafo interativo com um serviço no centro, os serviços que chamam ele à esquerda e os que ele chama à direita",
+              imageCaption: "Nomes dos serviços borrados por confidencialidade.",
+              stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
+            },
+            {
               title: "Eu Quero: da POC à produção",
               tag: "Produto",
               headline: "Automação de DMs no Instagram, de ponta a ponta",
@@ -264,27 +285,6 @@ export const translations = {
                 { value: "34", label: "arquivos refatorados" },
               ],
               stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
-            },
-            {
-              title: "Mapa de microsserviços",
-              tag: "Iniciativa",
-              headline: "44 serviços e 111 conexões mapeados automaticamente",
-              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Essa informação não fica em um lugar só: está espalhada em chamadas HTTP dentro do código de cada repositório, feitas de jeitos diferentes. Sem esse mapa, mudar ou proteger uma rota significa descobrir na mão quem depende dela, e um chamador esquecido pode quebrar em produção. Numa migração de autenticação entre serviços, isso virou busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
-              points: [
-                "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
-                "<a href=\"https://refactoring.guru/pt-br/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
-                "Normalização de paths (<code>/users/123</code> → <code>/users/:id</code>) para agrupar chamadas equivalentes.",
-                "Grafo interativo para explorar qualquer serviço: quem chama ele e quem ele chama.",
-              ],
-              metrics: [
-                { value: "44", label: "serviços" },
-                { value: "111", label: "conexões" },
-                { value: "474", label: "endpoints" },
-              ],
-              image: "/experience/microservices-map.webp",
-              imageAlt: "Grafo interativo com um serviço no centro, os serviços que chamam ele à esquerda e os que ele chama à direita",
-              imageCaption: "Nomes dos serviços borrados por confidencialidade.",
-              stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
             },
             {
               title: "Migração de autenticação M2M, e além do card",

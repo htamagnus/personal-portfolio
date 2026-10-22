@@ -30,6 +30,27 @@ export const portfolioData = {
       stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
       highlights: [
         {
+          title: "Microservices map",
+          tag: "Initiative",
+          headline: "44 services and 111 connections mapped automatically",
+          summary: "The company's microservices grew over the years and <strong>nobody had a clear picture of who calls whom</strong>. That information doesn't live in one place: it's spread across HTTP calls inside each repository's code, made in different ways. Without that map, changing or securing a route means finding out by hand who depends on it, and a forgotten caller can break in production. During a service-to-service auth migration, that turned into searching repo by repo, so, <mark>on my own initiative</mark>, I built a tool that maps them automatically.",
+          points: [
+            "Extractor based on <strong>static analysis (ts-morph)</strong> that reads each repository's HTTP clients and finds the source, target, method and path of every internal call.",
+            "<a href=\"https://refactoring.guru/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> to support both the team's standard client and legacy code calling <code>got</code>, <code>axios</code> or <code>fetch</code> directly.",
+            "Path normalization (<code>/users/123</code> → <code>/users/:id</code>) to group equivalent calls.",
+            "Interactive graph to explore any service: who calls it and who it calls.",
+          ],
+          metrics: [
+            { value: "44", label: "services" },
+            { value: "111", label: "connections" },
+            { value: "474", label: "endpoints" },
+          ],
+          image: "/experience/microservices-map.webp",
+          imageAlt: "Interactive graph showing a service in the center, the services that call it on the left and the ones it calls on the right",
+          imageCaption: "Service names blurred for confidentiality.",
+          stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
+        },
+        {
           title: "Eu Quero: from POC to production",
           tag: "Product",
           headline: "Instagram DM automation, built end to end",
@@ -150,27 +171,6 @@ export const portfolioData = {
             { value: "34", label: "files refactored" },
           ],
           stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
-        },
-        {
-          title: "Microservices map",
-          tag: "Initiative",
-          headline: "44 services and 111 connections mapped automatically",
-          summary: "The company's microservices grew over the years and <strong>nobody had a clear picture of who calls whom</strong>. That information doesn't live in one place: it's spread across HTTP calls inside each repository's code, made in different ways. Without that map, changing or securing a route means finding out by hand who depends on it, and a forgotten caller can break in production. During a service-to-service auth migration, that turned into searching repo by repo, so, <mark>on my own initiative</mark>, I built a tool that maps them automatically.",
-          points: [
-            "Extractor based on <strong>static analysis (ts-morph)</strong> that reads each repository's HTTP clients and finds the source, target, method and path of every internal call.",
-            "<a href=\"https://refactoring.guru/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> to support both the team's standard client and legacy code calling <code>got</code>, <code>axios</code> or <code>fetch</code> directly.",
-            "Path normalization (<code>/users/123</code> → <code>/users/:id</code>) to group equivalent calls.",
-            "Interactive graph to explore any service: who calls it and who it calls.",
-          ],
-          metrics: [
-            { value: "44", label: "services" },
-            { value: "111", label: "connections" },
-            { value: "474", label: "endpoints" },
-          ],
-          image: "/experience/microservices-map.webp",
-          imageAlt: "Interactive graph showing a service in the center, the services that call it on the left and the ones it calls on the right",
-          imageCaption: "Service names blurred for confidentiality.",
-          stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
         },
         {
           title: "M2M auth migration, and beyond the ticket",
