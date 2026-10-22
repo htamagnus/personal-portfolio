@@ -4,9 +4,11 @@ import { Section } from "@/components/ui/Section";
 import { Marquee } from "@/components/ui/Marquee";
 import { useLanguage } from "@/context/LanguageContext";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { motion, useReducedMotion } from "framer-motion";
 
 export function Skills() {
   const { t } = useLanguage();
+  const reduceMotion = useReducedMotion();
   const allSkills = [
     ...t.portfolio.skills.languages,
     ...t.portfolio.skills.frontend,
@@ -69,15 +71,30 @@ export function Skills() {
                customStrokeWidth={4}
             />
           </div> */}
-          <div className="bg-neon-blue border-3 border-black p-6 pt-10 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
-             <div className="absolute -top-5 left-1/2 -translate-x-1/2 md:left-auto md:-left-6 md:translate-x-0 md:-top-6 bg-black text-white px-3 py-2 md:px-4 md:py-2 font-display font-bold uppercase text-sm md:text-xl border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform -rotate-2 w-max max-w-[90%] text-center whitespace-normal">
+          <motion.div
+            initial={reduceMotion ? false : "hidden"}
+            whileInView="stuck"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { opacity: 0, scale: 1.15, rotate: -4, y: -40 },
+              stuck: { opacity: 1, scale: 1, rotate: 0, y: 0, transition: { type: "spring", stiffness: 260, damping: 16 } },
+            }}
+            className="bg-neon-blue border-3 border-black p-6 pt-10 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10"
+          >
+             <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 2, rotate: -15 },
+                stuck: { opacity: 1, scale: 1, rotate: 0, transition: { type: "spring", stiffness: 500, damping: 18, delay: 0.4 } },
+              }}
+              className="absolute -top-5 left-1/2 -translate-x-1/2 md:left-auto md:-left-6 md:translate-x-0 md:-top-6 bg-black text-white px-3 py-2 md:px-4 md:py-2 font-display font-bold uppercase text-sm md:text-xl border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform -rotate-2 w-max max-w-[90%] text-center whitespace-normal"
+             >
                 {t.skills.what_means_title}
-             </div>
-             <p 
+             </motion.div>
+             <p
               className="font-mono text-base md:text-xl leading-relaxed mt-2 md:mt-4 text-justify md:text-left"
               dangerouslySetInnerHTML={{ __html: t.skills.what_means_text }}
              ></p>
-          </div>
+          </motion.div>
         </div>
       </Section>
     </div>
