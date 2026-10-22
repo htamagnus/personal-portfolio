@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion, animate } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ChevronDown, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -209,6 +209,31 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
   );
 }
 
+function CountUp({ value, delay }: { value: string; delay: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const match = value.match(/^(-?)(\d+)([.,]\d+)?([%×]?)$/);
+    if (!match || reduceMotion) return;
+    const [, sign, int, frac = "", suffix] = match;
+    const decimals = Math.max(frac.length - 1, 0);
+    const format = (n: number) => sign + n.toFixed(decimals).replace(".", frac[0] ?? ".") + suffix;
+    if (ref.current) ref.current.textContent = format(0);
+    const controls = animate(0, Number(int + frac.replace(",", ".")), {
+      duration: 1.2,
+      delay,
+      ease: "easeOut",
+      onUpdate: (n) => {
+        if (ref.current) ref.current.textContent = format(n);
+      },
+    });
+    return () => controls.stop();
+  }, [value, delay, reduceMotion]);
+
+  return <span ref={ref}>{value}</span>;
+}
+
 function HighlightDetails({ highlight }: { highlight: Highlight }) {
   const { t, language } = useLanguage();
   const formatNumber = (n: number) => n.toLocaleString(language === "pt" ? "pt-BR" : "en-US");
@@ -230,7 +255,9 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
             transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.3 + i * 0.1 }}
             className="bg-neon-yellow border-2 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
-            <div className="font-display font-black text-xl md:text-3xl">{metric.value}</div>
+            <div className="font-display font-black text-xl md:text-3xl">
+              <CountUp value={metric.value} delay={0.3 + i * 0.1} />
+            </div>
             <div className="font-mono text-xs font-bold uppercase">{metric.label}</div>
           </motion.div>
         ))}
