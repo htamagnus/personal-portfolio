@@ -22,6 +22,8 @@ export const portfolioData = {
   experience: [
     {
       company: "Squid Creators",
+      about: "A tech company working in influencer marketing for over a decade, connecting brands to real results through data, creativity and a community of more than 300,000 certified creators.",
+      website: "https://squid.com.br",
       role: "Full Stack Developer",
       period: "2023 - Present",
       description: "Building and maintaining the Node.js + TypeScript microservices behind a leading influencer marketing platform: REST APIs, background workers and ETL jobs, with a focus on stability and performance.",
@@ -29,6 +31,7 @@ export const portfolioData = {
       highlights: [
         {
           title: "Eu Quero: from POC to production",
+          tag: "Product",
           summary: "Eu Quero automates Instagram for campaign creators: when a follower comments the campaign keyword on a creator's post, it replies publicly and sends a DM with the creator's trackable link. I drove it from a proof of concept to production.",
           flow: {
             label: "How it works",
@@ -50,6 +53,7 @@ export const portfolioData = {
         },
         {
           title: "Migrating the recruitment bulk import",
+          tag: "Migration",
           summary: "In my first week on the team I took over the migration of a legacy Express.js microservice that kept generating bugs, rewriting it in TypeScript. Its most critical route inserted new recruitments: it could receive up to 10,000 at once, but the legacy code was written to insert them one by one.",
           points: [
             "Mapped the business rules and edge cases of the legacy code before rewriting anything, digging through documentation to understand what the migration could break.",
@@ -67,6 +71,7 @@ export const portfolioData = {
         },
         {
           title: "The 11,000-profile bottleneck",
+          tag: "Performance",
           summary: "As volume grew, imports with more than 10,000 profiles started hitting the request timeout. Instead of guessing, I profiled the flow first and fixed it in two rounds, measuring again after each one. The feature hasn't had a bug or performance issue since.",
           points: [
             "Profiled with <strong>Clinic.js Doctor and Flame</strong>: event loop delay peaks of ~700 ms and two functions dominating the run, both waiting on the database.",
@@ -85,6 +90,7 @@ export const portfolioData = {
         },
         {
           title: "Security hardening after a pentest",
+          tag: "Security",
           summary: "After an external pentest, I strengthened data isolation between the companies on the platform across seven services.",
           points: [
             "Worked on three classes from the OWASP API Top 10: <strong>BOLA/IDOR</strong>, broken access control and broken function-level authorization.",
@@ -101,6 +107,7 @@ export const portfolioData = {
         },
         {
           title: "AI content pre-review",
+          tag: "AI",
           summary: "Built the worker that reviews creators' videos with Gemini before they reach the brand. It checks each campaign requirement, like how the brand is spelled and pronounced or whether there are subtitles, and returns a decision with the reasoning for each one.",
           flow: {
             label: "Pipeline",
@@ -121,6 +128,7 @@ export const portfolioData = {
         },
         {
           title: "Campaign report generator",
+          tag: "Refactor",
           summary: "Migrated and refactored the route that builds a campaign's results deck in Google Slides, moving it from a legacy JavaScript service into a TypeScript one. It's a long pipeline across MongoDB, MySQL and three Google APIs, and it shipped with zero bugs.",
           flow: {
             label: "What the route does",
@@ -141,6 +149,7 @@ export const portfolioData = {
         },
         {
           title: "Microservices map",
+          tag: "Initiative",
           summary: "The company's microservices grew over the years and nobody had a clear picture of who calls whom. During a service-to-service auth migration, mapping those dependencies meant searching repo by repo, so, on my own initiative, I built a tool that maps them automatically.",
           points: [
             "Extractor based on <strong>static analysis (ts-morph)</strong> that reads each repository's HTTP clients and finds the source, target, method and path of every internal call.",
@@ -160,6 +169,7 @@ export const portfolioData = {
         },
         {
           title: "M2M auth migration, and beyond the ticket",
+          tag: "Security",
           summary: "As part of a company-wide move to a new service-to-service authentication, I migrated a service's internal calls to signed JWTs, and went beyond the ticket's scope along the way.",
           points: [
             "Implemented M2M authentication with <strong>RS256-signed JWTs</strong>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
@@ -174,6 +184,7 @@ export const portfolioData = {
         },
         {
           title: "The date that slipped a day",
+          tag: "Bug fix",
           summary: "Uploading content with the date set to \"today\" was failing. The backend bug was hiding behind a frontend one: the frontend crashed first, so the request never reached the API.",
           points: [
             "Fixed the frontend first: when the date was today, it was handled as a number instead of a <code>Date</code>, unlike the rest of the flow.",
