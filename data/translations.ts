@@ -160,7 +160,6 @@ export const translations = {
                 "Integrei com o nosso produto: 9 rotas, um ciclo de vida da ativação com 7 estados, trava de palavra-chave entre campanhas e desligamento automático quando a campanha encerra.",
               ],
               metrics: [
-                { value: "30+", label: "PRs da POC ao release" },
                 { value: "~7 mil/min", label: "comentários por pod, em teste de carga" },
                 { value: "221 → 0,05 ms", label: "consulta de dedup com o índice certo" },
               ],
