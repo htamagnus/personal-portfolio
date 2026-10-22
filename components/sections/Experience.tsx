@@ -5,11 +5,15 @@ import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
-import { Github, Globe, ArrowUpRight } from "lucide-react";
+import { Github, Globe, ArrowUpRight, Maximize2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ExperienceModal, type Experience as ExperienceItem } from "@/components/ui/ExperienceModal";
+import { useCallback, useState } from "react";
 
 export function Experience() {
   const { t } = useLanguage();
+  const [selected, setSelected] = useState<ExperienceItem | null>(null);
+  const close = useCallback(() => setSelected(null), []);
 
   return (
     <div className="w-full bg-grid-pattern">
@@ -38,7 +42,13 @@ export function Experience() {
               }`}
             >
               <div className="flex-1 w-full">
-                <Card className="hover:bg-neon-yellow transition-colors duration-300 group">
+                <Card
+                  className={`hover:bg-neon-yellow transition-colors duration-300 group ${exp.highlights ? "cursor-pointer" : ""}`}
+                  role={exp.highlights ? "button" : undefined}
+                  tabIndex={exp.highlights ? 0 : undefined}
+                  onClick={exp.highlights ? () => setSelected(exp) : undefined}
+                  onKeyDown={exp.highlights ? (e) => e.key === "Enter" && setSelected(exp) : undefined}
+                >
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex flex-col items-start">
                       <h3 className="text-2xl font-display font-bold uppercase border-b-4 border-neon-pink inline-block mb-2">
@@ -64,7 +74,12 @@ export function Experience() {
                     ))}
                   </div>
 
-
+                  {exp.highlights && (
+                    <div className="mt-6 inline-flex items-center gap-2 bg-neon-pink border-2 border-black px-3 py-2 font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+                      <Maximize2 className="w-4 h-4" />
+                      {t.experience.view_highlights}
+                    </div>
+                  )}
                 </Card>
               </div>
               <div className="w-8 h-8 bg-neon-green border-4 border-black dark:border-white rounded-full z-10 hidden md:block"></div>
@@ -74,6 +89,8 @@ export function Experience() {
           ))}
         </div>
       </Section>
+
+      <ExperienceModal experience={selected} onClose={close} />
     </div>
   );
 }

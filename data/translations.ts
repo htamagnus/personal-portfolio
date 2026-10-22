@@ -27,7 +27,7 @@ export const translations = {
       since: "Since",
       journey_title: "My Journey",
       journey_p1: "I started my journey in 2021 as a <strong>Full Stack Javascript Developer</strong>, building complete web applications across both front end and back end. since then, i've been deepening my skills and staying aligned with the latest trends in modern web development.",
-      journey_p2: "Currently at <strong>Wake Creators (Squid)</strong>, i focus on creating scalable solutions for the creator economy. My background in Systems Analysis combined with practices like microservices and ci/cd helps me deliver stable, modern products with a strong focus on user experience."
+      journey_p2: "Currently at <strong>Squid Creators</strong>, i focus on creating scalable solutions for the creator economy. My background in Systems Analysis combined with practices like microservices and ci/cd helps me deliver stable, modern products with a strong focus on user experience."
     },
     skills: {
       title: "My Arsenal",
@@ -38,7 +38,10 @@ export const translations = {
     experience: {
       title: "XP",
       subtitle: "& Projects",
-      description: "Explore my professional journey and the projects that define my growth."
+      description: "Explore my professional journey and the projects that define my growth.",
+      view_highlights: "View highlights",
+      before: "Before",
+      after: "After"
     },
     projects: {
       title: "Selected",
@@ -88,7 +91,7 @@ export const translations = {
       since: "Desde",
       journey_title: "Minha Jornada",
       journey_p1: "Comecei minha jornada em 2021 como <strong>Desenvolvedora Full Stack JavaScript</strong>, criando aplicações completas no front-end e no back-end. Desde então, venho aprofundando minhas habilidades e acompanhando as inovações do ecossistema web.",
-      journey_p2: "Atualmente na <strong>Wake Creators (Squid)</strong>, trabalho na construção de soluções escaláveis para o mercado de influência. A combinação da minha formação em Análise e Desenvolvimento de Sistemas com práticas como microsserviços e CI/CD me ajuda a entregar produtos estáveis, modernos e focados em uma boa experiência para quem usa nossa plataforma."
+      journey_p2: "Atualmente na <strong>Squid Creators</strong>, trabalho na construção de soluções escaláveis para o mercado de influência. A combinação da minha formação em Análise e Desenvolvimento de Sistemas com práticas como microsserviços e CI/CD me ajuda a entregar produtos estáveis, modernos e focados em uma boa experiência para quem usa nossa plataforma."
     },
     skills: {
       title: "Meu Arsenal",
@@ -99,7 +102,10 @@ export const translations = {
     experience: {
       title: "XP",
       subtitle: "& Projetos",
-      description: "Explore minha jornada profissional e os projetos que definem meu crescimento."
+      description: "Explore minha jornada profissional e os projetos que definem meu crescimento.",
+      view_highlights: "Ver destaques",
+      before: "Antes",
+      after: "Depois"
     },
     projects: {
       title: "Projetos",
@@ -129,11 +135,172 @@ export const translations = {
       description: "Especializada em construir backends robustos com NestJS e frontends dinâmicos com Next.js. Criando experiências digitais que unem performance e estética.",
       experience: [
         {
-          company: "Wake Creators (Squid)",
+          company: "Squid Creators",
           role: "Desenvolvedora Full Stack",
           period: "2023 - Atual",
           description: "Construo e mantenho os microsserviços em Node.js + TypeScript de uma plataforma líder em marketing de influência: APIs REST, workers e jobs de ETL, com foco em estabilidade e performance.",
           stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
+          highlights: [
+            {
+              title: "Eu Quero: da POC à produção",
+              summary: "O Eu Quero automatiza o Instagram dos creators de uma campanha: quando um seguidor comenta a palavra-chave num post do creator, ele responde em público e manda uma DM com o link rastreável do creator. Levei o produto de uma prova de conceito até produção.",
+              flow: {
+                label: "Como funciona",
+                steps: ["Seguidor comenta a palavra-chave", "Webhook da Meta", "Acha a ativação do creator", "Resposta pública", "DM com link rastreável"],
+              },
+              points: [
+                "Migrei a persistência de Prisma/SQLite para <strong>Drizzle + PostgreSQL</strong> e modelei o schema compartilhado entre o produto e o Portal, com enums nativos e sem delete em cascata.",
+                "Integrei o Instagram pela plataforma da Meta: login com a conta que o creator já usa, webhook de comentários com validação de assinatura, e a resposta pública e a DM no mesmo fluxo.",
+                "Fiz um <strong>estudo de capacidade</strong> com harness de carga (Graph API mockada, webhooks assinados em taxa fixa). Ele achou o teto real por pod, mostrou que o limite da Meta de 750 DMs por hora por creator chega antes da nossa infra, e pegou um índice faltando que deixava a dedup mais lenta a cada evento gravado.",
+                "Montei a observabilidade: log estruturado, alertas por log, probes de liveness e readiness e shutdown sem perder o que está em processamento.",
+                "Integrei com o nosso produto: 9 rotas, um ciclo de vida da ativação com 7 estados, trava de palavra-chave entre campanhas e desligamento automático quando a campanha encerra.",
+              ],
+              metrics: [
+                { value: "30+", label: "PRs da POC ao release" },
+                { value: "~7 mil/min", label: "comentários por pod, em teste de carga" },
+                { value: "221 → 0,05 ms", label: "consulta de dedup com o índice certo" },
+              ],
+              stack: ["Node.js", "Express", "PostgreSQL", "Drizzle ORM", "Meta Graph API", "NestJS", "Kubernetes"],
+            },
+            {
+              title: "Migração do bulk import de recrutamentos",
+              summary: "Na minha primeira semana no novo time, assumi a migração de um microsserviço legado em Express.js, que gerava bugs com frequência, para TypeScript. A rota mais crítica era a de inserção de recrutamentos: ela podia receber até 10 mil de uma vez, mas o código legado tinha sido escrito para inserir um por vez.",
+              points: [
+                "Levantei as regras de negócio e os edge cases do código legado antes de reescrever, indo atrás de documentação para entender o que a migração podia quebrar.",
+                "Troquei a inserção perfil por perfil por <strong>processamento em lotes</strong>.",
+                "Adicionei <strong>cache</strong> para consultas que se repetiam durante a importação.",
+                "Tirei a gravação de logs do caminho crítico: ela era síncrona e segurava a resposta.",
+                "Ajustei o tratamento de erros: falhas pontuais davam <code>throw</code> e paravam a importação inteira, agora são registradas e o processo segue.",
+              ],
+              metrics: [
+                { value: "-86,4%", label: "tempo de resposta" },
+                { value: "6,6×", label: "mais rápido" },
+              ],
+              comparison: { label: "Tempo da requisição de bulk import (staging)", before: 35.5, after: 5.4, unit: "s" },
+              stack: ["TypeScript", "NestJS", "MongoDB"],
+            },
+            {
+              title: "O gargalo dos 11 mil perfis",
+              summary: "Com o volume crescendo, importações com mais de 10 mil perfis começaram a estourar o timeout. Em vez de chutar, fiz profiling do fluxo antes de mexer e corrigi em duas rodadas, medindo de novo depois de cada uma. Desde então, a feature não teve mais nenhum bug nem problema de performance.",
+              points: [
+                "Profiling com <strong>Clinic.js Doctor e Flame</strong>: picos de event loop delay de ~700 ms e duas funções dominando a execução, ambas esperando o banco.",
+                "Diagnóstico: um <strong>N+1 disfarçado de paralelismo</strong>. Cerca de 22 mil operações individuais disparadas de uma vez disputavam o mesmo connection pool do MongoDB.",
+                "Troquei por <code>bulkWrite</code> com <code>ordered: false</code> em chunks de 1.000.",
+                "Logs de auditoria em fire-and-forget, com lotes em paralelo e <code>.catch()</code> explícito para nenhum erro se perder.",
+                "No caminho, achei erros que um <code>Promise.allSettled</code> descartava em silêncio e passei a logar as falhas parciais do lote.",
+              ],
+              metrics: [
+                { value: "8,2×", label: "mais rápido" },
+                { value: "-87,8%", label: "tempo total" },
+                { value: "~22,7 mil → ~37", label: "idas ao banco" },
+              ],
+              comparison: { label: "Importação completa de 11.338 perfis (staging)", before: 464, after: 56.6, unit: "s" },
+              stack: ["Node.js", "MongoDB", "Clinic.js"],
+            },
+            {
+              title: "Hardening de segurança após pentest",
+              summary: "Depois de um pentest externo, reforcei o isolamento de dados entre as empresas da plataforma em sete serviços.",
+              points: [
+                "Trabalhei em três classes do OWASP API Top 10: <strong>BOLA/IDOR</strong>, broken access control e broken function-level authorization.",
+                "Coloquei a checagem de dono num guard compartilhado que roda <strong>antes</strong> da validação do payload, para que uma requisição negada nunca revele se o recurso existe nem devolva os dados dele.",
+                "Toda escrita passou a registrar quem fez a alteração (<code>updatedBy</code>).",
+                "Troquei um link de download que dependia da sessão de login por um token de curta duração preso a um único arquivo, para os links enviados por e-mail continuarem funcionando sem abrir a rota.",
+                "Validei cada correção reproduzindo a prova de conceito do pentest antes e depois.",
+              ],
+              metrics: [
+                { value: "13", label: "falhas corrigidas" },
+                { value: "7", label: "serviços" },
+              ],
+              stack: ["Node.js", "NestJS", "Hapi", "JWT", "Angular"],
+            },
+            {
+              title: "Pré-curadoria de conteúdo com IA",
+              summary: "Construí o worker que avalia os vídeos dos creators com o Gemini antes de chegarem à marca. Ele confere cada requisito da campanha, como a escrita e a pronúncia da marca ou a presença de legendas, e devolve uma decisão com a justificativa de cada um.",
+              flow: {
+                label: "Pipeline",
+                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "Gemini (Vertex AI)", "Score por critério"],
+              },
+              points: [
+                "Worker orientado a eventos no <strong>Pub/Sub</strong>, com um job sweeper que republica avaliações presas há mais de 10 minutos, com deduplicação.",
+                "Cada requisito da campanha virou um critério separado para o modelo, com resposta estruturada por critério.",
+                "<strong>Reprovação determinística</strong> onde o modelo não deve decidir: vídeo sem áudio reprova nos critérios de pronúncia sem chamar o Gemini, inclusive arquivos com faixa de áudio muda, detectada pelo volume.",
+                "Endureci os prompts depois de falsos positivos reais: o modelo confundia o áudio de referência da marca com a fala do vídeo e tendia a aprovar critérios ambíguos.",
+              ],
+              metrics: [
+                { value: "-60 dB", label: "abaixo disso, o áudio conta como mudo" },
+                { value: "10 min", label: "até uma avaliação presa ser reenviada" },
+              ],
+              stack: ["NestJS", "Gemini", "Vertex AI", "Pub/Sub", "PostgreSQL", "FFmpeg"],
+            },
+            {
+              title: "Gerador de relatório de campanha",
+              summary: "Migrei e refatorei a rota que monta a apresentação de resultados de uma campanha no Google Slides, levando ela de um serviço legado em JavaScript para um em TypeScript. É um pipeline longo, passando por MongoDB, MySQL e três APIs do Google, e foi para produção sem nenhum bug.",
+              flow: {
+                label: "O que a rota faz",
+                steps: ["Campanha (MongoDB)", "Métricas (MySQL)", "Copia template (Drive)", "Preenche slides (Slides)", "Gera gráficos (Sheets)", "Compartilha link"],
+              },
+              points: [
+                "Mudei a regra de quais slides aparecem: em vez de depender do tipo da campanha, cada seção só fica quando existem <strong>dados reais</strong> para preencher.",
+                "Passei a buscar as métricas direto no banco de BI, em vez de passar por outra API.",
+                "Removi parâmetros legados que o front nunca enviava e troquei os <strong>magic numbers</strong> da remoção de slides e do cálculo de CTR por lógica com nomes claros.",
+                "Adicionei erros personalizados para facilitar o debug, e testes unitários.",
+              ],
+              metrics: [
+                { value: "0", label: "bugs após o deploy" },
+                { value: "3", label: "APIs do Google orquestradas" },
+                { value: "34", label: "arquivos refatorados" },
+              ],
+              stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
+            },
+            {
+              title: "Mapa de microsserviços",
+              summary: "Os microsserviços da empresa cresceram ao longo dos anos e ninguém tinha uma visão clara de quem chama quem. Numa migração de autenticação entre serviços, mapear essas dependências exigia busca manual repo por repo, então, por iniciativa própria, criei uma ferramenta que faz esse mapa automaticamente.",
+              points: [
+                "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
+                "<strong>Strategy Pattern</strong> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
+                "Normalização de paths (<code>/users/123</code> → <code>/users/:id</code>) para agrupar chamadas equivalentes.",
+                "Grafo interativo para explorar qualquer serviço: quem chama ele e quem ele chama.",
+              ],
+              metrics: [
+                { value: "44", label: "serviços" },
+                { value: "111", label: "conexões" },
+                { value: "474", label: "endpoints" },
+              ],
+              image: "/experience/microservices-map.webp",
+              imageAlt: "Grafo interativo com um serviço no centro, os serviços que chamam ele à esquerda e os que ele chama à direita",
+              imageCaption: "Nomes dos serviços borrados por confidencialidade.",
+              stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
+            },
+            {
+              title: "Migração de autenticação M2M, e além do card",
+              summary: "Dentro da migração da empresa para uma nova autenticação entre serviços, migrei as chamadas internas de um serviço para JWT assinado, e fui além do escopo do card no caminho.",
+              points: [
+                "Implementei autenticação M2M com <strong>JWT assinado em RS256</strong>, substituindo o token estático antigo em todos os clients HTTP, e atualizei configmaps e secrets do Kubernetes em staging e produção.",
+                "Percebi que o serviço dependia de uma <strong>rota interna deprecada e com problemas de segurança</strong>. Não fazia sentido colocar autenticação numa rota que ia ser removida, então passei a buscar esse dado direto no banco com Drizzle ORM.",
+                "Removi o código legado da autenticação antiga.",
+              ],
+              metrics: [
+                { value: "RS256", label: "tokens assinados entre serviços" },
+                { value: "1", label: "dependência deprecada removida" },
+              ],
+              stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
+            },
+            {
+              title: "A data que voltava um dia",
+              summary: "O upload de conteúdo falhava quando a data escolhida era \"hoje\". O bug do back estava escondido atrás de um bug do front: o front quebrava antes, então a requisição nem chegava na API.",
+              points: [
+                "Corrigi o front primeiro: quando a data era hoje, ela era tratada como número em vez de <code>Date</code>, diferente do resto do fluxo.",
+                "Com isso resolvido, apareceu o problema real do back: o conteúdo era criado, mas aparecia no board com um dia a menos.",
+                "Pesquisei boas práticas de timezone e passei a ancorar datas sem horário ao <strong>meio-dia em vez da meia-noite</strong>. A meia-noite fica bem na virada do dia, então qualquer fuso negativo joga ela para o dia anterior; o meio-dia deixa 12 horas de margem para cada lado.",
+              ],
+              metrics: [
+                { value: "D-1 → D", label: "data exibida no board" },
+                { value: "±12h", label: "de margem até a data mudar" },
+                { value: "0", label: "bugs de timezone desde então" },
+              ],
+              stack: ["Node.js", "Hapi", "Angular"],
+            },
+          ],
         },
         {
           company: "RPG Project (Voluntário)",

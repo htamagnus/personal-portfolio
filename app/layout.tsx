@@ -105,7 +105,7 @@ export default function RootLayout({
     jobTitle: portfolioData.role,
     worksFor: {
       "@type": "Organization",
-      name: "Wake Creators (Squid)",
+      name: "Squid Creators",
     },
     description: portfolioData.description,
   };

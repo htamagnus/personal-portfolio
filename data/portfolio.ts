@@ -21,11 +21,173 @@ export const portfolioData = {
   },
   experience: [
     {
-      company: "Wake Creators (Squid)",
+      company: "Squid Creators",
       role: "Full Stack Developer",
       period: "2023 - Present",
       description: "Building and maintaining the Node.js + TypeScript microservices behind a leading influencer marketing platform: REST APIs, background workers and ETL jobs, with a focus on stability and performance.",
       stack: ["NodeJS", "TypeScript", "NestJS", "Hapi", "MongoDB", "MySQL", "PostgreSQL", "Redis", "Pub/Sub", "Kubernetes", "GCP", "Angular"],
+      highlights: [
+        {
+          title: "Eu Quero: from POC to production",
+          summary: "Eu Quero automates Instagram for campaign creators: when a follower comments the campaign keyword on a creator's post, it replies publicly and sends a DM with the creator's trackable link. I drove it from a proof of concept to production.",
+          flow: {
+            label: "How it works",
+            steps: ["Follower comments the keyword", "Meta webhook", "Match the creator's activation", "Public reply", "DM with trackable link"],
+          },
+          points: [
+            "Moved persistence from Prisma/SQLite to <strong>Drizzle + PostgreSQL</strong> and designed the schema shared by the product and the Portal, with native enums and no cascading deletes.",
+            "Integrated Instagram through the Meta platform: login with the creator's existing account, comment webhooks with signature validation, and the public reply and DM in a single flow.",
+            "Ran a <strong>capacity study</strong> with a load harness (mocked Graph API, signed webhooks at a fixed rate). It found the real ceiling per pod, showed that Meta's limit of 750 DMs per hour per creator hits before our infra does, and caught a missing index that made deduplication slower with every event stored.",
+            "Built the observability: structured logs, log-based alerts, liveness and readiness probes, and a graceful shutdown.",
+            "Integrated it into the Portal: 9 routes, a 7-state activation lifecycle, keyword collision checks across campaigns, and automatic shutdown when a campaign ends.",
+          ],
+          metrics: [
+            { value: "30+", label: "PRs from POC to release" },
+            { value: "~7k/min", label: "comments per pod, load tested" },
+            { value: "221 → 0.05 ms", label: "dedup query with the right index" },
+          ],
+          stack: ["Node.js", "Express", "PostgreSQL", "Drizzle ORM", "Meta Graph API", "NestJS", "Kubernetes"],
+        },
+        {
+          title: "Migrating the recruitment bulk import",
+          summary: "In my first week on the team I took over the migration of a legacy Express.js microservice that kept generating bugs, rewriting it in TypeScript. Its most critical route inserted new recruitments: it could receive up to 10,000 at once, but the legacy code was written to insert them one by one.",
+          points: [
+            "Mapped the business rules and edge cases of the legacy code before rewriting anything, digging through documentation to understand what the migration could break.",
+            "Replaced the profile-by-profile insertion with <strong>batch processing</strong>.",
+            "Added <strong>caching</strong> for lookups that repeated during the import.",
+            "Took log writes out of the critical path: they were synchronous and held the response.",
+            "Reworked error handling: isolated failures used to <code>throw</code> and stop the whole import, now they are logged and the process keeps going.",
+          ],
+          metrics: [
+            { value: "-86.4%", label: "response time" },
+            { value: "6.6×", label: "faster" },
+          ],
+          comparison: { label: "Bulk import request time (staging)", before: 35.5, after: 5.4, unit: "s" },
+          stack: ["TypeScript", "NestJS", "MongoDB"],
+        },
+        {
+          title: "The 11,000-profile bottleneck",
+          summary: "As volume grew, imports with more than 10,000 profiles started hitting the request timeout. Instead of guessing, I profiled the flow first and fixed it in two rounds, measuring again after each one. The feature hasn't had a bug or performance issue since.",
+          points: [
+            "Profiled with <strong>Clinic.js Doctor and Flame</strong>: event loop delay peaks of ~700 ms and two functions dominating the run, both waiting on the database.",
+            "Diagnosis: an <strong>N+1 disguised as parallelism</strong>. About 22,000 individual operations fired at once were competing for the same MongoDB connection pool.",
+            "Switched to <code>bulkWrite</code> with <code>ordered: false</code> in chunks of 1,000.",
+            "Made audit logs fire-and-forget, with parallel batches and an explicit <code>.catch()</code> so no error gets lost.",
+            "Along the way, found errors that a <code>Promise.allSettled</code> was silently swallowing and started logging partial batch failures.",
+          ],
+          metrics: [
+            { value: "8.2×", label: "faster" },
+            { value: "-87.8%", label: "total time" },
+            { value: "~22.7k → ~37", label: "database round trips" },
+          ],
+          comparison: { label: "Full import of 11,338 profiles (staging)", before: 464, after: 56.6, unit: "s" },
+          stack: ["Node.js", "MongoDB", "Clinic.js"],
+        },
+        {
+          title: "Security hardening after a pentest",
+          summary: "After an external pentest, I strengthened data isolation between the companies on the platform across seven services.",
+          points: [
+            "Worked on three classes from the OWASP API Top 10: <strong>BOLA/IDOR</strong>, broken access control and broken function-level authorization.",
+            "Put the ownership check in a shared guard that runs <strong>before</strong> payload validation, so a denied request never reveals whether the resource exists or returns its data.",
+            "Every write started recording who made the change (<code>updatedBy</code>).",
+            "Replaced a download link that relied on the login session with a short-lived token bound to a single file, so links sent by email kept working without opening the route.",
+            "Validated each fix by reproducing the pentest's proof of concept before and after.",
+          ],
+          metrics: [
+            { value: "13", label: "findings fixed" },
+            { value: "7", label: "services" },
+          ],
+          stack: ["Node.js", "NestJS", "Hapi", "JWT", "Angular"],
+        },
+        {
+          title: "AI content pre-review",
+          summary: "Built the worker that reviews creators' videos with Gemini before they reach the brand. It checks each campaign requirement, like how the brand is spelled and pronounced or whether there are subtitles, and returns a decision with the reasoning for each one.",
+          flow: {
+            label: "Pipeline",
+            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Gemini (Vertex AI)", "Score per criterion"],
+          },
+          points: [
+            "Event-driven worker on <strong>Pub/Sub</strong>, plus a sweeper job that republishes evaluations stuck for more than 10 minutes, with deduplication.",
+            "Each campaign requirement became its own criterion for the model, with a structured answer per criterion.",
+            "<strong>Deterministic rejection</strong> where the model shouldn't decide: videos without audio fail pronunciation checks without calling Gemini, including files with a silent audio track, detected by volume.",
+            "Hardened the prompts after real false positives: the model mistook the brand's reference audio for speech in the video, and leaned towards approving ambiguous criteria.",
+            "Found and fixed a bug where the model's evaluations were dropped before scoring, so content passed regardless of the answer.",
+          ],
+          metrics: [
+            { value: "-60 dB", label: "below this, audio counts as silent" },
+            { value: "10 min", label: "before a stuck evaluation is retried" },
+          ],
+          stack: ["NestJS", "Gemini", "Vertex AI", "Pub/Sub", "PostgreSQL", "FFmpeg"],
+        },
+        {
+          title: "Campaign report generator",
+          summary: "Migrated and refactored the route that builds a campaign's results deck in Google Slides, moving it from a legacy JavaScript service into a TypeScript one. It's a long pipeline across MongoDB, MySQL and three Google APIs, and it shipped with zero bugs.",
+          flow: {
+            label: "What the route does",
+            steps: ["Campaign (MongoDB)", "Metrics (MySQL)", "Copy template (Drive)", "Fill slides (Slides)", "Build charts (Sheets)", "Share link"],
+          },
+          points: [
+            "Changed the rule for which slides appear: instead of depending on the campaign type, each section is kept only when there is <strong>real data</strong> to fill it.",
+            "Read metrics straight from the BI database instead of going through another API.",
+            "Removed legacy parameters the frontend never sent, and replaced <strong>magic numbers</strong> in slide deletion and CTR calculation with named, readable logic.",
+            "Added custom errors for easier debugging, plus unit tests.",
+          ],
+          metrics: [
+            { value: "0", label: "bugs after release" },
+            { value: "3", label: "Google APIs orchestrated" },
+            { value: "34", label: "files refactored" },
+          ],
+          stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
+        },
+        {
+          title: "Microservices map",
+          summary: "The company's microservices grew over the years and nobody had a clear picture of who calls whom. During a service-to-service auth migration, mapping those dependencies meant searching repo by repo, so, on my own initiative, I built a tool that maps them automatically.",
+          points: [
+            "Extractor based on <strong>static analysis (ts-morph)</strong> that reads each repository's HTTP clients and finds the source, target, method and path of every internal call.",
+            "<strong>Strategy Pattern</strong> to support both the team's standard client and legacy code calling <code>got</code>, <code>axios</code> or <code>fetch</code> directly.",
+            "Path normalization (<code>/users/123</code> → <code>/users/:id</code>) to group equivalent calls.",
+            "Interactive graph to explore any service: who calls it and who it calls.",
+          ],
+          metrics: [
+            { value: "44", label: "services" },
+            { value: "111", label: "connections" },
+            { value: "474", label: "endpoints" },
+          ],
+          image: "/experience/microservices-map.webp",
+          imageAlt: "Interactive graph showing a service in the center, the services that call it on the left and the ones it calls on the right",
+          imageCaption: "Service names blurred for confidentiality.",
+          stack: ["NestJS", "ts-morph", "PostgreSQL", "Next.js", "React Flow"],
+        },
+        {
+          title: "M2M auth migration, and beyond the ticket",
+          summary: "As part of a company-wide move to a new service-to-service authentication, I migrated a service's internal calls to signed JWTs, and went beyond the ticket's scope along the way.",
+          points: [
+            "Implemented M2M authentication with <strong>RS256-signed JWTs</strong>, replacing the old static token in every HTTP client, and updated the Kubernetes configmaps and secrets for staging and production.",
+            "Noticed the service depended on a <strong>deprecated internal route with security concerns</strong>. Adding auth to a route scheduled for removal made no sense, so I moved that read straight to the database with Drizzle ORM.",
+            "Removed the legacy code left over from the old authentication.",
+          ],
+          metrics: [
+            { value: "RS256", label: "signed tokens between services" },
+            { value: "1", label: "deprecated dependency removed" },
+          ],
+          stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
+        },
+        {
+          title: "The date that slipped a day",
+          summary: "Uploading content with the date set to \"today\" was failing. The backend bug was hiding behind a frontend one: the frontend crashed first, so the request never reached the API.",
+          points: [
+            "Fixed the frontend first: when the date was today, it was handled as a number instead of a <code>Date</code>, unlike the rest of the flow.",
+            "With that out of the way, the real backend issue showed up: the content was created, but appeared on the board one day earlier.",
+            "Researched timezone best practices and anchored date-only values at <strong>noon instead of midnight</strong>. Midnight sits right on the day boundary, so a negative offset pushes it to the previous day; noon leaves a 12-hour margin either way.",
+          ],
+          metrics: [
+            { value: "D-1 → D", label: "date shown on the board" },
+            { value: "±12h", label: "margin before the date changes" },
+            { value: "0", label: "timezone bugs since" },
+          ],
+          stack: ["Node.js", "Hapi", "Angular"],
+        },
+      ],
     },
     {
       company: "RPG Project (Volunteer)",

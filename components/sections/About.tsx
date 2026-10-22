@@ -9,7 +9,7 @@ export function About() {
   const { t } = useLanguage();
 
   return (
-    <Section id="about" className="bg-transparent scroll-mt-20">
+    <Section id="about" className="bg-transparent scroll-mt-20 overflow-x-clip">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
