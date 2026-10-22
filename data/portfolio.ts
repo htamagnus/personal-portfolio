@@ -68,7 +68,7 @@ export const portfolioData = {
             { value: "6.6×", label: "faster" },
           ],
           comparison: { label: "Bulk import request time", before: 35.5, after: 5.4, unit: "s" },
-          stack: ["TypeScript", "NestJS", "MongoDB"],
+          stack: ["TypeScript", "NestJS", "MongoDB", "Redis"],
         },
         {
           title: "The 11,000-profile bottleneck",
