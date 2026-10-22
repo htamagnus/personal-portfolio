@@ -149,7 +149,7 @@ export const translations = {
               title: "Mapa de microsserviços",
               tag: "Iniciativa",
               headline: "44 serviços e 111 conexões mapeados automaticamente",
-              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Essa informação não fica em um lugar só: está espalhada em chamadas HTTP dentro do código de cada repositório, feitas de jeitos diferentes. Sem esse mapa, mudar ou proteger uma rota significa descobrir na mão quem depende dela, e um chamador esquecido pode quebrar em produção. Numa migração de autenticação entre serviços, isso virou busca manual repo por repo, então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
+              summary: "Os microsserviços da empresa cresceram ao longo dos anos e <strong>ninguém tinha uma visão clara de quem chama quem</strong>. Sem esse mapa, mudar ou proteger uma rota significa descobrir na mão quem depende dela, e um chamador esquecido pode quebrar em produção. Então, <mark>por iniciativa própria</mark>, criei uma ferramenta que faz esse mapa automaticamente.",
               points: [
                 "Extrator com <strong>análise estática (ts-morph)</strong> que lê os clients HTTP de cada repositório e identifica origem, destino, método e path de cada chamada interna.",
                 "<a href=\"https://refactoring.guru/pt-br/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> para suportar tanto o client padrão do time quanto código legado que chama <code>got</code>, <code>axios</code> ou <code>fetch</code> direto.",
@@ -171,7 +171,6 @@ export const translations = {
                 steps: ["Seguidor comenta a palavra-chave", "Webhook da Meta", "Acha a ativação do creator", "Resposta pública", "DM com link rastreável"],
               },
               points: [
-                "Migrei a persistência de Prisma/SQLite para <strong>Drizzle + PostgreSQL</strong> e modelei o schema compartilhado entre o produto e o Portal.",
                 "Integrei o Instagram pela plataforma da Meta: login com a conta que o creator já usa, webhook de comentários com validação de assinatura, e a resposta pública e a DM no mesmo fluxo.",
                 "Fiz um <strong>estudo de capacidade</strong> com harness de carga (Graph API mockada, webhooks assinados em taxa fixa). Ele achou o teto real por pod, mostrou que o limite da Meta de 750 DMs por hora por creator chega antes da nossa infra, e pegou um índice faltando que deixava a dedup mais lenta a cada evento gravado.",
                 "Montei a observabilidade: log estruturado, alertas por log, <a href=\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\" target=\"_blank\" rel=\"noopener noreferrer\">probes de liveness e readiness</a> e shutdown sem perder o que está em processamento.",

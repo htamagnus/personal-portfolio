@@ -295,7 +295,7 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
 
       {highlight.result && (
         <div className="border-2 border-black bg-[#FCEEE3] p-4 flex flex-col gap-3">
-          <span className="font-mono text-xs font-bold uppercase">{t.experience.result}</span>
+          <span className="font-mono text-sm font-black uppercase">{t.experience.result}</span>
           <p
             className="font-mono text-sm md:text-base leading-relaxed"
             dangerouslySetInnerHTML={{ __html: highlight.result }}

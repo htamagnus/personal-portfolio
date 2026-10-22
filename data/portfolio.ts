@@ -33,11 +33,10 @@ export const portfolioData = {
           title: "Microservices map",
           tag: "Initiative",
           headline: "44 services and 111 connections mapped automatically",
-          summary: "The company's microservices grew over the years and <strong>nobody had a clear picture of who calls whom</strong>. That information doesn't live in one place: it's spread across HTTP calls inside each repository's code, made in different ways. Without that map, changing or securing a route means finding out by hand who depends on it, and a forgotten caller can break in production. During a service-to-service auth migration, that turned into searching repo by repo, so, <mark>on my own initiative</mark>, I built a tool that maps them automatically.",
+          summary: "The company's microservices grew over the years and <strong>nobody had a clear picture of who calls whom</strong>. Without that map, changing or securing a route means finding out by hand who depends on it, and a forgotten caller can break in production. So, <mark>on my own initiative</mark>, I built a tool that generates this map automatically.",
           points: [
             "Extractor based on <strong>static analysis (ts-morph)</strong> that reads each repository's HTTP clients and finds the source, target, method and path of every internal call.",
             "<a href=\"https://refactoring.guru/design-patterns/strategy\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Strategy Pattern</strong></a> to support both the team's standard client and legacy code calling <code>got</code>, <code>axios</code> or <code>fetch</code> directly.",
-            "Path normalization (<code>/users/123</code> → <code>/users/:id</code>) to group equivalent calls.",
             "Interactive graph to explore any service: who calls it and who it calls.",
           ],
           result: "With the map, the whole dev team gained a quick way to check the impact of a fix or change to an API. That sped up development and <strong>greatly reduced the risk of changing some code and unknowingly breaking another API or flow that depended on it</strong>. It also made planning new initiatives and fixes easier, raising the quality of what the whole team ships.",
@@ -56,7 +55,6 @@ export const portfolioData = {
             steps: ["Follower comments the keyword", "Meta webhook", "Match the creator's activation", "Public reply", "DM with trackable link"],
           },
           points: [
-            "Moved persistence from Prisma/SQLite to <strong>Drizzle + PostgreSQL</strong> and designed the schema shared by the product and the Portal, with native enums and no cascading deletes.",
             "Integrated Instagram through the Meta platform: login with the creator's existing account, comment webhooks with signature validation, and the public reply and DM in a single flow.",
             "Ran a <strong>capacity study</strong> with a load harness (mocked Graph API, signed webhooks at a fixed rate). It found the real ceiling per pod, showed that Meta's limit of 750 DMs per hour per creator hits before our infra does, and caught a missing index that made deduplication slower with every event stored.",
             "Built the observability: structured logs, log-based alerts, <a href=\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\" target=\"_blank\" rel=\"noopener noreferrer\">liveness and readiness probes</a>, and a graceful shutdown.",
