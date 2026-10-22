@@ -18,6 +18,7 @@ interface ExperienceModalProps {
 export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
   const isOpen = experience !== null;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [interacted, setInteracted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const headerRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const scrollTarget = useRef<number | null>(null);
@@ -92,7 +93,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                 <button
                   onClick={onClose}
                   aria-label="Close"
-                  className="p-1.5 md:p-1 bg-red-500 hover:bg-red-600 text-white border-2 border-black transition-colors"
+                  className="p-1.5 md:p-1 bg-red-500 hover:bg-red-600 text-white border-2 border-black transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5 md:w-4 md:h-4" />
                 </button>
@@ -147,8 +148,9 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                               onClick={() => {
                                 scrollTarget.current = open ? null : index;
                                 setOpenIndex(open ? null : index);
+                                setInteracted(true);
                               }}
-                              className={`w-full flex items-center gap-3 md:gap-4 p-4 md:p-5 text-left transition-colors ${open ? "bg-neon-yellow" : "hover:bg-neon-yellow"}`}
+                              className={`w-full flex items-center gap-3 md:gap-4 p-4 md:p-5 text-left transition-colors cursor-pointer ${open ? "bg-neon-yellow" : "hover:bg-neon-yellow"}`}
                             >
                               <span className="font-mono font-black text-lg md:text-2xl bg-neon-pink text-black border-2 border-black px-2 shrink-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                                 {String(index + 1).padStart(2, "0")}
@@ -168,7 +170,8 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                               </span>
                               <ChevronDown
                                 aria-hidden
-                                className={`w-5 h-5 shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+                                style={{ animationDelay: `${index * 0.12}s` }}
+                                className={`w-5 h-5 shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""} ${interacted ? "" : "animate-nudge"}`}
                               />
                             </button>
                           </h3>

@@ -202,3 +202,18 @@ html {
 .animate-shimmer {
   animation: shimmer 2s infinite;
 }
+
+@keyframes nudge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-nudge {
+    animation: nudge 1.6s ease-in-out infinite;
+  }
+}
