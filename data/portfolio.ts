@@ -147,10 +147,7 @@ export const portfolioData = {
           result: "The deck now comes out <strong>with only the sections that have data for that campaign</strong>, no empty or out-of-context slides. The code became easier to understand and change, and the new version shipped with <strong>zero bugs</strong>.",
           points: [
             "Changed the rule for which slides appear: instead of depending on the campaign type, each section is kept only when there is <strong>real data</strong> to fill it.",
-            "Read metrics straight from the BI database instead of going through another API: one less dependency that can fail.",
-            "Removed legacy parameters the frontend never sent, and replaced <strong>magic numbers</strong> in slide deletion and CTR calculation with named, readable logic.",
-            "Added custom errors for easier debugging, plus unit tests.",
-          ],
+            "Read metrics straight from the BI database instead of going through another API: one less dependency that can fail.",          ],
           stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
         },
         // {
@@ -194,16 +191,10 @@ export const portfolioData = {
           title: "The date that slipped a day",
           tag: "Bug fix",
           headline: "D-1 → D, no timezone bugs since",
-          summary: "Uploading content with the date set to \"today\" was failing. Timezone bugs are sneaky: a calendar date like \"Oct 22\" has no time, but JavaScript's Date and the database store an exact instant. To convert, the code has to pick a time and a timezone, and if frontend, backend and database don't agree, <strong>the same date becomes different days</strong> depending on where it's read. Since the error only shows up in certain timezones and hours, it usually slips past tests. Here, the backend bug was also <mark>hiding behind a frontend one</mark>: the frontend crashed first, so the request never reached the API.",
+          summary: "Uploaded content showed up on the board <mark>one day earlier</mark> than the chosen date. Timezone bugs are sneaky: a date like \"Oct 22\" has no time, but JavaScript's Date and the database store an exact instant. If frontend, backend and database don't agree on the time and timezone used in that conversion, <strong>the same date becomes different days</strong> depending on where it's read. And since the error only shows up in certain timezones and hours, it usually slips past tests.",
+          result: "Content now shows up on the board on the right day. Since this kind of bug can come back in any flow that handles dates, <strong>I shared what I learned with the team</strong>: why the date shifts a day and how anchoring at noon prevents it.",
           points: [
-            "Fixed the frontend first: when the date was today, it was handled as a number instead of a <code>Date</code>, unlike the rest of the flow.",
-            "With that out of the way, the real backend issue showed up: the content was created, but appeared on the board one day earlier.",
             "Researched timezone best practices and anchored date-only values at <strong>noon instead of midnight</strong>. Midnight sits right on the day boundary, so a negative offset pushes it to the previous day; noon leaves a 12-hour margin either way.",
-          ],
-          metrics: [
-            { value: "D-1 → D", label: "date shown on the board" },
-            { value: "±12h", label: "margin before the date changes" },
-            { value: "0", label: "timezone bugs since" },
           ],
           stack: ["Node.js", "Hapi", "Angular"],
         },

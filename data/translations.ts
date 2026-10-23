@@ -268,10 +268,7 @@ export const translations = {
               result: "A apresentação passou a sair <strong>só com as seções que têm dados daquela campanha</strong>, sem slides vazios ou fora de contexto. O código ficou mais fácil de entender e de mudar, e a nova versão foi para produção <strong>sem nenhum bug</strong>.",
               points: [
                 "Mudei a regra de quais slides aparecem: em vez de depender do tipo da campanha, cada seção só fica quando existem <strong>dados reais</strong> para preencher.",
-                "Passei a buscar as métricas direto no banco de BI, em vez de passar por outra API: uma dependência a menos para falhar.",
-                "Removi parâmetros legados que o front nunca enviava e troquei os <strong>magic numbers</strong> da remoção de slides e do cálculo de CTR por lógica com nomes claros.",
-                "Adicionei erros personalizados para facilitar o debug, e testes unitários.",
-              ],
+                "Passei a buscar as métricas direto no banco de BI, em vez de passar por outra API: uma dependência a menos para falhar.",              ],
               stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
             },
             // {
@@ -315,16 +312,10 @@ export const translations = {
               title: "A data que voltava um dia",
               tag: "Bug",
               headline: "D-1 → D, sem bugs de timezone desde então",
-              summary: "O upload de conteúdo falhava quando a data escolhida era \"hoje\". Bug de timezone é traiçoeiro: uma data de calendário, como \"22/10\", não tem horário, mas o Date do JavaScript e o banco guardam um instante exato. Para converter, o código precisa escolher uma hora e um fuso, e se front, back e banco não concordam, <strong>a mesma data vira dias diferentes</strong> dependendo de onde é lida. Como o erro só aparece em certos fusos e horários, ele costuma passar nos testes. Aqui, o bug do back ainda estava <mark>escondido atrás de um bug do front</mark>: o front quebrava antes, então a requisição nem chegava na API.",
+              summary: "O conteúdo enviado aparecia no board <mark>com um dia a menos</mark> do que a data escolhida. Bug de timezone é traiçoeiro: uma data como \"22/10\" não tem horário, mas o Date do JavaScript e o banco guardam um instante exato. Se front, back e banco não concordam na hora e no fuso usados nessa conversão, <strong>a mesma data vira dias diferentes</strong> dependendo de onde é lida. E como o erro só aparece em certos fusos e horários, ele costuma passar nos testes.",
+              result: "O conteúdo passou a aparecer no board na data certa. Como esse tipo de bug pode voltar em qualquer fluxo que lida com datas, <strong>compartilhei com o time o que aprendi</strong>: por que a data muda de dia e como ancorar ao meio-dia evita isso.",
               points: [
-                "Corrigi o front primeiro: quando a data era hoje, ela era tratada como número em vez de <code>Date</code>, diferente do resto do fluxo.",
-                "Com isso resolvido, apareceu o problema real do back: o conteúdo era criado, mas aparecia no board com um dia a menos.",
                 "Pesquisei boas práticas de timezone e passei a ancorar datas sem horário ao <strong>meio-dia em vez da meia-noite</strong>. A meia-noite fica bem na virada do dia, então qualquer fuso negativo joga ela para o dia anterior; o meio-dia deixa 12 horas de margem para cada lado.",
-              ],
-              metrics: [
-                { value: "D-1 → D", label: "data exibida no board" },
-                { value: "±12h", label: "de margem até a data mudar" },
-                { value: "0", label: "bugs de timezone desde então" },
               ],
               stack: ["Node.js", "Hapi", "Angular"],
             },
