@@ -131,7 +131,7 @@ export function Projects() {
                     />
                     <div className="absolute top-3 right-3 bg-neon-pink border-2 border-black px-3 py-2 font-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2">
                       <Maximize2 className="w-4 h-4" />
-                      <span className="hidden sm:inline">Ver Detalhes</span>
+                      <span className="hidden sm:inline">{t.projects.view_details}</span>
                     </div>
                   </div>
                 )}
@@ -188,6 +188,23 @@ export function Projects() {
               </Card>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <motion.a
+            href={t.portfolio.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0.5, rotate: -8 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 400, damping: 14 }}
+            className="inline-flex items-center gap-2 bg-white text-black border-2 border-black px-6 py-3 font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-[translate,box-shadow]"
+          >
+            <Github className="w-5 h-5 shrink-0" />
+            {t.projects.more_on_github}
+            <ArrowUpRight className="w-4 h-4 shrink-0" />
+          </motion.a>
         </div>
       </Section>
 

@@ -47,7 +47,9 @@ export const translations = {
     projects: {
       title: "Selected",
       subtitle: "Projects",
-      description: "A collection of personal projects and freelance work that showcase my creativity and technical skills."
+      description: "A collection of personal projects and freelance work that showcase my creativity and technical skills.",
+      view_details: "View details",
+      more_on_github: "More projects on GitHub"
     },
     contact: {
       success_title: "Message Sent!",
@@ -113,7 +115,9 @@ export const translations = {
     projects: {
       title: "Projetos",
       subtitle: "Selecionados",
-      description: "Uma coleção de projetos pessoais e trabalhos freelance que demonstram minha criatividade e habilidades técnicas."
+      description: "Uma coleção de projetos pessoais e trabalhos freelance que demonstram minha criatividade e habilidades técnicas.",
+      view_details: "Ver detalhes",
+      more_on_github: "Mais projetos no GitHub"
     },
     contact: {
       success_title: "Mensagem Enviada!",
@@ -190,19 +194,12 @@ export const translations = {
               tag: "Produto",
               headline: "Automação de DMs no Instagram, de ponta a ponta",
               summary: "Numa campanha com vários creators, a marca <strong>não conseguia medir quantas conversões vinham de cada um</strong>. O Eu Quero resolve isso automatizando o Instagram dos creators: quando um seguidor comenta a palavra-chave num post, ele responde em público e manda uma DM com o link rastreável daquele creator. Levei o produto de uma <mark>prova de conceito até produção</mark>.",
-              flow: {
-                label: "Como funciona",
-                steps: ["Seguidor comenta a palavra-chave", "Webhook da Meta", "Acha a ativação do creator", "Resposta pública", "DM com link rastreável"],
-              },
+              result: "O Eu Quero está em produção e <strong>a marca passou a saber quantas conversões vieram de cada creator</strong>. Também me preocupei em entender quanto a nossa infra aguentaria, e fiz testes de carga para medir isso.",
               points: [
-                "Integrei o Instagram pela plataforma da Meta: login com a conta que o creator já usa, webhook de comentários com validação de assinatura, e a resposta pública e a DM no mesmo fluxo.",
-                "Fiz um <strong>estudo de capacidade</strong> com harness de carga (Graph API mockada, webhooks assinados em taxa fixa). Ele achou o teto real por pod, mostrou que o limite da Meta de 750 DMs por hora por creator chega antes da nossa infra, e pegou um índice faltando que deixava a dedup mais lenta a cada evento gravado.",
-                "Montei a observabilidade: log estruturado, alertas por log, <a href=\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\" target=\"_blank\" rel=\"noopener noreferrer\">probes de liveness e readiness</a> e shutdown sem perder o que está em processamento.",
-                "Integrei com o nosso produto: 9 rotas, um ciclo de vida da ativação com 7 estados.",
-              ],
-              metrics: [
-                { value: "~7 mil/min", label: "comentários por pod, em teste de carga" },
-                { value: "221 → 0,05 ms", label: "consulta de dedup com o índice certo" },
+                "Integrei o Instagram pela plataforma da Meta: o creator entra com a conta que já usa, o sistema recebe cada comentário na hora (e confere a assinatura para garantir que veio mesmo da Meta) e manda a resposta pública e a DM no mesmo fluxo.",
+                "Fiz um <strong>teste de carga</strong> simulando a Meta para descobrir quanto o sistema aguenta: cada pod processa cerca de 7 mil comentários por minuto.",
+                "Deixei o serviço pronto para produção: <strong>logs e alertas</strong> que avisam o time quando algo falha, <a href=\"https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/\" target=\"_blank\" rel=\"noopener noreferrer\">health checks</a> para o Kubernetes reiniciar o serviço se ele travar e desligamento seguro, sem perder comentários no meio de um deploy.",
+                "Conectei o Eu Quero ao nosso produto principal, para as ativações dos creators serem criadas e acompanhadas por lá.",
               ],
               stack: ["Node.js", "Express", "PostgreSQL", "Drizzle ORM", "Meta Graph API", "NestJS", "Kubernetes"],
             },
