@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { BrowserWindow } from "@/components/ui/BrowserWindow";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { ArrowUpRight } from "lucide-react";
 
 export function About() {
   const { t } = useLanguage();
@@ -30,8 +31,20 @@ export function About() {
                  </div>
                  <div className="border-2 border-black dark:border-white p-4 bg-neon-blue text-black">
                    <span className="block text-sm font-bold uppercase">{t.about.education}</span>
-                   <span className="text-xl font-display font-bold">{t.portfolio.education.status}</span>
+                   <span className="block text-xl font-display font-bold">{t.portfolio.education.degree}</span>
+                   <span className="text-sm font-bold">{t.portfolio.education.institution} · {t.portfolio.education.status}</span>
                  </div>
+                 <a
+                   href={t.portfolio.certification.url}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="sm:col-span-2 border-2 border-black dark:border-white p-4 bg-neon-green text-black hover:bg-neon-pink transition-colors"
+                 >
+                   <span className="block text-sm font-bold uppercase">{t.about.certification}</span>
+                   <span className="text-xl font-display font-bold">
+                     {t.portfolio.certification.name} <ArrowUpRight className="inline w-5 h-5" aria-hidden />
+                   </span>
+                 </a>
                </div>
             </BrowserWindow>
         </motion.div>

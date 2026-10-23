@@ -24,6 +24,7 @@ export const translations = {
       title: "About Me",
       experience: "Experience",
       education: "Education",
+      certification: "Certification",
       since: "Since",
       journey_title: "My Journey",
       journey_p1: "I started my journey in 2021 as a <strong>Full Stack JavaScript Developer</strong>, building complete web applications across both front end and back end. Since then, I've been deepening my skills and staying aligned with the latest trends in modern web development.",
@@ -93,6 +94,7 @@ export const translations = {
       title: "Sobre Mim",
       experience: "Experiência",
       education: "Formação",
+      certification: "Certificação",
       since: "Desde",
       journey_title: "Minha Jornada",
       journey_p1: "Comecei minha jornada em 2021 como <strong>Desenvolvedora Full Stack JavaScript</strong>, criando aplicações completas no front-end e no back-end. Desde então, venho aprofundando minhas habilidades e acompanhando as inovações do ecossistema web.",
@@ -174,10 +176,10 @@ export const translations = {
               tag: "IA",
               headline: "Vídeos avaliados por IA antes de chegar à marca",
               summary: "Os vídeos dos creators eram conferidos manualmente contra o briefing. Com o volume crescendo, <mark>a revisão virou gargalo</mark>, o critério mudava de revisor para revisor e o creator só descobria o erro quando a marca reprovava, gerando retrabalho e atrasando a campanha. Construí o worker que avalia com IA cada vídeo antes de chegar à marca: ele confere cada requisito da campanha e devolve uma decisão com a justificativa por critério, então <strong>o creator sabe exatamente o que corrigir</strong>.",
-              flow: {
-                label: "Pipeline",
-                steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Resultado da avaliação"],
-              },
+              // flow: {
+              //   label: "Pipeline",
+              //   steps: ["Vídeo transcodificado", "Pub/Sub", "Worker de IA", "LLM multimodal", "Resultado da avaliação"],
+              // },
               points: [
                 "Cada requisito da campanha virou um critério separado para o modelo, com resposta estruturada por critério.",
                 "<strong>Reprovação determinística</strong> onde o modelo não deve decidir. O áudio é um exemplo: vídeo sem áudio, ou com a faixa de áudio muda, reprova nos critérios que dependem de fala sem chamar o modelo. Os outros critérios de reprovação são definidos pelo usuário em cada campanha.",
@@ -189,6 +191,7 @@ export const translations = {
                 { value: "~7,5 mil", label: "tokens por avaliação, em média" },
                 { value: "US$ 0,0035", label: "custo médio por avaliação" },
               ],
+              result: "O creator passou a saber o que corrigir em segundos, antes de o vídeo chegar à marca. A PM do projeto contou o lado de produto dessa construção <a href=\"https://www.linkedin.com/feed/update/urn:li:ugcPost:7491206597931892738/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>neste post no LinkedIn</strong></a>.",
               stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
             },
             {
@@ -413,6 +416,7 @@ export const translations = {
       ],
       education: {
         degree: "Análise e Desenvolvimento de Sistemas",
+        institution: "ULBRA",
         status: "Graduada",
       },
     }

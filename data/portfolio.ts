@@ -51,10 +51,10 @@ export const portfolioData = {
           tag: "AI",
           headline: "Videos reviewed by AI before reaching the brand",
           summary: "Creators' videos were checked manually against the campaign brief. As volume grew, <mark>review became a bottleneck</mark>, criteria varied from reviewer to reviewer, and creators only found out about a problem when the brand rejected the video, causing rework and delaying campaigns. Built the worker that uses AI to review each video before it reaches the brand: it checks every campaign requirement and returns a decision with the reasoning per criterion, so <strong>the creator knows exactly what to fix</strong>.",
-          flow: {
-            label: "Pipeline",
-            steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Evaluation result"],
-          },
+          // flow: {
+          //   label: "Pipeline",
+          //   steps: ["Video transcoded", "Pub/Sub", "AI worker", "Multimodal LLM", "Evaluation result"],
+          // },
           points: [
             "Each campaign requirement became its own criterion for the model, with a structured answer per criterion.",
             "<strong>Deterministic rejection</strong> where the model shouldn't decide. Audio is one example: a video with no audio, or with a silent audio track, fails the speech-dependent criteria without calling the model. The other rejection criteria are defined by the user for each campaign.",
@@ -66,6 +66,7 @@ export const portfolioData = {
             { value: "~7.5k", label: "tokens per evaluation, on average" },
             { value: "$0.0035", label: "average cost per evaluation" },
           ],
+          result: "Creators now learn what to fix within seconds, before the video reaches the brand. The project's PM shared the product side of this build <a href=\"https://www.linkedin.com/feed/update/urn:li:ugcPost:7491206597931892738/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>in this LinkedIn post</strong></a>.",
           stack: ["NestJS", "LLM", "Pub/Sub", "PostgreSQL", "FFmpeg"],
         },
         {
@@ -290,6 +291,11 @@ export const portfolioData = {
   ],
   education: {
     degree: "Systems Analysis and Development",
+    institution: "ULBRA",
     status: "Graduated",
+  },
+  certification: {
+    name: "AWS Certified Cloud Practitioner",
+    url: "https://www.credly.com/badges/8b25e9e7-d5c4-45b5-8687-a8f978fc26d1/public_url",
   },
 };

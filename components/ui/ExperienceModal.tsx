@@ -297,7 +297,7 @@ function HighlightDetails({ highlight }: { highlight: Highlight }) {
         <div className="border-2 border-black bg-[#FCEEE3] p-4 flex flex-col gap-3">
           <span className="font-mono text-sm font-black uppercase">{t.experience.result}</span>
           <p
-            className="font-mono text-sm md:text-base leading-relaxed"
+            className="font-mono text-sm md:text-base leading-relaxed [&_a]:underline [&_a]:decoration-2 [&_a]:decoration-neon-pink [&_a]:underline-offset-4 [&_a:hover]:bg-neon-pink"
             dangerouslySetInnerHTML={{ __html: highlight.result }}
           />
         </div>
