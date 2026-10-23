@@ -5,6 +5,7 @@ import { X, Github, Globe, ArrowUpRight, Maximize2, Minus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ProjectLink {
   label: string;
@@ -17,6 +18,7 @@ interface Project {
   role: string;
   period: string;
   infoProject: string;
+  result?: string;
   stack: string[];
   links: ProjectLink[];
   thumbnail?: string;
@@ -35,6 +37,7 @@ interface ProjectModalProps {
 
 export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (isOpen) {
@@ -149,9 +152,18 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                         </h3>
                         <div 
                           className="font-mono text-lg leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: project.infoProject }} 
+                          dangerouslySetInnerHTML={{ __html: project.infoProject }}
                         />
                       </div>
+                      {project.result && (
+                        <div className="mt-6 border-2 border-black bg-[#FCEEE3] p-4 flex flex-col gap-3">
+                          <span className="font-mono text-sm font-black uppercase">{t.experience.result}</span>
+                          <p
+                            className="font-mono text-sm md:text-base leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: project.result }}
+                          />
+                        </div>
+                      )}
                     </div>
 
                     <div className="md:col-span-1">

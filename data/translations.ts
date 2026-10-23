@@ -26,14 +26,14 @@ export const translations = {
       education: "Education",
       since: "Since",
       journey_title: "My Journey",
-      journey_p1: "I started my journey in 2021 as a <strong>Full Stack Javascript Developer</strong>, building complete web applications across both front end and back end. since then, i've been deepening my skills and staying aligned with the latest trends in modern web development.",
-      journey_p2: "Currently at <strong>Squid Creators</strong>, i focus on creating scalable solutions for the creator economy. My background in Systems Analysis combined with practices like microservices and ci/cd helps me deliver stable, modern products with a strong focus on user experience."
+      journey_p1: "I started my journey in 2021 as a <strong>Full Stack JavaScript Developer</strong>, building complete web applications across both front end and back end. Since then, I've been deepening my skills and staying aligned with the latest trends in modern web development.",
+      journey_p2: "Today at <strong>Squid Creators</strong>, I work mostly on the back end, on the platform's Node.js and TypeScript microservices. I've taken a product from proof of concept to production and cut an 11,000-profile import from almost 8 minutes to under 1. I also built AI-powered video review, which cut the time until a creator knows what to fix from <strong>22 hours to 19 seconds</strong>."
     },
     skills: {
       title: "My Arsenal",
       subtitle: "Technologies & Tools",
       what_means_title: "Okay, but what does this mean?",
-      what_means_text: "It means i <em>don’t just write code</em>. I build complete solutions, from <strong>scalable APIs</strong> that handle thousands of users to <strong>fast and intuitive interfaces</strong> that keep them engaged. I take technical complexity and turn it into simple, efficient and <strong>growth-ready products</strong>."
+      what_means_text: "It means I don't stop at the code: <strong>I understand the problem before writing the solution</strong>, measure before optimizing and follow the work until it <strong>runs well in production</strong>, whether it's a microservice or an interface."
     },
     experience: {
       title: "XP",
@@ -91,17 +91,17 @@ export const translations = {
     about: {
       title: "Sobre Mim",
       experience: "Experiência",
-      education: "Educação",
+      education: "Formação",
       since: "Desde",
       journey_title: "Minha Jornada",
       journey_p1: "Comecei minha jornada em 2021 como <strong>Desenvolvedora Full Stack JavaScript</strong>, criando aplicações completas no front-end e no back-end. Desde então, venho aprofundando minhas habilidades e acompanhando as inovações do ecossistema web.",
-      journey_p2: "Atualmente na <strong>Squid Creators</strong>, trabalho na construção de soluções escaláveis para o mercado de influência. A combinação da minha formação em Análise e Desenvolvimento de Sistemas com práticas como microsserviços e CI/CD me ajuda a entregar produtos estáveis, modernos e focados em uma boa experiência para quem usa nossa plataforma."
+      journey_p2: "Hoje, na <strong>Squid Creators</strong>, trabalho principalmente no back-end, nos microsserviços em Node.js e TypeScript da plataforma. Já levei um produto da prova de conceito à produção e reduzi uma importação de 11 mil perfis de quase 8 minutos para menos de 1. Também construí a avaliação de vídeos com IA, que reduziu de <strong>22 horas para 19 segundos</strong> o tempo até o creator saber o que corrigir."
     },
     skills: {
       title: "Meu Arsenal",
       subtitle: "Tecnologias & Ferramentas",
       what_means_title: "Ok, mas o que isso significa?",
-      what_means_text: "Significa que além de escrever código, eu crio <strong>soluções completas</strong>: desde <strong>APIs escaláveis</strong> que atendem milhares de usuários até <strong>interfaces rápidas</strong> e intuitivas que engajam de verdade. Eu pego complexidade técnica e transformo em produtos simples, eficientes e <strong>prontos para crescer</strong>."
+      what_means_text: "Significa que eu não paro no código: <strong>entendo o problema antes de escrever a solução</strong>, meço antes de otimizar e acompanho a entrega até ela <strong>rodar bem em produção</strong>, seja num microsserviço ou numa interface."
     },
     experience: {
       title: "XP",
@@ -139,8 +139,8 @@ export const translations = {
     },
     portfolio: {
       ...originalData,
-      role: "Desenvolvedora FullStack",
-      description: "Especializada em construir backends robustos com NestJS e frontends dinâmicos com Next.js. Criando experiências digitais que unem performance e estética.",
+      role: "Desenvolvedora Full Stack",
+      description: "No trabalho, meu foco é o back-end: APIs e microsserviços em Node.js e TypeScript, com atenção a performance e estabilidade. Nos freelas, levo esse cuidado para o front-end, criando interfaces com Next.js que unem performance e estética.",
       experience: [
         {
           company: "Squid Creators",
@@ -318,7 +318,7 @@ export const translations = {
           company: "RPG Project (Voluntário)",
           role: "Líder de Equipe",
           period: "Anterior",
-          description: "Liderei uma equipe para construir uma plataforma conectando jogadores de RPG. Gerenciei backlog, refinei tarefas e garanti a qualidade do código.",
+          description: "Liderei um time pequeno e júnior, que ainda estava se estabilizando, na construção de uma plataforma para conectar jogadores de RPG. O desafio era manter o projeto andando enquanto o time ganhava experiência: organizei o backlog, refinei as tarefas para ficarem claras e revisei o código para manter a qualidade.",
           stack: ["React", "NodeJS", "Docker", "Prisma"],
         },
       ],
@@ -327,8 +327,9 @@ export const translations = {
           title: "Velox | WEB APP",
           role: "Desenvolvimento Full Stack",
           period: "2025",
-          description: "Desenvolvi um planejador de rotas de bike personalizado na AWS Free Tier. O app integra com Strava para estimativas reais de tempo, dados de clima/trânsito em tempo real e perfis de elevação.",
-          infoProject: "A diferença do velox é simples: ele calcula o tempo do percurso usando a sua velocidade média real, não em uma média genérica. Além disso, o velox gera a rota com mapa interativo e perfil de elevação, mostra o clima usando openweather, exibe o tráfego em tempo real, sugere rotas alternativas como a mais rápida, a com menos subidas ou a mais longa, calcula calorias com base no seu peso, idade e intensidade, mostra ganho e perda de elevação, oferece modos como mtb, speed e urbano e ainda guarda o histórico das suas rotas.",
+          description: "Apps de mapa estimam o tempo de pedal com uma velocidade genérica, que raramente bate com o ritmo de quem pedala. O Velox usa a sua velocidade média real, vinda do Strava, para planejar rotas com tempo, elevação, clima e trânsito.",
+          infoProject: "A estimativa de tempo dos apps de mapa quase nunca acerta para quem pedala: eles usam uma <strong>velocidade média genérica</strong>, igual para todo mundo. Criei o Velox para resolver isso. Ele se conecta ao Strava, pega a <strong>sua velocidade média real</strong> e calcula o tempo do percurso no seu ritmo, com modos para MTB, speed e urbano. Junto com o tempo, mostra o perfil de elevação, o clima e o trânsito da rota, sugere alternativas (como a mais rápida ou a com menos subidas), estima as calorias e guarda o histórico das suas rotas.",
+          result: "Com o Velox, dá para saber <strong>quanto tempo o pedal vai levar no seu ritmo</strong>, quanto você vai subir e como está o clima, tudo antes de sair e num lugar só. O app está no ar, com front e back na AWS.",
           stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
           links: [
             { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
@@ -354,8 +355,8 @@ export const translations = {
           title: "Portfolio | Aquatic Ambience",
           role: "Desenvolvimento Frontend",
           period: "2025",
-          description: "Portfólio construído para uma cliente, combinando a calmaria de ambientes aquáticos com um toque retrô dos anos 2000. Ele tem paisagens sonoras imersivas, animações suaves com framer-motion e vários easter eggs escondidos.",
-          infoProject: "O site usa animações bem fluidas e transições leves que deixam a navegação mais natural. A estética lembra telas antigas, inspiradas em interfaces clássicas. Vários elementos reagem ao mouse ou ao scroll, criando microinterações que deixam a experiência mais viva. Detalhes como sons do windows antigo, efeitos de água e pequenas surpresas fazem o usuário querer explorar cada canto. Será que você consegue encontrar todos os <strong>easter eggs</strong> que eu construí?",
+          description: "Portfólio construído para uma cliente, combinando a calmaria de ambientes aquáticos com um toque retrô dos anos 2000. Ele tem paisagens sonoras imersivas, animações suaves com Framer Motion e vários easter eggs escondidos.",
+          infoProject: "O site usa animações bem fluidas e transições leves que deixam a navegação mais natural. A estética lembra telas antigas, inspiradas em interfaces clássicas. Vários elementos reagem ao mouse ou ao scroll, criando microinterações que deixam a experiência mais viva. Detalhes como sons do Windows antigo, efeitos de água e pequenas surpresas fazem o usuário querer explorar cada canto. Será que você consegue encontrar todos os <strong>easter eggs</strong> que eu construí?",
           stack: ["Next.js", "TailwindCSS", "Framer Motion"],
           links: [
             { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
