@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, Globe, ArrowUpRight, ArrowRight, Maximize2, Minus, Bike, Mountain, CloudSun, Route, Flame, History, type LucideIcon } from "lucide-react";
+import { X, Github, Globe, ArrowUpRight, ArrowRight, Maximize2, Minus, Bike, Mountain, CloudSun, Route, Flame, History, Waves, Monitor, Volume2, MousePointer2, Sparkles, Egg, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -41,6 +41,12 @@ const featureIcons: Record<string, LucideIcon> = {
   route: Route,
   flame: Flame,
   history: History,
+  waves: Waves,
+  monitor: Monitor,
+  "volume-2": Volume2,
+  "mouse-pointer-2": MousePointer2,
+  sparkles: Sparkles,
+  egg: Egg,
 };
 
 interface ProjectModalProps {

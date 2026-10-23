@@ -228,7 +228,7 @@ export const portfolioData = {
         ],
       stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "GitHub Actions", "Google Maps API", "Strava API"],
       links: [
-        { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website", unavailable: "Offline for now: the AWS free tier period ended." },
+        { label: "Website", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website", unavailable: "Offline for now: the AWS free tier period ended." },
         { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
       ],
       thumbnail: "/projects/project-1/thumb-velox.png",
@@ -251,11 +251,20 @@ export const portfolioData = {
       title: "Portfolio | Aquatic Ambience",
       role: "Frontend Development",
       period: "2025",
-      description: "Portfolio built for a client, blending the calm vibe of aquatic environments with a soft early-2000s retro touch. It features immersive soundscapes, smooth Framer Motion animations and several hidden easter eggs.",
-      infoProject: "The site uses fluid animations and gentle transitions that make navigation feel natural. The aesthetic echoes old screens inspired by classic interfaces. Many elements react to mouse movement or scrolling, creating microinteractions that make the experience feel more alive. Details like old Windows sounds, water effects and small surprises encourage the user to explore every corner. Can you find all the <strong>easter eggs</strong> I hid in the site?",
+      description: "Portfolio for a graphic designer with a Frutiger Aero and Y2K style: aquatic ambience, immersive sound, Framer Motion animations and hidden easter eggs.",
+      infoProject: "My client is a graphic designer with a very distinctive style, inspired by <mark>Frutiger Aero and Y2K</mark>. A template portfolio wouldn't show that, so I built a site that is part of her work: an aquatic ambience, the look of early-2000s screens and plenty to discover.",
+      features: [
+        { icon: "waves", title: "Aquatic ambience", text: "Water effects and gentle transitions that set the site's calm mood." },
+        { icon: "monitor", title: "Y2K aesthetic", text: "Visuals inspired by classic early-2000s screens and interfaces." },
+        { icon: "volume-2", title: "Immersive sound", text: "Soundscapes and old Windows sounds." },
+        { icon: "mouse-pointer-2", title: "Microinteractions", text: "Elements that react to mouse movement and scrolling." },
+        { icon: "sparkles", title: "Fluid animations", text: "Built with Framer Motion so navigation feels natural." },
+        { icon: "egg", title: "Easter eggs", text: "Hidden surprises for whoever explores every corner." },
+      ],
+      result: "The client got a portfolio that <strong>shows her style before any project does</strong>: visitors get the Frutiger Aero and Y2K aesthetic just by browsing the site.",
       stack: ["Next.js", "TailwindCSS", "Framer Motion", "TypeScript"],
       links: [
-        { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
+        { label: "Website", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
       ],
       thumbnail: "/projects/project-2/aquatic-thumb-2.png",
       gallery: {

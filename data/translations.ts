@@ -351,7 +351,7 @@ export const translations = {
             ],
           stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "GitHub Actions", "Google Maps API", "Strava API"],
           links: [
-            { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website", unavailable: "Fora do ar por enquanto: o período gratuito da AWS acabou." },
+            { label: "Site", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website", unavailable: "Fora do ar por enquanto: o período gratuito da AWS acabou." },
             { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
           ],
           thumbnail: "/projects/project-1/thumb-velox.png",
@@ -374,11 +374,20 @@ export const translations = {
           title: "Portfolio | Aquatic Ambience",
           role: "Desenvolvimento Frontend",
           period: "2025",
-          description: "Portfólio construído para uma cliente, combinando a calmaria de ambientes aquáticos com um toque retrô dos anos 2000. Ele tem paisagens sonoras imersivas, animações suaves com Framer Motion e vários easter eggs escondidos.",
-          infoProject: "O site usa animações bem fluidas e transições leves que deixam a navegação mais natural. A estética lembra telas antigas, inspiradas em interfaces clássicas. Vários elementos reagem ao mouse ou ao scroll, criando microinterações que deixam a experiência mais viva. Detalhes como sons do Windows antigo, efeitos de água e pequenas surpresas fazem o usuário querer explorar cada canto. Será que você consegue encontrar todos os <strong>easter eggs</strong> que eu construí?",
-          stack: ["Next.js", "TailwindCSS", "Framer Motion"],
+          description: "Portfólio para uma designer gráfica com estilo Frutiger Aero e Y2K: clima de ambiente aquático, sons imersivos, animações com Framer Motion e easter eggs escondidos.",
+          infoProject: "A cliente é designer gráfica e tem um estilo muito próprio, inspirado em <mark>Frutiger Aero e Y2K</mark>. Um portfólio de template não mostraria isso, então construí um site que já faz parte do trabalho dela: clima de ambiente aquático, cara de tela dos anos 2000 e muita coisa para descobrir.",
+          features: [
+            { icon: "waves", title: "Ambiente aquático", text: "Efeitos de água e transições leves que dão o clima calmo do site." },
+            { icon: "monitor", title: "Estética Y2K", text: "Visual inspirado em telas e interfaces clássicas dos anos 2000." },
+            { icon: "volume-2", title: "Sons imersivos", text: "Paisagens sonoras e sons do Windows antigo." },
+            { icon: "mouse-pointer-2", title: "Microinterações", text: "Elementos que reagem ao mouse e ao scroll." },
+            { icon: "sparkles", title: "Animações fluidas", text: "Feitas com Framer Motion para a navegação parecer natural." },
+            { icon: "egg", title: "Easter eggs", text: "Surpresas escondidas para quem explora cada canto." },
+          ],
+          result: "A cliente ganhou um portfólio que <strong>mostra o estilo dela antes mesmo de qualquer projeto</strong>: quem visita entende a estética Frutiger Aero e Y2K só de navegar pelo site.",
+          stack: ["Next.js", "TailwindCSS", "Framer Motion", "TypeScript"],
           links: [
-            { label: "Demo", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
+            { label: "Site", url: "https://visualcutes-portfolio.vercel.app/", type: "website" },
           ],
           thumbnail: "/projects/project-2/aquatic-thumb-2.png",
           gallery: {
