@@ -290,12 +290,13 @@ export const translations = {
             {
               title: "O histórico que voltava vazio",
               tag: "Bug",
-              headline: "String ≠ ObjectId, e um bug que nasceu em outro serviço",
+              headline: "Um bug que nasceu meses antes, em outro serviço",
               summary: "A aba de histórico do creator numa campanha aparecia vazia, mesmo com o perfil já tendo passado por várias etapas. O dado existia no banco, mas a busca não achava. Em microsserviços, esse tipo de bug é difícil de rastrear porque <strong>a causa não está no serviço que quebra</strong>: ela nasceu <mark>meses antes, em outro serviço</mark>.",
-              result: "A aba de histórico voltou a mostrar todas as etapas do creator, <strong>inclusive os registros gravados nos meses em que o bug passou despercebido</strong>. E como a correção não exigiu migração, nenhum dado de produção precisou ser alterado.",
+              result: "A aba de histórico voltou a mostrar todas as etapas do creator, <strong>inclusive os registros gravados nos meses em que o bug passou despercebido</strong>.",
               points: [
                 "Dois serviços gravavam na mesma collection do MongoDB: um salvava o ID da empresa como <code>ObjectId</code> e o outro, desde uma mudança de meses antes, como <code>String</code>.",
-                "Na leitura, o Mongoose fazia <a href=\"https://mongoosejs.com/docs/tutorials/query_casting.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>cast automático</strong></a> do valor da busca para <code>ObjectId</code>. Em BSON, tipos diferentes não casam, então os registros gravados como texto nunca apareciam.",                "Corrigi <strong>sem migração de dados</strong>, para não arriscar mexer em produção: o campo passou a <code>Mixed</code>, desligando o cast, e a busca procura pelos dois formatos com <code>$in</code>, cobrindo registros antigos e novos.",
+                "Na leitura, o Mongoose fazia <a href=\"https://mongoosejs.com/docs/tutorials/query_casting.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>cast automático</strong></a> do valor da busca para <code>ObjectId</code>. Em BSON, tipos diferentes não casam, então os registros gravados como texto nunca apareciam.",
+                "Na correção, o campo passou a <code>Mixed</code>, desligando o cast, e a busca procura pelos dois formatos com <code>$in</code>, cobrindo registros antigos e novos.",
               ],
               stack: ["Node.js", "Hapi", "GraphQL", "MongoDB", "Mongoose"],
             },

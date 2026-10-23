@@ -169,12 +169,13 @@ export const portfolioData = {
         {
           title: "The history that came back empty",
           tag: "Bug",
-          headline: "String ≠ ObjectId, and a bug born in another service",
+          headline: "A bug born months earlier, in another service",
           summary: "A creator's history tab in a campaign showed up empty, even after the profile had gone through several stages. The data was in the database, but the query couldn't find it. In microservices this kind of bug is hard to trace because <strong>the cause isn't in the service that breaks</strong>: it was born <mark>months earlier, in another service</mark>.",
-          result: "The history tab went back to showing every stage of the creator, <strong>including the records written during the months the bug went unnoticed</strong>. And since the fix needed no migration, no production data had to be changed.",
+          result: "The history tab went back to showing every stage of the creator, <strong>including the records written during the months the bug went unnoticed</strong>.",
           points: [
             "Two services wrote to the same MongoDB collection: one stored the company ID as an <code>ObjectId</code> and the other, since a change months earlier, as a <code>String</code>.",
-            "On read, Mongoose applied <a href=\"https://mongoosejs.com/docs/tutorials/query_casting.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>automatic casting</strong></a> to the query value, turning it into an <code>ObjectId</code>. In BSON different types never match, so records stored as text never showed up.",            "Fixed it <strong>without a data migration</strong>, to avoid touching production data: the field became <code>Mixed</code>, turning off the cast, and the query matches both formats with <code>$in</code>, covering old and new records.",
+            "On read, Mongoose applied <a href=\"https://mongoosejs.com/docs/tutorials/query_casting.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>automatic casting</strong></a> to the query value, turning it into an <code>ObjectId</code>. In BSON different types never match, so records stored as text never showed up.",
+            "For the fix, the field became <code>Mixed</code>, turning off the cast, and the query matches both formats with <code>$in</code>, covering old and new records.",
           ],
           stack: ["Node.js", "Hapi", "GraphQL", "MongoDB", "Mongoose"],
         },
