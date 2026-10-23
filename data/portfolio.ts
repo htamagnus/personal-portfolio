@@ -8,6 +8,7 @@ export const portfolioData = {
     linkedin: "https://linkedin.com/in/agathamagnus",
     email: "mailto:agathamagnus.dev@gmail.com",
   },
+  whatsapp: "https://wa.me/5551996864775",
   skills: {
     languages: ["JavaScript", "TypeScript"],
     frontend: ["React", "Next.js", "Angular", "Tailwind CSS", "Framer Motion", "Sass"],

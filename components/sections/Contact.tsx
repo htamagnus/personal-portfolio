@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { useForm, ValidationError } from "@formspree/react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, MessageCircle } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 
 const directLink = "inline-flex items-center justify-center gap-2 border-2 border-black px-5 py-3 font-bold text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-[translate,box-shadow]";
@@ -118,8 +118,18 @@ export function Contact() {
               whileInView="shown"
               viewport={{ once: true, amount: 0.8 }}
               variants={{ shown: { transition: { staggerChildren: 0.15 } } }}
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-4 w-full sm:w-auto"
             >
+              <motion.a
+                variants={pop}
+                href={t.portfolio.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${directLink} bg-neon-pink uppercase tracking-wider`}
+              >
+                <MessageCircle className="w-5 h-5 shrink-0" />
+                WhatsApp
+              </motion.a>
               <motion.a
                 variants={pop}
                 href={t.portfolio.socials.linkedin}
