@@ -313,7 +313,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                               src={img}
                               alt={`MacBook mock ${idx + 1}`}
                               fill
-                              sizes="100vw"
+                              sizes="(min-width: 1550px) 1550px, 100vw"
                               priority={idx === 0}
                               loading={idx === 0 ? "eager" : "lazy"}
                               className={`object-contain transition-opacity duration-500 ${
