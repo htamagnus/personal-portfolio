@@ -6,6 +6,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { motion, useReducedMotion } from "framer-motion";
 
+const hoverColors = ["hover:bg-neon-pink", "hover:bg-neon-yellow", "hover:bg-neon-green", "hover:bg-neon-blue"];
+
 export function Skills() {
   const { t } = useLanguage();
   const reduceMotion = useReducedMotion();
@@ -47,17 +49,27 @@ export function Skills() {
       
       <Section className="bg-transparent py-0 md:py-0 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {Object.entries(t.portfolio.skills).map(([category, skills]) => (
-             <div key={category} className="bg-white border-3 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          {Object.entries(t.portfolio.skills).map(([category, skills], i) => (
+             <motion.div
+               key={category}
+               initial={{ opacity: 0, y: 40, rotate: -2 }}
+               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+               viewport={{ once: true, amount: 0.3 }}
+               transition={{ type: "spring", stiffness: 260, damping: 18, delay: (i % 3) * 0.12 }}
+               className="bg-white border-3 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+             >
                <h3 className="text-xl font-bold uppercase mb-4 border-b-2 border-black pb-2">{category}</h3>
                <div className="flex flex-wrap gap-2">
-                 {skills.map((skill) => (
-                   <span key={skill} className="bg-gray-200 px-3 py-1 text-sm font-mono font-bold border border-black">
+                 {skills.map((skill, j) => (
+                   <span
+                     key={skill}
+                     className={`bg-gray-200 px-3 py-1 text-sm font-mono font-bold border border-black transition-all duration-200 motion-safe:hover:-rotate-3 ${hoverColors[j % hoverColors.length]}`}
+                   >
                      {skill}
                    </span>
                  ))}
                </div>
-             </div>
+             </motion.div>
           ))}
         </div>
 
