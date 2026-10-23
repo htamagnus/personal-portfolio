@@ -28,7 +28,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
   useEffect(() => {
     if (!isOpen) return;
     const previouslyFocused = document.activeElement as HTMLElement | null;
-    document.body.classList.add("overflow-hidden");
+    document.documentElement.classList.add("overflow-hidden");
     dialogRef.current?.focus();
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -51,7 +51,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
-      document.body.classList.remove("overflow-hidden");
+      document.documentElement.classList.remove("overflow-hidden");
       window.removeEventListener("keydown", onKeyDown);
       previouslyFocused?.focus();
     };
