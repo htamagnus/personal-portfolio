@@ -207,8 +207,16 @@ export const portfolioData = {
       role: "Full Stack Development",
       period: "2025",
       description: "Map apps estimate ride time with a generic speed that rarely matches how you actually ride. Velox uses your real average speed from Strava to plan routes with time, elevation, weather and traffic.",
-      infoProject: "Map apps' time estimates rarely work for cyclists: they use a <strong>generic average speed</strong>, the same for everyone. I built Velox to fix that. It connects to Strava, takes <strong>your real average speed</strong> and calculates the route time at your pace, with MTB, road and urban modes. Along with the time, it shows the route's elevation profile, weather and traffic, suggests alternatives (like the fastest or the one with fewer climbs), estimates calories and keeps the history of your routes.",
-      result: "With Velox you know <strong>how long the ride will take at your pace</strong>, how much you'll climb and what the weather looks like, all before you leave and in one place. The app is live, with front end and back end on AWS.",
+      infoProject: "Map apps estimate ride time with a <mark>generic average speed</mark>, the same for everyone, so the estimate rarely matches how you actually ride. I built Velox to fix that: it connects to Strava and calculates route time using <strong>your real average speed</strong>.",
+      features: [
+        { icon: "bike", title: "Ride modes", text: "MTB, road and urban modes." },
+        { icon: "mountain", title: "Elevation", text: "How much you'll climb and descend on the route." },
+        { icon: "cloud-sun", title: "Weather and traffic", text: "Route conditions in real time." },
+        { icon: "route", title: "Alternative routes", text: "Like the fastest or the one with fewer climbs." },
+        { icon: "flame", title: "Calories", text: "Estimated from your weight, age and intensity." },
+        { icon: "history", title: "History", text: "Your saved routes to check later." },
+      ],
+      result: "With Velox you know <strong>how long the ride will take at your pace</strong>, how much you'll climb and what the weather looks like, all before you leave and in one place.",
       stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
       links: [
         { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },

@@ -79,7 +79,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
               aria-modal="true"
               aria-label={experience.company}
               tabIndex={-1}
-              className="bg-[#FCEEE3] w-full lg:max-w-[1200px] h-[92vh] md:max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden focus:outline-none"
+              className="bg-[#FCEEE3] w-full lg:max-w-[1550px] h-[92vh] md:max-h-[90vh] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col pointer-events-auto overflow-hidden focus:outline-none"
             >
               <div className="bg-neon-pink border-b-4 border-black p-2 flex justify-between items-center select-none">
                 <div className="flex items-center gap-1 md:gap-2 px-1 md:px-2">

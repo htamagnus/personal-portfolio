@@ -49,7 +49,8 @@ export const translations = {
       subtitle: "Projects",
       description: "A collection of personal projects and freelance work that showcase my creativity and technical skills.",
       view_details: "View details",
-      more_on_github: "More projects on GitHub"
+      more_on_github: "More projects on GitHub",
+      technologies_used: "technologies used"
     },
     contact: {
       success_title: "Message Sent!",
@@ -117,7 +118,8 @@ export const translations = {
       subtitle: "Selecionados",
       description: "Uma coleção de projetos pessoais e trabalhos freelance que demonstram minha criatividade e habilidades técnicas.",
       view_details: "Ver detalhes",
-      more_on_github: "Mais projetos no GitHub"
+      more_on_github: "Mais projetos no GitHub",
+      technologies_used: "tecnologias usadas"
     },
     contact: {
       success_title: "Mensagem Enviada!",
@@ -328,8 +330,16 @@ export const translations = {
           role: "Desenvolvimento Full Stack",
           period: "2025",
           description: "Apps de mapa estimam o tempo de pedal com uma velocidade genérica, que raramente bate com o ritmo de quem pedala. O Velox usa a sua velocidade média real, vinda do Strava, para planejar rotas com tempo, elevação, clima e trânsito.",
-          infoProject: "A estimativa de tempo dos apps de mapa quase nunca acerta para quem pedala: eles usam uma <strong>velocidade média genérica</strong>, igual para todo mundo. Criei o Velox para resolver isso. Ele se conecta ao Strava, pega a <strong>sua velocidade média real</strong> e calcula o tempo do percurso no seu ritmo, com modos para MTB, speed e urbano. Junto com o tempo, mostra o perfil de elevação, o clima e o trânsito da rota, sugere alternativas (como a mais rápida ou a com menos subidas), estima as calorias e guarda o histórico das suas rotas.",
-          result: "Com o Velox, dá para saber <strong>quanto tempo o pedal vai levar no seu ritmo</strong>, quanto você vai subir e como está o clima, tudo antes de sair e num lugar só. O app está no ar, com front e back na AWS.",
+          infoProject: "Apps de mapa estimam o tempo de pedal com uma <mark>velocidade média genérica</mark>, igual para todo mundo, então a estimativa quase nunca bate com o ritmo de quem pedala. Criei o Velox para resolver isso: ele se conecta ao Strava e calcula o tempo do percurso com a <strong>sua velocidade média real</strong>.",
+          features: [
+            { icon: "bike", title: "Modalidades", text: "Modos para MTB, speed e urbano." },
+            { icon: "mountain", title: "Elevação", text: "Quanto você vai subir e descer no percurso." },
+            { icon: "cloud-sun", title: "Clima e trânsito", text: "As condições da rota em tempo real." },
+            { icon: "route", title: "Rotas alternativas", text: "Como a mais rápida ou a com menos subidas." },
+            { icon: "flame", title: "Calorias", text: "Estimativa pelo seu peso, idade e intensidade." },
+            { icon: "history", title: "Histórico", text: "Suas rotas salvas para consultar depois." },
+          ],
+          result: "Com o Velox, dá para saber <strong>quanto tempo o pedal vai levar no seu ritmo</strong>, quanto você vai subir e como está o clima, tudo antes de sair e num lugar só.",
           stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
           links: [
             { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },

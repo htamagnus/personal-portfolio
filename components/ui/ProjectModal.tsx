@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, Globe, ArrowUpRight, Maximize2, Minus } from "lucide-react";
+import { X, Github, Globe, ArrowUpRight, Maximize2, Minus, Bike, Mountain, CloudSun, Route, Flame, History, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -18,6 +18,7 @@ interface Project {
   role: string;
   period: string;
   infoProject: string;
+  features?: { icon: string; title: string; text: string }[];
   result?: string;
   stack: string[];
   links: ProjectLink[];
@@ -28,6 +29,15 @@ interface Project {
     macMocks?: string[];
   };
 }
+
+const featureIcons: Record<string, LucideIcon> = {
+  bike: Bike,
+  mountain: Mountain,
+  "cloud-sun": CloudSun,
+  route: Route,
+  flame: Flame,
+  history: History,
+};
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -114,7 +124,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                         {project.title}
                       </h2>
                       <div className="flex flex-wrap gap-3 items-center">
-                        <span className="font-mono font-bold text-neon-pink bg-black px-2 py-0.5">
+                        <span className="font-mono font-bold text-black bg-neon-pink border border-black px-2 py-0.5">
                           {project.role}
                         </span>
                         <span className="font-mono font-bold text-black border border-black px-2 py-0.5">
@@ -143,54 +153,55 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-3 gap-8">
-                    <div className="md:col-span-2">
-                      <div>
-                        <h3 className="font-display font-bold text-xl uppercase mb-3 flex items-center gap-2">
-                          <span className="w-2 h-2 bg-black"></span>
-                          About Project
-                        </h3>
-                        <div 
-                          className="font-mono text-lg leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: project.infoProject }}
+                  <div className="flex flex-col gap-6">
+                    <p
+                      className="marker font-mono text-base md:text-lg leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: project.infoProject }}
+                    />
+
+                    {project.features && (
+                      <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+                        {project.features.map((feature) => {
+                          const Icon = featureIcons[feature.icon];
+                          return (
+                            <li key={feature.title} className="flex gap-3">
+                              <span className="w-9 h-9 shrink-0 border-2 border-black bg-neon-yellow text-black flex items-center justify-center">
+                                {Icon && <Icon className="w-5 h-5" aria-hidden />}
+                              </span>
+                              <div>
+                                <span className="block font-display font-bold">{feature.title}</span>
+                                <span className="block font-mono text-sm leading-snug">{feature.text}</span>
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+
+                    {project.result && (
+                      <div className="border-2 border-black bg-neon-green p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-2">
+                        <span className="font-mono text-sm font-black uppercase">{t.experience.result}</span>
+                        <p
+                          className="font-mono text-base md:text-lg leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: project.result }}
                         />
                       </div>
-                      {project.result && (
-                        <div className="mt-6 border-2 border-black bg-[#FCEEE3] p-4 flex flex-col gap-3">
-                          <span className="font-mono text-sm font-black uppercase">{t.experience.result}</span>
-                          <p
-                            className="font-mono text-sm md:text-base leading-relaxed"
-                            dangerouslySetInnerHTML={{ __html: project.result }}
-                          />
-                        </div>
-                      )}
-                    </div>
+                    )}
 
-                    <div className="md:col-span-1">
-                      <div className="bg-white border-2 border-black p-4 sticky top-0 mt-10">
-                        <h3 className="font-display font-bold text-xl uppercase mb-4 border-b-2 border-black pb-2 ">
-                          Tech Stack
-                        </h3>
-                        <div className="flex flex-wrap gap-2">
-                          {project.stack.map((tech) => (
-                            <span
-                              key={tech}
-                              className="text-xs font-bold uppercase border border-black px-2 py-1 bg-neon-yellow text-black"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs font-bold uppercase border border-black px-2 py-1 bg-neon-pink text-black"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
                   <div className="mt-1">
-                    <h3 className="font-display font-bold text-xl uppercase mb-3 flex items-center gap-2">
-                      <span className="w-2 h-2 bg-black"></span>
-                      Gallery
-                    </h3>
-                    
+
                     {projectImages.length > 0 && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         {projectImages.map((img, idx) => (
@@ -273,7 +284,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
 
               <div className="bg-[#FCEEE3] border-t-4 border-black p-1 px-4 flex justify-between items-center font-mono text-xs uppercase">
                 <span>Status: Online</span>
-                <span>{project.stack.length} Technologies Used</span>
+                <span>{project.stack.length} {t.projects.technologies_used}</span>
               </div>
             </div>
           </motion.div>
