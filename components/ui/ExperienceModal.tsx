@@ -8,7 +8,9 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { TranslationType } from "@/data/translations";
 
 export type Experience = TranslationType["portfolio"]["experience"][number];
-type Highlight = NonNullable<Experience["highlights"]>[number];
+type Highlight = NonNullable<Experience["highlights"]>[number] & {
+  flow?: { label: string; steps: string[] };
+};
 
 interface ExperienceModalProps {
   experience: Experience | null;
