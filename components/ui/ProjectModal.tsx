@@ -332,7 +332,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
               </div>
 
               <div className="bg-[#FCEEE3] border-t-4 border-black p-1 px-4 flex justify-between items-center font-mono text-xs uppercase">
-                <span>Status: Online</span>
+                <span>Status: {project.links.some((link) => link.unavailable) ? "Offline" : "Online"}</span>
                 <span>{project.stack.length} {t.projects.technologies_used}</span>
               </div>
             </div>

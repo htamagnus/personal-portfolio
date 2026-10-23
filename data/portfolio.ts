@@ -250,7 +250,7 @@ export const portfolioData = {
     {
       title: "Portfolio | Aquatic Ambience",
       role: "Frontend Development",
-      period: "2025",
+      period: "2026",
       description: "Portfolio for a graphic designer with a Frutiger Aero and Y2K style: aquatic ambience, immersive sound, Framer Motion animations and hidden easter eggs.",
       infoProject: "My client is a graphic designer with a very distinctive style, inspired by <mark>Frutiger Aero and Y2K</mark>. A template portfolio wouldn't show that, so I built a site that is part of her work: an aquatic ambience, the look of early-2000s screens and plenty to discover.",
       features: [

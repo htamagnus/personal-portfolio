@@ -9,7 +9,8 @@ import Link from "next/link";
 import { Github, Globe, ArrowUpRight, Maximize2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import Image from "next/image";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useCallback } from "react";
+import { useUrlParam } from "@/lib/useUrlParam";
 import { ProjectModal } from "@/components/ui/ProjectModal";
 
 function slugify(text: string): string {
@@ -46,18 +47,16 @@ interface Project {
 
 export function Projects() {
   const { t } = useLanguage();
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedSlug, setSelectedSlug] = useUrlParam("project");
+  const selectedProject = t.portfolio.projects.find((p) => slugify(p.title) === selectedSlug) ?? null;
 
   const openProject = useCallback((project: Project) => {
-    setSelectedProject(project);
-    const slug = slugify(project.title);
-    window.history.replaceState(null, "", `?project=${slug}`);
-  }, []);
+    setSelectedSlug(slugify(project.title));
+  }, [setSelectedSlug]);
 
   const closeProject = useCallback(() => {
-    setSelectedProject(null);
-    window.history.replaceState(null, "", window.location.pathname);
-  }, []);
+    setSelectedSlug(null);
+  }, [setSelectedSlug]);
 
   const preloadProjectImages = useCallback((project: Project) => {
     const allImages = [
@@ -74,25 +73,6 @@ export function Projects() {
       document.head.appendChild(link);
     });
   }, []);
-
-  const hasInitialized = useRef(false);
-  
-  useEffect(() => {
-    if (hasInitialized.current) return;
-    hasInitialized.current = true;
-
-    const params = new URLSearchParams(window.location.search);
-    const projectSlug = params.get("project");
-    
-    if (projectSlug) {
-      const project = t.portfolio.projects.find(
-        (p) => slugify(p.title) === projectSlug
-      );
-      if (project) {
-        queueMicrotask(() => setSelectedProject(project));
-      }
-    }
-  }, [t.portfolio.projects]);
 
   return (
     <div className="w-full bg-neon-green border-y-4 border-black">
