@@ -36,15 +36,15 @@ export function Hero() {
           <h2 className="text-lg md:text-2xl font-mono mb-4 text-black-200">
             <strong>{t.hero.greeting}</strong>
           </h2>
-          <div className="flex items-center justify-between lg:block mb-6">
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-8xl font-display font-black uppercase tracking-tighter leading-none">
+          <div className="flex items-center justify-between gap-4 lg:block mb-6">
+            <h1 className="text-6xl md:text-8xl lg:text-8xl font-display font-black uppercase tracking-tighter leading-none">
               <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
               <br />
               <MaskedReveal text="Magnus" className="text-stroke animate-highlight px-8 -mx-8 py-2 -my-2" delay={0.2} />
             </h1>
-            
+
             {/* Mobile Image */}
-            <div className="lg:hidden relative w-28 h-28 shrink-0 mr-6">
+            <div className="lg:hidden relative w-28 aspect-square">
               <div className="absolute inset-0 rounded-full border-2 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
               <div className="absolute inset-2 rounded-full border-2 border-black overflow-hidden bg-white">
                 <Image 
@@ -54,10 +54,10 @@ export function Hero() {
                   alt="Agatha Magnus" 
                   className="w-full h-full object-cover"
                   priority
-                  sizes="(max-width: 1023px) 120px, 1px"
+                  sizes="(max-width: 1023px) 112px, 1px"
                 />
               </div>
-              
+            
               {/* Mobile Spinning Icon */}
               <motion.svg
                 viewBox="0 0 412 412"
