@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: "700",
 });
 
 const baseUrl = "https://agathamagnusdev-portfolio.vercel.app";
