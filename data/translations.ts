@@ -313,11 +313,11 @@ export const translations = {
               tag: "Bug",
               headline: "D-1 → D, sem bugs de timezone desde então",
               summary: "O conteúdo enviado aparecia no board <mark>com um dia a menos</mark> do que a data escolhida. Bug de timezone é traiçoeiro: uma data como \"22/10\" não tem horário, mas o Date do JavaScript e o banco guardam um instante exato. Se front, back e banco não concordam na hora e no fuso usados nessa conversão, <strong>a mesma data vira dias diferentes</strong> dependendo de onde é lida. E como o erro só aparece em certos fusos e horários, ele costuma passar nos testes.",
-              result: "O conteúdo passou a aparecer no board na data certa. Como esse tipo de bug pode voltar em qualquer fluxo que lida com datas, <strong>compartilhei com o time o que aprendi</strong>: por que a data muda de dia e como ancorar ao meio-dia evita isso.",
+              result: "O conteúdo passou a aparecer no board na data certa, e escrevi <strong>testes unitários e de integração com Cypress</strong> para o bug não voltar. Como esse tipo de bug pode aparecer em qualquer fluxo que lida com datas, <strong>escrevi uma documentação interna sobre timezone no JavaScript</strong> para o time, explicando por que a data muda de dia e como ancorar ao meio-dia evita isso.",
               points: [
                 "Pesquisei boas práticas de timezone e passei a ancorar datas sem horário ao <strong>meio-dia em vez da meia-noite</strong>. A meia-noite fica bem na virada do dia, então qualquer fuso negativo joga ela para o dia anterior; o meio-dia deixa 12 horas de margem para cada lado.",
               ],
-              stack: ["Node.js", "Hapi", "Angular"],
+              stack: ["Node.js", "Hapi", "Angular", "Cypress"],
             },
           ],
         },
