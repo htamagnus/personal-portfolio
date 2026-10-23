@@ -6,11 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { UnavailableLink } from "@/components/ui/UnavailableLink";
 
 interface ProjectLink {
   label: string;
   url: string;
   type: string;
+  unavailable?: string;
 }
 
 interface Project {
@@ -136,7 +138,9 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                     </div>
                     
                     <div className="flex gap-2">
-                      {project.links.map((link, i) => (
+                      {project.links.map((link, i) => link.unavailable ? (
+                        <UnavailableLink key={i} label={link.label} reason={link.unavailable} />
+                      ) : (
                         <Link
                           key={i}
                           href={link.url}
@@ -190,33 +194,6 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                       </div>
                     )}
 
-                    {project.flow && (
-                      <div className="border-2 border-black bg-[#FCEEE3] p-4 flex flex-col gap-3">
-                        <span className="font-mono text-xs font-bold uppercase">{project.flow.label}</span>
-                        <ol className="flex flex-wrap items-center gap-2">
-                          {project.flow.steps.map((step, i) => (
-                            <li key={step} className="flex items-center gap-2">
-                              {i > 0 && <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />}
-                              <span className="bg-white border-2 border-black px-2 py-1 font-mono text-xs md:text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                                {step}
-                              </span>
-                            </li>
-                          ))}
-                        </ol>
-                      </div>
-                    )}
-
-                    {project.points && (
-                      <ul className="flex flex-col gap-3">
-                        {project.points.map((point) => (
-                          <li key={point} className="flex gap-3 font-mono text-sm md:text-base leading-relaxed">
-                            <span className="mt-2 w-2 h-2 bg-black shrink-0"></span>
-                            <span dangerouslySetInnerHTML={{ __html: point }} />
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
                     <div className="flex flex-wrap gap-2">
                       {project.stack.map((tech) => (
                         <span
@@ -254,6 +231,43 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                             />
                           </div>
                         ))}
+                      </div>
+                    )}
+
+                    {(project.flow || project.points) && (
+                      <div className="flex flex-col gap-6 mb-8">
+                        {project.flow && (
+                          <h3 className="font-display font-bold text-xl uppercase flex items-center gap-2">
+                            <span className="w-2 h-2 bg-black"></span>
+                            {project.flow.label}
+                          </h3>
+                        )}
+
+                        {project.flow && (
+                          <div className="border-2 border-black bg-[#FCEEE3] p-4">
+                            <ol className="flex flex-wrap items-center gap-2">
+                              {project.flow.steps.map((step, i) => (
+                                <li key={step} className="flex items-center gap-2">
+                                  {i > 0 && <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />}
+                                  <span className="bg-white border-2 border-black px-2 py-1 font-mono text-xs md:text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                                    {step}
+                                  </span>
+                                </li>
+                              ))}
+                            </ol>
+                          </div>
+                        )}
+
+                        {project.points && (
+                          <ul className="flex flex-col gap-3">
+                            {project.points.map((point) => (
+                              <li key={point} className="flex gap-3 font-mono text-sm md:text-base leading-relaxed">
+                                <span className="mt-2 w-2 h-2 bg-black shrink-0"></span>
+                                <span dangerouslySetInnerHTML={{ __html: point }} />
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     )}
 

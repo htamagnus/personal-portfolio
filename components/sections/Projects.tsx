@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { UnavailableLink } from "@/components/ui/UnavailableLink";
 import Link from "next/link";
 import { Github, Globe, ArrowUpRight, Maximize2 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -24,6 +25,7 @@ interface ProjectLink {
   label: string;
   url: string;
   type: string;
+  unavailable?: string;
 }
 
 interface Project {
@@ -164,11 +166,14 @@ export function Projects() {
                 </div>
 
                 <div className="flex flex-wrap gap-3 mt-auto">
-                  {project.links.map((link, i) => (
+                  {project.links.map((link: ProjectLink, i) => (
                     <div
                       key={i}
                       onClick={(e) => e.stopPropagation()}
                     >
+                      {link.unavailable ? (
+                        <UnavailableLink label={link.label} reason={link.unavailable} />
+                      ) : (
                       <Link
                         href={link.url}
                         target="_blank"
@@ -182,6 +187,7 @@ export function Projects() {
                         {link.label}
                         <ArrowUpRight className="w-3 h-3 ml-1" />
                       </Link>
+                      )}
                     </div>
                   ))}
                 </div>

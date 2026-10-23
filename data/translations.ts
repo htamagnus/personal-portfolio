@@ -351,7 +351,7 @@ export const translations = {
             ],
           stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "GitHub Actions", "Google Maps API", "Strava API"],
           links: [
-            { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
+            { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website", unavailable: "Fora do ar por enquanto: o período gratuito da AWS acabou." },
             { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
           ],
           thumbnail: "/projects/project-1/thumb-velox.png",
