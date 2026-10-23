@@ -167,6 +167,17 @@ export const portfolioData = {
         //   stack: ["Node.js", "Hapi", "JWT", "Drizzle ORM", "MySQL", "Kubernetes"],
         // },
         {
+          title: "The date that slipped a day",
+          tag: "Bug fix",
+          headline: "D-1 → D, no timezone bugs since",
+          summary: "Uploaded content showed up on the board <mark>one day earlier</mark> than the chosen date. Timezone bugs are sneaky: a date like \"Oct 22\" has no time, but JavaScript's Date and the database store an exact instant. If frontend, backend and database don't agree on the time and timezone used in that conversion, <strong>the same date becomes different days</strong> depending on where it's read. And since the error only shows up in certain timezones and hours, it usually slips past tests.",
+          result: "Content now shows up on the board on the right day, and I wrote <strong>unit and integration tests with Cypress</strong> so the bug doesn't come back. Since this kind of bug can show up in any flow that handles dates, <strong>I wrote internal documentation on timezones in JavaScript</strong> for the team, explaining why the date shifts a day and how anchoring at noon prevents it.",
+          points: [
+            "Researched timezone best practices and anchored date-only values at <strong>noon instead of midnight</strong>. Midnight sits right on the day boundary, so a negative offset pushes it to the previous day; noon leaves a 12-hour margin either way.",
+          ],
+          stack: ["Node.js", "Hapi", "Angular", "Cypress"],
+        },
+        {
           title: "The history that came back empty",
           tag: "Bug",
           headline: "A bug born months earlier, in another service",
@@ -178,17 +189,6 @@ export const portfolioData = {
             "For the fix, the field became <code>Mixed</code>, turning off the cast, and the query matches both formats with <code>$in</code>, covering old and new records.",
           ],
           stack: ["Node.js", "Hapi", "GraphQL", "MongoDB", "Mongoose"],
-        },
-        {
-          title: "The date that slipped a day",
-          tag: "Bug fix",
-          headline: "D-1 → D, no timezone bugs since",
-          summary: "Uploaded content showed up on the board <mark>one day earlier</mark> than the chosen date. Timezone bugs are sneaky: a date like \"Oct 22\" has no time, but JavaScript's Date and the database store an exact instant. If frontend, backend and database don't agree on the time and timezone used in that conversion, <strong>the same date becomes different days</strong> depending on where it's read. And since the error only shows up in certain timezones and hours, it usually slips past tests.",
-          result: "Content now shows up on the board on the right day, and I wrote <strong>unit and integration tests with Cypress</strong> so the bug doesn't come back. Since this kind of bug can show up in any flow that handles dates, <strong>I wrote internal documentation on timezones in JavaScript</strong> for the team, explaining why the date shifts a day and how anchoring at noon prevents it.",
-          points: [
-            "Researched timezone best practices and anchored date-only values at <strong>noon instead of midnight</strong>. Midnight sits right on the day boundary, so a negative offset pushes it to the previous day; noon leaves a 12-hour margin either way.",
-          ],
-          stack: ["Node.js", "Hapi", "Angular", "Cypress"],
         },
       ],
     },
