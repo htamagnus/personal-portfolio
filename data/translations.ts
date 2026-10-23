@@ -207,9 +207,9 @@ export const translations = {
               title: "Migração da importação em massa de recrutamentos",
               tag: "Migração",
               headline: "-86,4% no tempo de resposta",
-              summary: "Na minha primeira semana no novo time, assumi a migração de um microsserviço legado em Express.js, que gerava bugs com frequência, para TypeScript. A rota mais crítica era a de inserção de recrutamentos: ela podia receber <mark>até 10 mil de uma vez</mark>, mas o código legado tinha sido escrito para <strong>inserir um por vez</strong>.",
+              summary: "Na minha primeira semana no novo time, assumi a migração de um microsserviço legado em Express.js, que gerava bugs com frequência, para TypeScript. A rota mais crítica era a de inserção de recrutamentos: ela podia receber <mark>até 10 mil perfis de creators de uma vez</mark>, mas o código legado tinha sido escrito para <strong>inserir um por vez</strong>.",
               points: [
-                "Levantei as regras de negócio e os edge cases do código legado antes de reescrever, indo atrás de documentação para entender o que a migração podia quebrar.",
+                "Antes de reescrever, levantei as regras de negócio e os edge cases do código legado, lendo a documentação interna da empresa sobre esse serviço para entender o que a migração podia quebrar.",
                 "Troquei a inserção perfil por perfil por <a href=\"https://www.mongodb.com/docs/manual/core/bulk-write-operations/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>processamento em lotes</strong></a>.",
                 "Adicionei <strong>cache</strong> para consultas que se repetiam durante a importação.",
                 "Tirei a gravação de logs do caminho crítico: ela era síncrona e segurava a resposta.",
@@ -219,7 +219,7 @@ export const translations = {
                 { value: "-86,4%", label: "tempo de resposta" },
                 { value: "6,6×", label: "mais rápido" },
               ],
-              comparison: { label: "Tempo da requisição de importação em massa", before: 35.5, after: 5.4, unit: "s" },
+              comparison: { label: "Tempo de resposta da importação em massa de perfis de creators", before: 35.5, after: 5.4, unit: "s" },
               stack: ["TypeScript", "NestJS", "MongoDB", "Redis"],
             },
             {

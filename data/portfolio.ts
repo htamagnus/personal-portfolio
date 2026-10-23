@@ -86,9 +86,9 @@ export const portfolioData = {
           title: "Migrating the recruitment bulk import",
           tag: "Migration",
           headline: "-86.4% response time",
-          summary: "In my first week on the team I took over the migration of a legacy Express.js microservice that kept generating bugs, rewriting it in TypeScript. Its most critical route inserted new recruitments: it could receive <mark>up to 10,000 at once</mark>, but the legacy code was written to <strong>insert them one by one</strong>.",
+          summary: "In my first week on the team I took over the migration of a legacy Express.js microservice that kept generating bugs, rewriting it in TypeScript. Its most critical route inserted new recruitments: it could receive <mark>up to 10,000 creator profiles at once</mark>, but the legacy code was written to <strong>insert them one by one</strong>.",
           points: [
-            "Mapped the business rules and edge cases of the legacy code before rewriting anything, digging through documentation to understand what the migration could break.",
+            "Before rewriting anything, I mapped the business rules and edge cases of the legacy code, reading the company's internal documentation on this service to understand what the migration could break.",
             "Replaced the profile-by-profile insertion with <a href=\"https://www.mongodb.com/docs/manual/core/bulk-write-operations/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>batch processing</strong></a>.",
             "Added <strong>caching</strong> for lookups that repeated during the import.",
             "Took log writes out of the critical path: they were synchronous and held the response.",
@@ -98,7 +98,7 @@ export const portfolioData = {
             { value: "-86.4%", label: "response time" },
             { value: "6.6×", label: "faster" },
           ],
-          comparison: { label: "Bulk import request time", before: 35.5, after: 5.4, unit: "s" },
+          comparison: { label: "Response time of the bulk creator profile import", before: 35.5, after: 5.4, unit: "s" },
           stack: ["TypeScript", "NestJS", "MongoDB", "Redis"],
         },
         {
