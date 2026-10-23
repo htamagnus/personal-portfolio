@@ -11,7 +11,7 @@ export function About() {
 
   return (
     <Section id="about" className="bg-transparent scroll-mt-20 overflow-x-clip">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr] gap-12 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.15fr_1fr] gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -20,18 +20,18 @@ export function About() {
           className="mb-4 mr-4 md:mb-0 md:mr-0" // Margin to prevent shadow clip on mobile if container is tight
         >
             <BrowserWindow className="h-full flex flex-col justify-center">
-               <h2 className="text-3xl md:text-4xl font-display font-bold uppercase mb-6">{t.about.title}</h2>
-               <p className="text-base md:text-lg font-mono leading-relaxed mb-6">
+               <h2 className="text-3xl font-display font-bold uppercase mb-4">{t.about.title}</h2>
+               <p className="text-base font-mono leading-relaxed mb-6">
                  {t.portfolio.description}
                </p>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                  <div className="border-2 border-black dark:border-white p-4 bg-neon-yellow text-black">
                    <span className="block text-sm font-bold uppercase">{t.about.experience}</span>
-                   <span className="text-2xl font-display font-bold">{t.about.since} {t.portfolio.since}</span>
+                   <span className="text-2xl md:text-xl font-display font-bold">{t.about.since} {t.portfolio.since}</span>
                  </div>
                  <div className="border-2 border-black dark:border-white p-4 bg-neon-blue text-black">
                    <span className="block text-sm font-bold uppercase">{t.about.education}</span>
-                   <span className="block text-xl font-display font-bold">{t.portfolio.education.degree}</span>
+                   <span className="block text-xl md:text-lg font-display font-bold">{t.portfolio.education.degree}</span>
                    <span className="text-sm font-bold">{t.portfolio.education.institution} · {t.portfolio.education.status}</span>
                  </div>
                  <a
@@ -41,7 +41,7 @@ export function About() {
                    className="sm:col-span-2 border-2 border-black dark:border-white p-4 bg-neon-green text-black hover:bg-neon-pink transition-colors"
                  >
                    <span className="block text-sm font-bold uppercase">{t.about.certification}</span>
-                   <span className="text-xl font-display font-bold">
+                   <span className="text-xl md:text-lg font-display font-bold">
                      {t.portfolio.certification.name} <ArrowUpRight className="inline w-5 h-5" aria-hidden />
                    </span>
                  </a>

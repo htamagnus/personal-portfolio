@@ -31,7 +31,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-full z-10 relative"
+          className="w-full z-10 relative lg:pl-12"
         >
           <h2 className="text-lg md:text-2xl font-mono mb-4 text-black-200">
             <strong>{t.hero.greeting}</strong>
@@ -102,7 +102,7 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block pointer-events-none">
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 hidden lg:block pointer-events-none">
           <div className="relative w-[400px] h-[400px]">
             <div className="absolute inset-0 rounded-full border-4 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
             <div className="absolute inset-4 rounded-full border-4 border-black overflow-hidden bg-white">
