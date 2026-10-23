@@ -323,6 +323,13 @@ export const translations = {
           description: "Liderei um time pequeno e júnior, que ainda estava se estabilizando, na construção de uma plataforma para conectar jogadores de RPG. O desafio era manter o projeto andando enquanto o time ganhava experiência: organizei o backlog, refinei as tarefas para ficarem claras e revisei o código para manter a qualidade.",
           stack: ["React", "NodeJS", "Docker", "Prisma"],
         },
+        {
+          company: "Trier Sistemas",
+          role: "Analista de Suporte e Desenvolvimento de BI",
+          period: "2021 - 2023",
+          description: "Comecei no suporte, atendendo farmácias e recuperando manualmente os dados que alimentavam a plataforma de BI quando a coleta automática falhava. Depois de mostrar interesse por desenvolvimento, fui <strong>promovida</strong> e passei a desenvolver os dashboards em Qlik Sense que os clientes usavam.",
+          stack: ["Qlik Sense", "PostgreSQL", "JavaScript", "HTML", "CSS", "Bootstrap", "Figma"],
+        },
       ],
       projects: [
         {

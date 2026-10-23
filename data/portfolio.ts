@@ -200,6 +200,13 @@ export const portfolioData = {
       description: "Led a small, junior team that was still finding its footing, building a platform to connect RPG players. The challenge was keeping the project moving while the team gained experience: I organized the backlog, refined tasks so they were clear and reviewed code to keep quality up.",
       stack: ["React", "NodeJS", "Docker", "Prisma"],
     },
+    {
+      company: "Trier Sistemas",
+      role: "Support and BI Development Analyst",
+      period: "2021 - 2023",
+      description: "Started in support, serving pharmacies and manually recovering the data that fed the BI platform whenever the automatic collection failed. After showing interest in development, I was <strong>promoted</strong> and started building the Qlik Sense dashboards clients used.",
+      stack: ["Qlik Sense", "PostgreSQL", "JavaScript", "HTML", "CSS", "Bootstrap", "Figma"],
+    },
   ],
   projects: [
     {
