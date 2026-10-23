@@ -101,7 +101,7 @@ export function ExperienceModal({ experience, onClose }: ExperienceModalProps) {
                 </button>
               </div>
 
-              <div className="overflow-y-auto p-4 md:p-8 bg-grid-pattern h-full scrollbar-hide md:scrollbar-default">
+              <div className="overflow-y-auto p-4 md:p-8 h-full scrollbar-hide md:scrollbar-default">
                 <div className="flex flex-col gap-10">
                   <div className="border-b-2 border-black pb-6">
                     <h2 className="text-3xl md:text-5xl font-display font-black uppercase mb-2">

@@ -125,7 +125,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                 </div>
               </div>
 
-              <div className="overflow-y-auto p-6 md:p-8 bg-grid-pattern h-full scrollbar-hide md:scrollbar-default">
+              <div className="overflow-y-auto p-6 md:p-8 h-full scrollbar-hide md:scrollbar-default">
                 <div className="flex flex-col gap-8">
                   
                   <div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b-2 border-black pb-6">
