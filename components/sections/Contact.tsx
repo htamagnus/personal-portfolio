@@ -6,6 +6,9 @@ import { Card } from "@/components/ui/Card";
 import { useForm, ValidationError } from "@formspree/react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Linkedin, Mail } from "lucide-react";
+
+const directLink = "inline-flex items-center justify-center gap-2 border-2 border-black px-5 py-3 font-bold text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all";
 
 export function Contact() {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID || '');
@@ -85,6 +88,25 @@ export function Contact() {
               </Button>
             </form>
           </Card>
+
+          <div className="mt-10 flex flex-col items-center gap-4">
+            <p className="font-mono font-bold text-lg text-black">{t.contact.direct}</p>
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <a
+                href={t.portfolio.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${directLink} bg-neon-yellow uppercase tracking-wider`}
+              >
+                <Linkedin className="w-5 h-5 shrink-0" />
+                LinkedIn
+              </a>
+              <a href={t.portfolio.socials.email} className={`${directLink} bg-neon-green break-all`}>
+                <Mail className="w-5 h-5 shrink-0" />
+                {t.portfolio.socials.email.replace("mailto:", "")}
+              </a>
+            </div>
+          </div>
         </div>
       </Section>
     </div>

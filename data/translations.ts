@@ -54,14 +54,15 @@ export const translations = {
       success_msg: "Thanks for reaching out. I'll get back to you soon!",
       send_another: "Send Another",
       title: "Let's Talk",
-      subtitle: "Have a project in mind? Let's build something awesome together.",
+      subtitle: "Have a role or a project in mind? Let's build something awesome together.",
+      direct: "Prefer to reach out directly?",
       form: {
         name: "Name",
         name_placeholder: "YOUR NAME",
         email: "Email",
         email_placeholder: "YOUR@EMAIL.COM",
         message: "Message",
-        message_placeholder: "TELL ME ABOUT YOUR PROJECT",
+        message_placeholder: "TELL ME ABOUT THE ROLE OR PROJECT",
         submit: "Send Message",
         submitting: "Sending..."
       }
@@ -119,14 +120,15 @@ export const translations = {
       success_msg: "Obrigada pelo contato. Retornarei em breve!",
       send_another: "Enviar Outra",
       title: "Vamos Conversar",
-      subtitle: "Tem um projeto em mente? Vamos construir algo incrível juntos.",
+      subtitle: "Tem uma vaga ou um projeto em mente? Vamos construir algo incrível juntos.",
+      direct: "Prefere ir direto?",
       form: {
         name: "Nome",
         name_placeholder: "SEU NOME",
         email: "Email",
         email_placeholder: "SEU@EMAIL.COM",
         message: "Mensagem",
-        message_placeholder: "ME CONTE SOBRE SEU PROJETO",
+        message_placeholder: "ME CONTE SOBRE A VAGA OU O PROJETO",
         submit: "Enviar Mensagem",
         submitting: "Enviando..."
       }
