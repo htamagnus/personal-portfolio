@@ -36,7 +36,7 @@ export function Hero() {
           <h2 className="text-lg md:text-2xl font-mono mb-4 text-black-200">
             <strong>{t.hero.greeting}</strong>
           </h2>
-          <div className="flex items-center justify-between gap-4 lg:block mb-6">
+          <div className="flex items-center justify-between gap-4 sm:justify-start sm:gap-10 lg:block mb-6">
             <h1 className="text-6xl md:text-8xl lg:text-8xl font-display font-black uppercase tracking-tighter leading-none">
               <MaskedReveal text="Agatha" className="text-neon-blue" delay={0.1} />
               <br />
@@ -44,7 +44,7 @@ export function Hero() {
             </h1>
 
             {/* Mobile Image */}
-            <div className="lg:hidden relative w-28 aspect-square">
+            <div className="lg:hidden relative w-[28vw] max-w-36 md:max-w-48 aspect-square">
               <div className="absolute inset-0 rounded-full border-2 border-black bg-neon-yellow/20 animate-spin-slow" style={{ animationDuration: "20s" }}></div>
               <div className="absolute inset-2 rounded-full border-2 border-black overflow-hidden bg-white">
                 <Image 
@@ -54,14 +54,14 @@ export function Hero() {
                   alt="Agatha Magnus" 
                   className="w-full h-full object-cover"
                   priority
-                  sizes="(max-width: 1023px) 112px, 1px"
+                  sizes="(max-width: 1023px) 192px, 1px"
                 />
               </div>
             
               {/* Mobile Spinning Icon */}
               <motion.svg
                 viewBox="0 0 412 412"
-                className="absolute -bottom-2 -right-2 w-10 h-10 z-10"
+                className="absolute -bottom-2 -right-2 w-1/3 h-1/3 z-10"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               >
