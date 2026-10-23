@@ -263,22 +263,14 @@ export const translations = {
             {
               title: "Gerador de relatório de campanha",
               tag: "Refatoração",
-              headline: "Foi para produção sem nenhum bug",
-              summary: "A rota que monta a apresentação de resultados de uma campanha no Google Slides vivia num serviço legado em JavaScript, com magic numbers e parâmetros mortos, então <strong>qualquer mudança era arriscada</strong>. Ela decidia os slides pelo tipo da campanha, o que gerava seções vazias ou com dados que não se aplicavam, e dependia de outra API só para buscar as métricas. Migrei e refatorei a rota para TypeScript: um pipeline longo, passando por MongoDB, MySQL e três APIs do Google, que foi para produção <mark>sem nenhum bug</mark>.",
-              flow: {
-                label: "O que a rota faz",
-                steps: ["Campanha (MongoDB)", "Métricas (MySQL)", "Copia template (Drive)", "Preenche slides (Slides)", "Gera gráficos (Sheets)", "Compartilha link"],
-              },
+              headline: "Apresentação de resultados só com o que importa para cada campanha",
+              summary: "A plataforma gera automaticamente, no Google Slides, a apresentação com os resultados de cada campanha para a marca. Ela escolhia os slides pelo tipo da campanha, então <strong>a apresentação muitas vezes saía com seções vazias ou com dados que não se aplicavam</strong>. O código vivia num serviço legado em JavaScript, com magic numbers e parâmetros que ninguém usava, e qualquer mudança era arriscada. Migrei e refatorei essa geração para <mark>TypeScript</mark>.",
+              result: "A apresentação passou a sair <strong>só com as seções que têm dados daquela campanha</strong>, sem slides vazios ou fora de contexto. O código ficou mais fácil de entender e de mudar, e a nova versão foi para produção <strong>sem nenhum bug</strong>.",
               points: [
                 "Mudei a regra de quais slides aparecem: em vez de depender do tipo da campanha, cada seção só fica quando existem <strong>dados reais</strong> para preencher.",
-                "Passei a buscar as métricas direto no banco de BI, em vez de passar por outra API.",
+                "Passei a buscar as métricas direto no banco de BI, em vez de passar por outra API: uma dependência a menos para falhar.",
                 "Removi parâmetros legados que o front nunca enviava e troquei os <strong>magic numbers</strong> da remoção de slides e do cálculo de CTR por lógica com nomes claros.",
                 "Adicionei erros personalizados para facilitar o debug, e testes unitários.",
-              ],
-              metrics: [
-                { value: "0", label: "bugs após o deploy" },
-                { value: "3", label: "APIs do Google orquestradas" },
-                { value: "34", label: "arquivos refatorados" },
               ],
               stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
             },

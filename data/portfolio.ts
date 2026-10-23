@@ -142,22 +142,14 @@ export const portfolioData = {
         {
           title: "Campaign report generator",
           tag: "Refactor",
-          headline: "Shipped with zero bugs",
-          summary: "The route that builds a campaign's results deck in Google Slides lived in a legacy JavaScript service, full of magic numbers and dead parameters, so <strong>any change was risky</strong>. It picked slides by campaign type, which produced empty sections or data that didn't apply, and it depended on another API just to fetch the metrics. Migrated and refactored it to TypeScript: a long pipeline across MongoDB, MySQL and three Google APIs that shipped with <mark>zero bugs</mark>.",
-          flow: {
-            label: "What the route does",
-            steps: ["Campaign (MongoDB)", "Metrics (MySQL)", "Copy template (Drive)", "Fill slides (Slides)", "Build charts (Sheets)", "Share link"],
-          },
+          headline: "Results decks with only what matters for each campaign",
+          summary: "The platform automatically builds, in Google Slides, the deck with each campaign's results for the brand. It picked slides by campaign type, so <strong>the deck often came out with empty sections or data that didn't apply</strong>. The code lived in a legacy JavaScript service, full of magic numbers and parameters nobody used, and any change was risky. I migrated and refactored it to <mark>TypeScript</mark>.",
+          result: "The deck now comes out <strong>with only the sections that have data for that campaign</strong>, no empty or out-of-context slides. The code became easier to understand and change, and the new version shipped with <strong>zero bugs</strong>.",
           points: [
             "Changed the rule for which slides appear: instead of depending on the campaign type, each section is kept only when there is <strong>real data</strong> to fill it.",
-            "Read metrics straight from the BI database instead of going through another API.",
+            "Read metrics straight from the BI database instead of going through another API: one less dependency that can fail.",
             "Removed legacy parameters the frontend never sent, and replaced <strong>magic numbers</strong> in slide deletion and CTR calculation with named, readable logic.",
             "Added custom errors for easier debugging, plus unit tests.",
-          ],
-          metrics: [
-            { value: "0", label: "bugs after release" },
-            { value: "3", label: "Google APIs orchestrated" },
-            { value: "34", label: "files refactored" },
           ],
           stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
         },
