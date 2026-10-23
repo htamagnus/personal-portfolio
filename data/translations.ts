@@ -268,7 +268,8 @@ export const translations = {
               result: "A apresentação passou a sair <strong>só com as seções que têm dados daquela campanha</strong>, sem slides vazios ou fora de contexto. O código ficou mais fácil de entender e de mudar, e a nova versão foi para produção <strong>sem nenhum bug</strong>.",
               points: [
                 "Mudei a regra de quais slides aparecem: em vez de depender do tipo da campanha, cada seção só fica quando existem <strong>dados reais</strong> para preencher.",
-                "Passei a buscar as métricas direto no banco de BI, em vez de passar por outra API: uma dependência a menos para falhar.",              ],
+                "Passei a buscar as métricas direto no banco de BI, em vez de passar por outra API: uma dependência a menos para falhar.",
+              ],
               stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
             },
             // {

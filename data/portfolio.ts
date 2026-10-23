@@ -147,7 +147,8 @@ export const portfolioData = {
           result: "The deck now comes out <strong>with only the sections that have data for that campaign</strong>, no empty or out-of-context slides. The code became easier to understand and change, and the new version shipped with <strong>zero bugs</strong>.",
           points: [
             "Changed the rule for which slides appear: instead of depending on the campaign type, each section is kept only when there is <strong>real data</strong> to fill it.",
-            "Read metrics straight from the BI database instead of going through another API: one less dependency that can fail.",          ],
+            "Read metrics straight from the BI database instead of going through another API: one less dependency that can fail.",
+          ],
           stack: ["NestJS", "TypeScript", "Google APIs", "MongoDB", "MySQL"],
         },
         // {
