@@ -206,8 +206,8 @@ export const portfolioData = {
       title: "Velox | WEB APP",
       role: "Full Stack Development",
       period: "2025",
-      description: "Map apps estimate ride time with a generic speed that rarely matches how you actually ride. Velox uses your real average speed from Strava to plan routes with time, elevation, weather and traffic.",
-      infoProject: "Map apps estimate ride time with a <mark>generic average speed</mark>, the same for everyone, so the estimate rarely matches how you actually ride. I built Velox to fix that: it connects to Strava and calculates route time using <strong>your real average speed</strong>.",
+      description: "Bike route planner that calculates ride time with your real speed from Strava. Front end, back end and AWS infrastructure, all built by me.",
+      infoProject: "Map apps estimate ride time with a <mark>generic average speed</mark> that rarely matches your pace. Velox uses <strong>your real average speed</strong> from Strava. I built all of it on my own: front end, back end and <strong>the entire infrastructure on AWS</strong>.",
       features: [
         { icon: "bike", title: "Ride modes", text: "MTB, road and urban modes." },
         { icon: "mountain", title: "Elevation", text: "How much you'll climb and descend on the route." },
@@ -217,7 +217,16 @@ export const portfolioData = {
         { icon: "history", title: "History", text: "Your saved routes to check later." },
       ],
       result: "With Velox you know <strong>how long the ride will take at your pace</strong>, how much you'll climb and what the weather looks like, all before you leave and in one place.",
-      stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
+      flow: {
+        label: "Infrastructure on AWS",
+        steps: ["Next.js on Amplify", "CloudFront", "Load Balancer", "NestJS on Elastic Beanstalk", "PostgreSQL on RDS"],
+      },
+      points: [
+        "Switched from App Runner to <strong>Elastic Beanstalk</strong> to stay within the free tier.",
+        "Put <strong>CloudFront</strong> in front of the API so the HTTPS front end could call it, without paying for a certificate or a domain.",
+        "Deployment with <strong>GitHub Actions</strong> → S3 → Elastic Beanstalk, using an IAM user with only the permissions it needs.",
+        ],
+      stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "GitHub Actions", "Google Maps API", "Strava API"],
       links: [
         { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
         { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },

@@ -329,8 +329,8 @@ export const translations = {
           title: "Velox | WEB APP",
           role: "Desenvolvimento Full Stack",
           period: "2025",
-          description: "Apps de mapa estimam o tempo de pedal com uma velocidade genérica, que raramente bate com o ritmo de quem pedala. O Velox usa a sua velocidade média real, vinda do Strava, para planejar rotas com tempo, elevação, clima e trânsito.",
-          infoProject: "Apps de mapa estimam o tempo de pedal com uma <mark>velocidade média genérica</mark>, igual para todo mundo, então a estimativa quase nunca bate com o ritmo de quem pedala. Criei o Velox para resolver isso: ele se conecta ao Strava e calcula o tempo do percurso com a <strong>sua velocidade média real</strong>.",
+          description: "Planejador de rotas de bike que calcula o tempo do pedal com a sua velocidade real, vinda do Strava. Front, back e infraestrutura na AWS, tudo feito por mim.",
+          infoProject: "Apps de mapa estimam o tempo de pedal com uma <mark>velocidade média genérica</mark>, que quase nunca bate com o seu ritmo. O Velox usa a <strong>sua velocidade média real</strong>, vinda do Strava. Fiz tudo sozinha: front, back e <strong>a infraestrutura inteira na AWS</strong>.",
           features: [
             { icon: "bike", title: "Modalidades", text: "Modos para MTB, speed e urbano." },
             { icon: "mountain", title: "Elevação", text: "Quanto você vai subir e descer no percurso." },
@@ -340,7 +340,16 @@ export const translations = {
             { icon: "history", title: "Histórico", text: "Suas rotas salvas para consultar depois." },
           ],
           result: "Com o Velox, dá para saber <strong>quanto tempo o pedal vai levar no seu ritmo</strong>, quanto você vai subir e como está o clima, tudo antes de sair e num lugar só.",
-          stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "Google Maps API", "Strava API"],
+          flow: {
+            label: "Infraestrutura na AWS",
+            steps: ["Next.js no Amplify", "CloudFront", "Load Balancer", "NestJS no Elastic Beanstalk", "PostgreSQL no RDS"],
+          },
+          points: [
+            "Troquei o App Runner pelo <strong>Elastic Beanstalk</strong> para caber no free tier.",
+            "Coloquei um <strong>CloudFront</strong> na frente da API para o front em HTTPS conseguir chamá-la, sem pagar certificado nem domínio.",
+            "Deploy com <strong>GitHub Actions</strong> → S3 → Elastic Beanstalk, usando um usuário IAM só com as permissões necessárias.",
+            ],
+          stack: ["Next.js", "NestJS", "PostgreSQL", "AWS", "GitHub Actions", "Google Maps API", "Strava API"],
           links: [
             { label: "Demo", url: "https://main.d3mjxv9z617jt5.amplifyapp.com/", type: "website" },
             { label: "GitHub", url: "https://github.com/htamagnus/api-velox", type: "github" },
