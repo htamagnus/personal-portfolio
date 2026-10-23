@@ -322,7 +322,7 @@ export const translations = {
         {
           company: "RPG Project (Voluntário)",
           role: "Líder de Equipe",
-          period: "Anterior",
+          period: "jun 2024 - nov 2024",
           description: "Liderei um time pequeno e júnior, que ainda estava se estabilizando, na construção de uma plataforma para conectar jogadores de RPG. O desafio era manter o projeto andando enquanto o time ganhava experiência: organizei o backlog, refinei as tarefas para ficarem claras e revisei o código para manter a qualidade.",
           stack: ["React", "NodeJS", "Docker", "Prisma"],
         },

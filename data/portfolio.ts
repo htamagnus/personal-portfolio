@@ -197,7 +197,7 @@ export const portfolioData = {
     {
       company: "RPG Project (Volunteer)",
       role: "Team Lead",
-      period: "Previous",
+      period: "Jun 2024 - Nov 2024",
       description: "Led a small, junior team that was still finding its footing, building a platform to connect RPG players. The challenge was keeping the project moving while the team gained experience: I organized the backlog, refined tasks so they were clear and reviewed code to keep quality up.",
       stack: ["React", "NodeJS", "Docker", "Prisma"],
     },
